@@ -1,0 +1,292 @@
+/* Estilos para el modal de productos */
+.product-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.product-modal {
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: rotate(90deg);
+}
+
+.product-modal-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.modal-product-image {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modal-product-info {
+  flex: 1;
+}
+
+.modal-product-header {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.modal-product-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.modal-product-tag {
+  margin-bottom: 15px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+}
+
+.tag.consumo {
+  background-color: #8b4513;
+}
+
+.tag.orgánico {
+  background-color: #2e8b57;
+}
+
+.tag.especial {
+  background-color: #daa520;
+}
+
+.tag.premium {
+  background-color: #ff8c00;
+}
+
+.modal-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.rating-value {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.modal-product-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.price-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.price-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c5e2e;
+}
+
+.modal-product-description,
+.modal-product-details {
+  margin-bottom: 20px;
+}
+
+.modal-product-description h3,
+.modal-product-details h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-product-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.modal-product-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-product-details li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-product-details li strong {
+  color: #333;
+  min-width: 100px;
+}
+
+/* Estilos para el botón de detalle en los productos del slider */
+.detail-btn {
+  background-color: #2c5e2e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.detail-btn:hover {
+  background-color: #1e401f;
+  transform: translateY(-2px);
+}
+
+/* Estilos para el formulario de edición */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .product-modal-content {
+    flex-direction: row;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .modal-product-image {
+    width: 40%;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .modal-product-info {
+    width: 60%;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
