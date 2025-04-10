@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #f5f5f5; /* Fondo opcional */
+  }
+  
+  .contact-form {
+    width: 100%;
+    max-width: 500px; /* Ancho máximo del formulario */
+    background-color: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  }
+  
+  .contact-form,
+  .service-section {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title,
+  .contact-subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .form-group textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3adfc4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #32c0a8;
+  }
+  
+  /* Estilos del Slider */
+  .service-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .service-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .service-card-container {
+    text-align: center;
+  }
+  
+  .service-slider-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .service-slide {
+    flex: 0 0 100%;
+    display: none;
+  }
+  
+  .service-slide.active {
+    display: block;
+  }
+  
+  .service-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 98%;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: transform 400ms, box-shadow 400ms, background-color 400ms;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  }
+  
+  .service-card.red {
+    background-color: #f43f5e;
+  }
+  
+  .service-card.blue {
+    background-color: #3b82f6;
+  }
+  
+  .service-card.green {
+    background-color: #22c55e;
+  }
+  
+  .service-card-title {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  .service-card-text {
+    font-size: 0.7em;
+  }
+  
+  .service-slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .service-slider-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .service-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .service-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .service-dot.active {
+    background-color: #3b82f6;
+  }
+  
+  /* Estilos del Slider de Tarjetas de Contacto */
+  .contact-card-slider {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .contact-slide {
+    display: none;
+  }
+  
+  .contact-slide.active {
+    display: block;
+  }
+  
+  /* Estilos de la Tarjeta */
+  .card {
+    position: relative;
+    width: 90%;
+    height: 450px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    overflow: hidden;
+    margin: 30px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    transform: translateY(-10px); /* Eleva la tarjeta */
+  }
+  
+  .card-header {
+    position: relative;
+    height: 50%;
+    background: linear-gradient(60deg, #de3b5e 0%, #df3a3a 100%);
+  }
+  
+  .wave-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .waves {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    margin-bottom: -7px;
+    min-height: 40px;
+    max-height: 50px;
+  }
+  
+  .profile-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    background-color: white;
+  }
+  
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .card-content {
+    position: relative;
+    top: 60px;
+    height: 50%;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-content h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card-content p {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .btn-53 {
+    background-color: rgba(0, 0, 0, 0.311);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    cursor: pointer;
+    padding: 0.8rem 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid rgba(93, 83, 83, 0.5);
+    box-shadow: 0 0 15px rgba(2, 242, 242, 0.6);
+  }
+  
+  .btn-53 .original {
+    background: #000;
+    color: #fff;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  
+  .btn-53:hover .original {
+    transform: translateY(100%);
+  }
+  
+  .btn-53 .letters {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .btn-53 span {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  
+  .btn-53:hover span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .btn-53:hover span:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .btn-53:hover span:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+  .btn-53:hover span:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .btn-53:hover span:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+  .btn-53:hover span:nth-child(5) {
+    transition-delay: 0.3s;
+  }
+  .btn-53:hover span:nth-child(6) {
+    transition-delay: 0.35s;
+  }
+  .btn-53:hover span:nth-child(7) {
+    transition-delay: 0.4s;
+  }
+  .btn-53:hover span:nth-child(8) {
+    transition-delay: 0.45s;
+  }
+  .btn-53:hover span:nth-child(9) {
+    transition-delay: 0.5s;
+  }
+  .btn-53:hover span:nth-child(10) {
+    transition-delay: 0.55s;
+  }
+  
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+    }
+  
+    .contact-form,
+    .service-section {
+      width: 100%;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .card {
+      width: 100%;
+      height: 400px;
+    }
+  
+    .profile-image {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .card-content {
+      top: 50px;
+    }
+  
+    .card-content h2 {
+      font-size: 20px;
+    }
+  
+    .card-content p {
+      font-size: 14px;
+    }
+  
+    .btn-53 {
+      padding: 0.6rem 1.5rem;
+      font-size: 12px;
+    }
+  }
+  
+  

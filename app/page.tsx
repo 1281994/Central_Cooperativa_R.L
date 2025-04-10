@@ -7,6 +7,7 @@ import Productos from "@/components/Productos/Productos"
 import Footer from "@/components/Footer/Footer"
 import BackToTop from "@/components/BackToTop"
 import AcercaDeNosotras from "@/components/Acerca_de_nosotras/AcercaDeNosotras"
+import FormularioContacto from "@/components/FormularioContacto/Formulario"
 
 
 
@@ -56,6 +57,8 @@ export default function Home() {
 
 
       <Productos />
+      <FormularioContacto />
+      {/* Aquí puedes agregar más secciones como "Testimonios", "Contacto", etc. */}
       <Footer />
       <BackToTop />
     </main>
