@@ -11,6 +11,7 @@ import "@/app/productos.css"
 import "@/app/productos-modal.css"
 const inter = Inter({ subsets: ["latin"] })
 
+
 export const metadata: Metadata = {
   title: "Central de Cooperativas",
   description: "Cooperativa de mujeres comprometidas con el desarrollo sostenible",

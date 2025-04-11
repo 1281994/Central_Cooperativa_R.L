@@ -1,13 +1,15 @@
 "use client"
 
 import { useEffect } from "react"
-import Header from "@/components/Header/Header"
-import Slider from "@/components/Portada_presentacion/Slider"
-import Productos from "@/components/Productos/Productos"
-import Footer from "@/components/Footer/Footer"
+import Header from "@/components/Header"
+import Slider from "@/components/Slider"
+import AcercaDeNosotras from "@/components/AcercaDeNosotras"
+import Productos from "@/components/Productos"
+import FormularioContacto from "@/components/Formulario"
+import Footer from "@/components/Footer"
 import BackToTop from "@/components/BackToTop"
-import AcercaDeNosotras from "@/components/Acerca_de_nosotras/AcercaDeNosotras"
-import FormularioContacto from "@/components/FormularioContacto/Formulario"
+
+
 
 
 
@@ -21,8 +23,6 @@ export default function Home() {
     script.crossOrigin = "anonymous"
     document.body.appendChild(script)
 
-
-    
     // Forzar un evento de resize después de cargar la página para ajustar el carrusel
     const resizeEvent = () => {
       window.dispatchEvent(new Event("resize"))
@@ -50,18 +50,23 @@ export default function Home() {
   return (
     <main className="main-container">
       <Header />
-      <Slider />
-      {/* Aquí puedes agregar más secciones como "Acerca de Nosotros", "Productos", etc. */}
-      <AcercaDeNosotras />
-      {/* Componente del mapa 3D de Nicaragua */}
-
-
-      <Productos />
-      <FormularioContacto />
-      {/* Aquí puedes agregar más secciones como "Testimonios", "Contacto", etc. */}
-      <Footer />
+      <div id="slider">
+        <Slider />
+      </div>
+      <div id="about">
+        <AcercaDeNosotras />
+      </div>
+      <div id="products">
+        <Productos />
+      </div>
+      <div id="registro">
+        <FormularioContacto />
+      </div>
+      {/* Aquí puedes agregar la sección de testimonios con id="testimonios" */}
+      <div id="footer">
+        <Footer />
+      </div>
       <BackToTop />
     </main>
   )
 }
-
