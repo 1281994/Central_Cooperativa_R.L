@@ -23,7 +23,8 @@ interface Product {
   premium?: boolean
   unit?: string
   cooperativa?: string
-  contacto?: string
+  telefono?: string
+  correo?: string
 }
 
 interface SliderProduct {
@@ -56,7 +57,9 @@ const initialProducts: Product[] = [
     tag: "Consumo",
     unit: "lb",
     cooperativa: "Cooperativa Multisectorial Tierra Nuestra R.L",
-    contacto: "info@lasdiosas.org | +505 8888-8888",
+    correo: "info@lasdiosas.org",
+
+    
   },
   {
     id: 2,
@@ -70,21 +73,23 @@ const initialProducts: Product[] = [
     tag: "Orgánico",
     unit: "100 Libras",
     cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-    contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+    correo: "centrallasdiosas@gmail.com",
+
   },
   {
     id: 3,
-    name: "Bebida de Café nuestra tierra",
+    name: "Café nuestra tierra",
     type: "Especial",
     rating: 4,
-    price: 15.0,
+    price: 150.0,
     currency: "C$",
-    image: "/assets/imagenes/productos/cafe.png",
-    description: "Taza de café con notas de chocolate y caramelo. Ideal para disfrutar en cualquier momento del día.",
+    image: "/assets/imagenes/productos/cafe2.jpg",
+    description: "Café de especialidad con notas de chocolate y frutas. Ideal para los amantes del café gourmet.",
     tag: "Especial",
-    unit: "Taza",
+    unit: "Unidad",
     cooperativa: "Cooperativa Multisectorial Tierra Nuestra R.L",
-    contacto: "info@lasdiosas.org | +505 8888-8888",
+    correo: "info@lasdiosas.org",
+   
   },
   {
     id: 4,
@@ -99,7 +104,8 @@ const initialProducts: Product[] = [
     premium: true,
     unit: "botella",
     cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-    contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+    correo: "centrallasdiosas@gmail.com",
+    
   },
   {
     id: 5,
@@ -113,7 +119,8 @@ const initialProducts: Product[] = [
     tag: "Especial",
     unit: "Unidad",
     cooperativa: "Cooperativa Agropecuaria Mujeres al Proceso RL",
-    contacto: "mujeresagropecuaria@gmail.com | +505 8234-5678",
+    correo: "mujeresagropecuaria@gmail.com",
+
   },
   {
     id: 6,
@@ -127,7 +134,8 @@ const initialProducts: Product[] = [
     tag: "Especial",
     unit: "Unidad",
     cooperativa: "Cooperativa Multisectorial Paz y Amor Entre Mujeres R.L",
-    contacto: "lasdiosaspazyamor@gmail.com | +505 5555-5555",
+    correo: "lasdiosaspazyamor@gmail.com",
+
   },
   {
     id: 7,
@@ -142,7 +150,8 @@ const initialProducts: Product[] = [
     premium: true,
     unit: "Unidad",
     cooperativa: "Cooperativa Multisectorial Mujeres del Norte R.L",
-    contacto: "Mujeresdelnorte@gmail.com | +505 4444-4444",
+    correo: "Mujeresdelnorte@gmail.com",
+
   },
   {
     id: 8,
@@ -157,7 +166,8 @@ const initialProducts: Product[] = [
     tag: "Orgánico",
     unit: "100 Libras",
     cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-    contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+    correo: "centrallasdiosas@gmail.com",
+
   },
 ]
 
@@ -178,7 +188,7 @@ const sliderCategories = [
         description:
           "Miel pura de abeja, cosechada de forma sostenible. Rica en nutrientes y con propiedades medicinales.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-        contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+        correo: "centrallasdiosas@gmail.com",
         currency: "C$",
         unit: "Botella",
       },
@@ -192,7 +202,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Miel pura de abeja, cosechada de forma sostenible. Ideal para endulzar bebidas y postres.",
         cooperativa: "Cooperativa Agropecuaria Mujeres al Proceso RL",
-        contacto: "flordelcampo@coop.org | +505 8456-7890",
+        correo: "flordelcampo@coop.org",
         currency: "C$",
         unit: "Botella",
       },
@@ -206,7 +216,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Miel pura de la flor de Jamaica, con propiedades antioxidantes. Ideal para endulzar y disfrutar.",
         cooperativa: "Cooperativa Viñedos Unidos",
-        contacto: "vinedos@coop.org | +505 8901-2345",
+        correo: "vinedos@coop.org",
         currency: "C$",
         unit: "Botella",
       },
@@ -220,7 +230,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Café molido fresco, tostado a punto medio. Mezcla de variedades locales con sabor equilibrado.",
         cooperativa: "Cooperativa Las Diosas",
-        contacto: "info@lasdiosas.org | +505 8765-4321",
+        correo: "info@lasdiosas.org",
         currency: "C$",
         unit: "Botella",
       },
@@ -241,7 +251,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Café de especialidad con notas cítricas y florales. Cultivado a más de 1,200 metros de altura.",
         cooperativa: "Cooperativa Montaña Verde",
-        contacto: "montanaverde@coop.org | +505 8234-5678",
+        correo: "montanaverde@coop.org",
         currency: "C$",
         unit: "lb",
       },
@@ -255,7 +265,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Café orgánico de la región de Estelí. Sabor suave y equilibrado, ideal para el consumo diario.",
         cooperativa: "Cooperativa Multisectorial Mujeres del Norte R.L",
-        contacto: "mujeresdelnorte@gmail.com | +505 4444-4444",
+        correo: "mujeresdelnorte@gmail.com",
         currency: "C$",
         unit: "Unidad",
       },
@@ -270,7 +280,7 @@ const sliderCategories = [
         description:
           "Té de flor de Jamaica en bolsitas. Listo para preparar, con propiedades antioxidantes y refrescantes.",
         cooperativa: "Cooperativa Flor del Campo",
-        contacto: "flordelcampo@coop.org | +505 8456-7890",
+        correo: "flordelcampo@coop.org",
         currency: "C$",
         unit: "Caja",
       },
@@ -284,7 +294,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Vino artesanal elaborado con técnicas tradicionales. Sabor único y auténtico de nuestra región.",
         cooperativa: "Cooperativa Viñedos Unidos",
-        contacto: "vinedos@coop.org | +505 8901-2345",
+        correo: "vinedos@coop.org",
         currency: "C$",
         unit: "Botella",
       },
@@ -305,7 +315,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Vino artesanal elaborado con técnicas tradicionales. Sabor único y auténtico de nuestra región.",
         cooperativa: "Cooperativa Agropecuaria Mujeres al Proceso RL",
-        contacto: "mujeresagropecuaria@gmail.com | +505 8234-5678",
+        correo: "mujeresagropecuaria@gmail.com",
         currency: "C$",
         unit: "Botella",
       },
@@ -320,7 +330,7 @@ const sliderCategories = [
         description:
           "Pinolillo tradicional nicaragüense. Mezcla de maíz, cacao y especias. Ideal para preparar bebidas resfrescantes.",
         cooperativa: "Cooperativa mujeres del norte",
-        contacto: "apicultores@coop.org | +505 8345-6789",
+        correo: "apicultores@coop.org",
         currency: "C$",
         unit: "Unidad",
       },
@@ -334,7 +344,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Vino artesanal elaborado con flor de Jamaica. Refrescante y con un toque dulce.",
         cooperativa: "Cooperativa mujeres del norte",
-        contacto: "apicultores@coop.org | +505 8345-6789",
+        correo: "apicultores@coop.org",
         currency: "C$",
         unit: "Unidad",
       },
@@ -348,7 +358,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Vino elaborado con naranjas orgánicas. Refrescante y aromático, perfecto para días calurosos.",
         cooperativa: "Cooperativa Viñedos Unidos",
-        contacto: "vinedos@coop.org | +505 8901-2345",
+        correo: "vinedos@coop.org",
         currency: "C$",
         unit: "Botella",
       },
@@ -369,7 +379,7 @@ const sliderCategories = [
         description:
           "Fertilizante orgánico para cultivos. Mejora la calidad del suelo y aumenta la producción agrícola.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-        contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+        correo: "centrallasdiosas@gmail.com",
         currency: "C$",
         unit: "Saco / 100 libras",
       },
@@ -383,7 +393,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Abono orgánico para cultivos. Mejora la calidad del suelo y aumenta la producción agrícola.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-        contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+        correo: "centrallasdiosas@gmail.com",
         currency: "C$",
         unit: "Saco / 100 libras",
       },
@@ -397,7 +407,7 @@ const sliderCategories = [
         ratingCount: "17k",
         description: "Tomates frescos y jugosos, cultivados sin pesticidas. Perfectos para ensaladas y salsas.",
         cooperativa: "Cooperativa Multisectorial Mujeres en Desarrolo R.L",
-        contacto: "mujeresendesarrollo@gmail.com | +505 7777-7777",
+        correo: "mujeresendesarrollo@gmail.com",
         currency: "C$",
         unit: "Unidad",
       },
@@ -412,7 +422,7 @@ const sliderCategories = [
         description:
           "Granos de café tostados y molidos. Sabor intenso y aroma envolvente. Ideal para preparar café en casa.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-        contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+        correo: "centrallasdiosas@gmail.com",
         currency: "C$",
         unit: "lb",
       },
@@ -892,7 +902,7 @@ export default function Productos() {
                       <strong>Cooperativa:</strong> {selectedProduct.cooperativa || "Cooperativa Las Diosas"}
                     </li>
                     <li>
-                      <strong>Contacto:</strong> {selectedProduct.contacto || "info@cooperativa.org"}
+                      <strong>Contacto:</strong> {selectedProduct.correo || "info@cooperativa.org"}
                     </li>
                     {selectedProduct.premium && (
                       <li>

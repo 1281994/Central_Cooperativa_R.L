@@ -11,14 +11,14 @@ interface DragContainer extends HTMLDivElement {
 const slidesData = [
   {
     type: "video",
-    src: "/assets/videos/Central de Cooperativas Las Diosas.MP4",
+    src: "/assets/videos/Cooperativa de mujeres campesinas.mp4",
     title: "Cooperativa 01",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
   },
   {
     type: "video",
-    src: "/assets/videos/Cooperativa de mujeres campesinas.mp4",
+    src: "/assets/videos/Central de Cooperativas Las Diosas.MP4",
     title: "Cooperativa 02",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
@@ -67,7 +67,7 @@ const slidesData = [
   },
   {
     type: "image",
-    src: "/assets/imagenes/granos.jpg",
+    src: "/assets/imagenes/productos/granos.jpg",
     title: "Cooperativa 09",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
