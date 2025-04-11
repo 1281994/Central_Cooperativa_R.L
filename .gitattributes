@@ -1,2 +1,4 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 public/assets/videos/Cooperativa[[:space:]]Central.mp4 filter=lfs diff=lfs merge=lfs -text
+public/assets/videos/Cooperativa[[:space:]]de[[:space:]]mujeres[[:space:]]campesinas[[:space:]]dinamizan[[:space:]]la[[:space:]]economía[[:space:]]nacional[[:space:]]desde[[:space:]]Estelí.mp4 filter=lfs diff=lfs merge=lfs -text
+public/assets/videos/Las[[:space:]]Diosas[[:space:]]de[[:space:]]las[[:space:]]Segovias[[:space:]]en[[:space:]]Nicaragua.mp4 filter=lfs diff=lfs merge=lfs -text
