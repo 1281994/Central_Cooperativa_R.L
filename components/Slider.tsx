@@ -10,15 +10,15 @@ interface DragContainer extends HTMLDivElement {
 // Datos para los slides
 const slidesData = [
   {
-    type: "video",
-    src: "/assets/videos/Cooperativa de mujeres.mp4",
+    type: "image",
+    src: "/assets/imagenes/lasdiosas.jpg",
     title: "Cooperativa 01",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
   },
   {
-    type: "video",
-    src: "/assets/videos/Aniversario de la Central de Cooperativa.MP4",
+    type: "image",
+    src: "/assets/imagenes/logoLasDiosas.png",
     title: "Cooperativa 02",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
