@@ -11,14 +11,14 @@ interface DragContainer extends HTMLDivElement {
 const slidesData = [
   {
     type: "video",
-    src: "/assets/videos/Cooperativa de mujeres campesinas dinamizan la economía nacional desde Estelí.mp4",
+    src: "/assets/videos/Cooperativa de mujeres.mp4",
     title: "Cooperativa 01",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
   },
   {
     type: "video",
-    src: "/assets/videos/Las Diosas de las Segovias en Nicaragua.MP4",
+    src: "/assets/videos/Aniversario de la Central de Cooperativa.MP4",
     title: "Cooperativa 02",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
