@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 
 // Tipos de datos
 type ProductType = "Todos" | "Consumo" | "Orgánico" | "Especial" | "Premium"
-type CurrencyType = "C$" | "$" | "€" | "£"
+type CurrencyType = "C$" | "$" | "€" | "£" | string
 
 interface Product {
   id: number
@@ -488,7 +488,7 @@ export default function Productos() {
   }
 
   // Función para manejar el desplazamiento de los sliders
-  const handleSlide = (direction: "prev" | "next", ref: React.RefObject<HTMLDivElement>) => {
+  const handleSlide = (direction: "prev" | "next", ref: React.RefObject<HTMLDivElement | null>) => {
     if (!ref.current) return
 
     const container = ref.current
@@ -502,7 +502,7 @@ export default function Productos() {
   }
 
   // Función para pausar/reanudar la animación
-  const toggleAnimation = (ref: React.RefObject<HTMLDivElement>, isPaused: boolean) => {
+  const toggleAnimation = (ref: React.RefObject<HTMLDivElement | null>, isPaused: boolean) => {
     if (!ref.current) return
 
     ref.current.style.animationPlayState = isPaused ? "paused" : "running"
