@@ -8,10 +8,9 @@ export default function AcercaDeNosotras() {
 
   return (
     <section id="about" className="about-section">
-<header className="about-header">
-    <h2>Acerca de nosotras</h2>
-  </header>
-
+      <header className="about-header">
+        <h2>Acerca de nosotras</h2>
+      </header>
 
       {/* Primera sección - Información principal */}
       <div className="about-main">
@@ -28,11 +27,12 @@ export default function AcercaDeNosotras() {
             campesinas como generadoras de ingresos propios.
           </p>
           <p className="about-text">
-            "Hemos mejorado muchísimas las ventas, somos mujeres jóvenes que estamos posicionándonos y fortaleciéndonos
-            como generadoras de la economía familiar, ahorita a nivel local tenemos registro sanitario, marcas
-            registradas, todos los estatutos conforme a ley y sanidad de nuestros productos", expresó Alfaro. Para el
-            mes de diciembre es temporada alta en comercio y consumo, por lo que las productoras esperan superar las 300
-            libras de café molido semanal, unas 80 libras de miel semanalmente, y unas 300 botellas de vino.
+            &quot;Hemos mejorado muchísimas las ventas, somos mujeres jóvenes que estamos posicionándonos y
+            fortaleciéndonos como generadoras de la economía familiar, ahorita a nivel local tenemos registro sanitario,
+            marcas registradas, todos los estatutos conforme a ley y sanidad de nuestros productos&quot;, expresó
+            Alfaro. Para el mes de diciembre es temporada alta en comercio y consumo, por lo que las productoras esperan
+            superar las 300 libras de café molido semanal, unas 80 libras de miel semanalmente, y unas 300 botellas de
+            vino.
           </p>
         </div>
         <div className="about-image">
@@ -61,22 +61,16 @@ export default function AcercaDeNosotras() {
             <p className="entrepreneur-text">
               de los departamentos de Estelí, Matagalpa, Jinotega y Nueva Segovia, están aglutinadas en la central
               regional de Cooperativa Las Diosas, actualmente comercializan café orgánico, miel, flor de Jamaica y
-              vinos. Tan solo en este año 2022, las mujeres de Las Diosas contabilizan vendidos más de 4 barriles de
-              miel, mil 500 libras de flor de Jamaica deshidratada, 25 quintales de café orgánico a nivel local, con
-              clientes mayoritarios desde León y Managua. Su presidenta y representante.
+              vinos.
             </p>
           </div>
         </div>
-         {/* Segunda sección - Emprendedoras */}
         <div className="entrepreneur-right">
           <div className="entrepreneur-content">
-            <h3 className="entrepreneur-title">Somos mujeres emprendedoras</h3>
+            <h3 className="entrepreneur-title">Productos destacados</h3>
             <p className="entrepreneur-text">
-              de los departamentos de Estelí, Matagalpa, Jinotega y Nueva Segovia, están aglutinadas en la central
-              regional de Cooperativa Las Diosas, actualmente comercializan café orgánico, miel, flor de Jamaica y
-              vinos. Tan solo en este año 2022, las mujeres de Las Diosas contabilizan vendidos más de 4 barriles de
-              miel, mil 500 libras de flor de Jamaica deshidratada, 25 quintales de café orgánico a nivel local, con
-              clientes mayoritarios desde León y Managua. Su presidenta y representante.
+              Las mujeres de Las Diosas han logrado posicionar sus productos en el mercado nacional e internacional,
+              consiguiendo empoderar a las mujeres campesinas como generadoras de ingresos propios.
             </p>
           </div>
           <Image
@@ -117,9 +111,8 @@ export default function AcercaDeNosotras() {
             <div className="value-card">
               <h3 className="value-title">Misión</h3>
               <p className="value-text">
-                Tan solo en este año 2022, las mujeres de Las Diosas contabilizan vendidos más de 4 barriles de miel,
-                mil 500 libras de flor de Jamaica deshidratada, 25 quintales de café orgánico a nivel local, con
-                clientes mayoritarios desde León y Managua.
+                Empoderar a las mujeres campesinas como generadoras de ingresos propios, promoviendo productos de alta
+                calidad.
               </p>
             </div>
           )}
@@ -128,9 +121,8 @@ export default function AcercaDeNosotras() {
             <div className="value-card">
               <h3 className="value-title">Visión</h3>
               <p className="value-text">
-                Tan solo en este año 2022, las mujeres de Las Diosas contabilizan vendidos más de 4 barriles de miel,
-                mil 500 libras de flor de Jamaica deshidratada, 25 quintales de café orgánico a nivel local, con
-                clientes mayoritarios desde León y Managua.
+                Ser líderes en la producción y comercialización de productos orgánicos, fortaleciendo la economía
+                familiar.
               </p>
             </div>
           )}
@@ -139,9 +131,7 @@ export default function AcercaDeNosotras() {
             <div className="value-card">
               <h3 className="value-title">Valores</h3>
               <p className="value-text">
-                Tan solo en este año 2022, las mujeres de Las Diosas contabilizan vendidos más de 4 barriles de miel,
-                mil 500 libras de flor de Jamaica deshidratada, 25 quintales de café orgánico a nivel local, con
-                clientes mayoritarios desde León y Managua.
+                Compromiso, calidad, sostenibilidad y empoderamiento de las mujeres en la economía local.
               </p>
             </div>
           )}
@@ -150,4 +140,3 @@ export default function AcercaDeNosotras() {
     </section>
   )
 }
-

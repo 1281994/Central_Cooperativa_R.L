@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import Image from "next/image"// 
+import Image from "next/image"
 
 // Extender la interfaz HTMLDivElement para incluir la propiedad timer
 interface DragContainer extends HTMLDivElement {
@@ -114,7 +114,8 @@ export default function Slider() {
     let imgHeight = 220
     const autoRotate = true
     let tX = 0
-    let tY = 10
+    // Variable tY declarada pero no utilizada, la comentamos para evitar el error
+    // let tY = 10
 
     // Función para ajustar tamaño de thumbnails según pantalla
     const adjustThumbnailSize = () => {
@@ -234,7 +235,7 @@ export default function Slider() {
         desX = nX - sX
         desY = nY - sY
         tX += desX * 0.1
-        tY += desY * 0.1
+        // tY += desY * 0.1 - No usamos tY para evitar el error
 
         if (odrag) applyTransform(odrag)
 
@@ -248,7 +249,7 @@ export default function Slider() {
             desX *= 0.95
             desY *= 0.95
             tX += desX * 0.1
-            tY += desY * 0.1
+            // tY += desY * 0.1 - No usamos tY para evitar el error
 
             applyTransform(odrag)
 
@@ -265,13 +266,13 @@ export default function Slider() {
         }
 
         // Eliminar los event listeners cuando se suelta el puntero
-        window.removeEventListener('pointermove', handlePointerMove)
-        window.removeEventListener('pointerup', handlePointerUp)
+        window.removeEventListener("pointermove", handlePointerMove)
+        window.removeEventListener("pointerup", handlePointerUp)
       }
 
       // Agregar event listeners solo mientras se arrastra
-      window.addEventListener('pointermove', handlePointerMove)
-      window.addEventListener('pointerup', handlePointerUp)
+      window.addEventListener("pointermove", handlePointerMove)
+      window.addEventListener("pointerup", handlePointerUp)
 
       return false
     }
@@ -316,7 +317,7 @@ export default function Slider() {
         clearInterval(autoplayInterval)
       }
     }
-  }, [itemActive])
+  }, [itemActive, autoplayInterval])
 
   // Efecto para mostrar botones con animación al cambiar de slide
   useEffect(() => {
@@ -357,8 +358,8 @@ export default function Slider() {
             </div>
           )
         }
-      } catch (error) {
-        // Fallback para imágenes que no se encuentran
+      } catch (_error) {
+        // Fallback para imágenes que no se encuentran (cambiamos 'error' por '_error' para evitar el error de variable no utilizada)
         if (isThumbnail) {
           return (
             <Image

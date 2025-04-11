@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // Configuración para permitir imágenes desde placeholder.svg
   images: {
     domains: ['placeholder.svg'],

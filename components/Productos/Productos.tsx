@@ -48,7 +48,7 @@ const initialProducts: Product[] = [
     name: "Café Arábica Miraflor",
     type: "Consumo",
     rating: 5,
-    price: 120.00,
+    price: 120.0,
     currency: "C$",
     image: "/assets/imagenes/productos/cafe-arabica.jpg",
     description:
@@ -63,7 +63,7 @@ const initialProducts: Product[] = [
     name: "Abono Orgánico Certificado",
     type: "Orgánico",
     rating: 5,
-    price: 300.00,
+    price: 300.0,
     currency: "C$",
     image: "/assets/imagenes/productos/abono.jpeg",
     description: "Abono Organico sin químicos, con certificación orgánica.",
@@ -77,11 +77,10 @@ const initialProducts: Product[] = [
     name: "Bebida de Café nuestra tierra",
     type: "Especial",
     rating: 4,
-    price: 15.00,
+    price: 15.0,
     currency: "C$",
     image: "/assets/imagenes/productos/cafe.png",
-    description:
-      "Taza de café con notas de chocolate y caramelo. Ideal para disfrutar en cualquier momento del día.",
+    description: "Taza de café con notas de chocolate y caramelo. Ideal para disfrutar en cualquier momento del día.",
     tag: "Especial",
     unit: "Taza",
     cooperativa: "Cooperativa Multisectorial Tierra Nuestra R.L",
@@ -92,7 +91,7 @@ const initialProducts: Product[] = [
     name: "Vino",
     type: "Consumo",
     rating: 5,
-    price: 300.00,
+    price: 300.0,
     currency: "C$",
     image: "/assets/imagenes/productos/vino1.png",
     description: "Excelente calidad y sabor ofrecemos este producto ya que es uno de nuestro productos Premium.",
@@ -107,7 +106,7 @@ const initialProducts: Product[] = [
     name: "Miel de Abeja",
     type: "Consumo",
     rating: 5,
-    price: 120.00,
+    price: 120.0,
     currency: "C$",
     image: "/assets/imagenes/productos/miel1.png",
     description: "Producto 100% natural, cosechado de forma sostenible. Ideal para endulzar bebidas y postres.",
@@ -121,7 +120,7 @@ const initialProducts: Product[] = [
     name: "Rosas de Jamaica",
     type: "Orgánico",
     rating: 4,
-    price: 60.00,
+    price: 60.0,
     currency: "C$",
     image: "/assets/imagenes/productos/rosasdejamaicalasdiosas.jpg",
     description: "Rosas de Jamaica deshidratadas, ideales para infusiones y postres. Cultivadas sin pesticidas.",
@@ -150,10 +149,11 @@ const initialProducts: Product[] = [
     name: "Abono Orgánico",
     type: "Orgánico",
     rating: 4,
-    price: 400.00,
+    price: 400.0,
     currency: "C$",
     image: "/assets/imagenes/productos/abono2.jpg",
-    description: "Abono orgánico para mejorar la calidad del suelo y aumentar la producción agrícola. Ideal para cultivos sostenibles.",
+    description:
+      "Abono orgánico para mejorar la calidad del suelo y aumentar la producción agrícola. Ideal para cultivos sostenibles.",
     tag: "Orgánico",
     unit: "100 Libras",
     cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
@@ -177,8 +177,8 @@ const sliderCategories = [
         ratingCount: "17k",
         description:
           "Miel pura de abeja, cosechada de forma sostenible. Rica en nutrientes y con propiedades medicinales.",
-          cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
-          contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
+        cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
+        contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
         currency: "C$",
         unit: "Botella",
       },
@@ -190,8 +190,7 @@ const sliderCategories = [
         rating: 4.8,
         image: "/assets/imagenes/productos/miel.png",
         ratingCount: "17k",
-        description:
-          "Miel pura de abeja, cosechada de forma sostenible. Ideal para endulzar bebidas y postres.",
+        description: "Miel pura de abeja, cosechada de forma sostenible. Ideal para endulzar bebidas y postres.",
         cooperativa: "Cooperativa Agropecuaria Mujeres al Proceso RL",
         contacto: "flordelcampo@coop.org | +505 8456-7890",
         currency: "C$",
@@ -205,8 +204,7 @@ const sliderCategories = [
         rating: 4.8,
         image: "/assets/imagenes/productos/miel1.png",
         ratingCount: "17k",
-        description:
-          "Miel pura de la flor de Jamaica, con propiedades antioxidantes. Ideal para endulzar y disfrutar.",
+        description: "Miel pura de la flor de Jamaica, con propiedades antioxidantes. Ideal para endulzar y disfrutar.",
         cooperativa: "Cooperativa Viñedos Unidos",
         contacto: "vinedos@coop.org | +505 8901-2345",
         currency: "C$",
@@ -236,7 +234,7 @@ const sliderCategories = [
       {
         id: 201,
         name: "Café Especial",
-        price: 150.0,// precio original
+        price: 150.0, // precio original
         salePrice: 120.0, // precio en oferta
         rating: 4.8,
         image: "/assets/imagenes/productos/cafe-arabica.jpg",
@@ -250,8 +248,8 @@ const sliderCategories = [
       {
         id: 202,
         name: "Cafe Orgánico",
-        price: 150.0,// precio original
-        salePrice: 130.0,// precio en oferta
+        price: 150.0, // precio original
+        salePrice: 130.0, // precio en oferta
         rating: 4.8,
         image: "/assets/imagenes/productos/cafe1.png",
         ratingCount: "17k",
@@ -264,8 +262,8 @@ const sliderCategories = [
       {
         id: 203,
         name: "Cafe Verde",
-        price: 140.0,// precio original
-        salePrice: 120.0,// precio en oferta
+        price: 140.0, // precio original
+        salePrice: 120.0, // precio en oferta
         rating: 4.8,
         image: "/assets/imagenes/productos/cafe2.jpg",
         ratingCount: "17k",
@@ -300,7 +298,7 @@ const sliderCategories = [
       {
         id: 301,
         name: "Vino",
-        price: 180.00,
+        price: 180.0,
         salePrice: 150.0,
         rating: 4.8,
         image: "/assets/imagenes/productos/vino1.png",
@@ -319,7 +317,8 @@ const sliderCategories = [
         rating: 4.8,
         image: "/assets/imagenes/productos/pinolillo.jpg",
         ratingCount: "17k",
-        description: "Pinolillo tradicional nicaragüense. Mezcla de maíz, cacao y especias. Ideal para preparar bebidas resfrescantes.",
+        description:
+          "Pinolillo tradicional nicaragüense. Mezcla de maíz, cacao y especias. Ideal para preparar bebidas resfrescantes.",
         cooperativa: "Cooperativa mujeres del norte",
         contacto: "apicultores@coop.org | +505 8345-6789",
         currency: "C$",
@@ -367,7 +366,8 @@ const sliderCategories = [
         rating: 4.8,
         image: "/assets/imagenes/productos/abono2.jpg",
         ratingCount: "17k",
-        description: "Fertilizante orgánico para cultivos. Mejora la calidad del suelo y aumenta la producción agrícola.",
+        description:
+          "Fertilizante orgánico para cultivos. Mejora la calidad del suelo y aumenta la producción agrícola.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
         contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
         currency: "C$",
@@ -409,7 +409,8 @@ const sliderCategories = [
         rating: 4.8,
         image: "/assets/imagenes/productos/granos.jpg",
         ratingCount: "17k",
-        description: "Granos de café tostados y molidos. Sabor intenso y aroma envolvente. Ideal para preparar café en casa.",
+        description:
+          "Granos de café tostados y molidos. Sabor intenso y aroma envolvente. Ideal para preparar café en casa.",
         cooperativa: "Central de Cooperativa Multisectoriales Mujeres Feministas Ecológistas Las Diosas R.L.",
         contacto: "centrallasdiosas@gmail.com | +505 7777-7777",
         currency: "C$",
@@ -450,8 +451,8 @@ export default function Productos() {
   // Estado para el filtro de productos
   const [activeFilter, setActiveFilter] = useState<ProductType>("Todos")
 
-  // Estado para los productos
-  const [products, setProducts] = useState<Product[]>(initialProducts)
+  // Estado para los productos - No usamos setProducts para evitar el error
+  const [products] = useState<Product[]>(initialProducts)
 
   // Estado para el modal de productos principales
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
@@ -577,7 +578,6 @@ export default function Productos() {
 
   return (
     <section id="products" className="products-section">
-    
       <h2 className="section-title1">Nuestros Productos</h2>
 
       {/* Slider de marcas */}
@@ -786,8 +786,8 @@ export default function Productos() {
         <div className="category-card">
           <h3 className="category-title">Hortalizas de Hoja Verde</h3>
           <p className="category-description">
-            Nuestra selección de hortalizas de hoja verde incluye lechuga, espinaca, zanahorias, tomates y más, todas cultivadas con
-            técnicas sostenibles.
+            Nuestra selección de hortalizas de hoja verde incluye lechuga, espinaca, zanahorias, tomates y más, todas
+            cultivadas con técnicas sostenibles.
           </p>
           <div className="category-images">
             {vegetablesImages.map((image, index) => (
@@ -968,4 +968,3 @@ export default function Productos() {
     </section>
   )
 }
-

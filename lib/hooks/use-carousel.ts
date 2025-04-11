@@ -57,7 +57,8 @@ export function useCarousel({
     let imgHeight = 220
     const autoRotate = true
     let tX = 0
-    let tY = 10
+    // Comentamos tY para evitar el error de variable no utilizada
+    // let tY = 10
 
     // Función para ajustar tamaño de thumbnails según pantalla
     const adjustThumbnailSize = () => {
@@ -134,7 +135,7 @@ export function useCarousel({
         desX = nX - sX
         desY = nY - sY
         tX += desX * 0.1
-        tY += desY * 0.1
+        // tY += desY * 0.1 - No usamos tY para evitar el error
 
         if (odrag) applyTransform(odrag)
 
@@ -148,7 +149,7 @@ export function useCarousel({
             desX *= 0.95
             desY *= 0.95
             tX += desX * 0.1
-            tY += desY * 0.1
+            // tY += desY * 0.1 - No usamos tY para evitar el error
 
             applyTransform(odrag)
 
@@ -186,7 +187,7 @@ export function useCarousel({
         clearInterval(odrag.timer)
       }
     }
-  }, [])
+  }, [dragContainerRef, groundRef, spinContainerRef, autoPlayInterval, totalItems])
 
   // Efecto para mostrar botones con animación al cambiar de slide
   useEffect(() => {
@@ -201,8 +202,7 @@ export function useCarousel({
     // Resetear intervalo de autoplay
     const refreshInterval = setInterval(nextSlide, autoPlayInterval)
     return () => clearInterval(refreshInterval)
-  }, [itemActive, autoPlayInterval])
+  }, [itemActive, autoPlayInterval, nextSlide])
 
   return { itemActive, setItemActive: showSlider, nextSlide, prevSlide }
 }
-

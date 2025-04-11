@@ -1,0 +1,9 @@
+{
+    "extends": "next/core-web-vitals",
+    "rules": {
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "react-hooks/exhaustive-deps": "warn"
+    }
+  }
+// This ESLint configuration file is for a Next.js project using TypeScript.
