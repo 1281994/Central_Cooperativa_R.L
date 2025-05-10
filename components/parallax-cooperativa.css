@@ -212,6 +212,7 @@ footer a i:hover {
   opacity: 0.7;
 }
 
+/* Restaurando el efecto parallax original */
 #parallax-world-of-ugg .parallax-one,
 #parallax-world-of-ugg .parallax-two,
 #parallax-world-of-ugg .parallax-three {
@@ -223,9 +224,7 @@ footer a i:hover {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: translateZ(0); /* Fuerza aceleración por hardware */
-  backface-visibility: hidden; /* Mejora rendimiento en algunos navegadores */
-  will-change: transform; /* Optimización para navegadores modernos */
+  /* Eliminamos las propiedades que podrían interferir con el efecto parallax */
 }
 
 #parallax-world-of-ugg .parallax-one {
