@@ -7,6 +7,8 @@
   width: 100%;
   overflow-x: hidden;
   font-family: "Montserrat", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Estilos del primer proyecto */
@@ -18,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: transform; /* Optimización para navegadores modernos */
 }
 
 #top::before {
@@ -45,16 +48,21 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  transform: translateZ(0); /* Fuerza aceleración por hardware */
+  backface-visibility: hidden; /* Mejora rendimiento en algunos navegadores */
 }
 
 #text {
   position: relative;
-  font-weight: bold; /* Negrita */
+  font-weight: bold;
   color: white;
   font-size: 3.5rem;
   text-align: center;
   z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
+  will-change: transform; /* Optimización para navegadores modernos */
 }
+
 #text span {
   display: block;
   font-size: 5rem;
@@ -87,8 +95,6 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   background-color: #046815;
-
-  /*background-color: #b0dfea;*/
 }
 
 footer a {
@@ -130,6 +136,7 @@ footer a i:hover {
   text-transform: uppercase;
   z-index: 10;
   opacity: 0.9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
 }
 
 #parallax-world-of-ugg h3 {
@@ -205,43 +212,44 @@ footer a i:hover {
   opacity: 0.7;
 }
 
-#parallax-world-of-ugg .parallax-one {
-  padding-top: 200px;
-  padding-bottom: 200px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-image: url(/assets/imagenes/parallax/sobreNosotras.png);
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-}
-
-#parallax-world-of-ugg .parallax-two {
-  padding-top: 200px;
-  padding-bottom: 200px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-image: url(/assets/imagenes/parallax/loquehacemos.png);
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
+#parallax-world-of-ugg .parallax-one,
+#parallax-world-of-ugg .parallax-two,
 #parallax-world-of-ugg .parallax-three {
   padding-top: 200px;
   padding-bottom: 200px;
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-image: url(https://www.mapanicaragua.com/wp-content/uploads/2020/06/original_estelidepto_infogeneral1.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  transform: translateZ(0); /* Fuerza aceleración por hardware */
+  backface-visibility: hidden; /* Mejora rendimiento en algunos navegadores */
+  will-change: transform; /* Optimización para navegadores modernos */
+}
+
+#parallax-world-of-ugg .parallax-one {
+  background-image: url(/assets/imagenes/parallax/sobreNosotras.png);
+  background-position: top center;
+}
+
+#parallax-world-of-ugg .parallax-two {
+  background-image: url(/assets/imagenes/parallax/loquehacemos.png);
   background-position: center center;
+}
+
+#parallax-world-of-ugg .parallax-three {
+  background-image: url(https://www.mapanicaragua.com/wp-content/uploads/2020/06/original_estelidepto_infogeneral1.jpg);
+  background-position: center center;
+}
+
+/* Fallback para dispositivos iOS que no soportan background-attachment: fixed */
+@supports (-webkit-touch-callout: none) {
+  #parallax-world-of-ugg .parallax-one,
+  #parallax-world-of-ugg .parallax-two,
+  #parallax-world-of-ugg .parallax-three {
+    background-attachment: scroll;
+  }
 }
 
 #parallax-world-of-ugg .line-break {
@@ -250,72 +258,223 @@ footer a i:hover {
   margin: 0 auto;
 }
 
-
 .highlight-paragraph {
- font-size: 2.5rem;
-    color: #20496a; /* Cambia este color al que prefieras */
-  font-size: 2rem; /* Ajusta el tamaño del texto si es necesario */
-  line-height: 1.6; /* Espaciado entre líneas */
-}
-.margin-top-10 {
-  color: #20496a; /* Cambia este color al que prefieras */
-  font-size: 1.2rem; /* Ajusta el tamaño del texto */
-  line-height: 1.8; /* Espaciado entre líneas */
-  text-align: justify; /* Justifica el texto */
-  margin-top: 10px; /* Mantén el margen superior */
-}
-/* Clase para estilizar los párrafos */
-.colored-paragraph {
-  color: #20496a; /* Cambia este color al que prefieras */
-  font-size: 1.2rem; /* Ajusta el tamaño de fuente si es necesario */
-  line-height: 1.8; /* Ajusta el interlineado */
+  font-size: 1.5rem;
+  color: #20496a;
+  line-height: 1.6;
 }
 
-/* Responsive */
+.margin-top-10 {
+  color: #20496a;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: justify;
+  margin-top: 10px;
+}
+
+.colored-paragraph {
+  color: #20496a;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Responsive - Pantallas grandes */
+@media screen and (min-width: 1440px) {
+  #text {
+    font-size: 4.5rem;
+  }
+
+  #text span {
+    font-size: 6rem;
+  }
+
+  #sec h2 {
+    font-size: 5rem;
+  }
+
+  #sec p {
+    font-size: 1.4rem;
+  }
+
+  #parallax-world-of-ugg .block {
+    width: 1000px;
+    padding: 80px;
+  }
+
+  .highlight-paragraph {
+    font-size: 1.8rem;
+  }
+}
+
+/* Responsive - Tablets */
 @media screen and (max-width: 959px) and (min-width: 768px) {
   #parallax-world-of-ugg .block {
     padding: 40px;
-    width: 620px;
+    width: 90%;
+    max-width: 620px;
   }
+
   #text {
-    font-size: 7rem;
+    font-size: 3rem;
+  }
+
+  #text span {
+    font-size: 4rem;
+  }
+
+  .highlight-paragraph {
+    font-size: 1.3rem;
+  }
+
+  .first-character {
+    font-size: 70px;
+    line-height: 50px;
+  }
+
+  #sec {
+    padding: 60px 40px;
+  }
+
+  #sec h2 {
+    font-size: 3rem;
   }
 }
 
+/* Responsive - Móviles grandes */
 @media screen and (max-width: 767px) {
   #parallax-world-of-ugg .block {
     padding: 30px;
-    width: 420px;
+    width: 90%;
+    max-width: 420px;
   }
+
   #parallax-world-of-ugg h2 {
     font-size: 30px;
+    letter-spacing: 5px;
   }
+
   #parallax-world-of-ugg .parallax-one,
   #parallax-world-of-ugg .parallax-two,
   #parallax-world-of-ugg .parallax-three {
     padding-top: 100px;
     padding-bottom: 100px;
   }
+
   #text {
-    font-size: 5rem;
-    color: #20496a;
-  }
-  #sec {
-    padding: 50px 20px;
-    color: #20496a;
-  }
-  #sec h2 {
     font-size: 2.5rem;
-    color: #20496a;
+  }
+
+  #text span {
+    font-size: 3rem;
+  }
+
+  #sec {
+    padding: 40px 20px;
+  }
+
+  #sec h2 {
+    font-size: 2.2rem;
+  }
+
+  #sec p {
+    font-size: 1rem;
+  }
+
+  .highlight-paragraph {
+    font-size: 1.1rem;
+  }
+
+  .first-character {
+    font-size: 60px;
+    line-height: 40px;
+  }
+
+  .colored-paragraph {
+    font-size: 1rem;
   }
 }
 
+/* Responsive - Móviles pequeños */
 @media screen and (max-width: 479px) {
   #parallax-world-of-ugg .block {
-    padding: 30px 15px;
-    width: 290px;
+    padding: 20px 15px;
+    width: 90%;
+    max-width: 290px;
   }
+
+  #parallax-world-of-ugg h2 {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  #parallax-world-of-ugg h3 {
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+
+  #parallax-world-of-ugg .title {
+    padding: 30px 15px;
+  }
+
+  #parallax-world-of-ugg .title h1 {
+    font-size: 24px;
+    letter-spacing: 5px;
+  }
+
   #text {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+
+  #text span {
+    font-size: 2.5rem;
+  }
+
+  #sec h2 {
+    font-size: 1.8rem;
+  }
+
+  .first-character {
+    font-size: 50px;
+    line-height: 30px;
+  }
+
+  .highlight-paragraph {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes para pantallas de alta densidad (retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  #text {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  #parallax-world-of-ugg h2 {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Ajustes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  #parallax-world-of-ugg .block,
+  #parallax-world-of-ugg .title {
+    background: #f8f8f8;
+  }
+}
+
+/* Ajustes para navegadores específicos */
+@supports (-ms-ime-align: auto) {
+  /* Edge */
+  #parallax-world-of-ugg .parallax-one,
+  #parallax-world-of-ugg .parallax-two,
+  #parallax-world-of-ugg .parallax-three {
+    background-attachment: scroll;
+  }
+}
+
+@-moz-document url-prefix("") {
+  /* Firefox */
+  #top img {
+    transform: none;
   }
 }
