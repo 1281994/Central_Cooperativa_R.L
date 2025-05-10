@@ -3,6 +3,8 @@
 import { useEffect } from "react"
 import Header from "@/components/Header"
 import Slider from "@/components/Slider"
+import ParallaxCooperativa from "@/components/ParallaxCooperativa"
+
 import AcercaDeNosotras from "@/components/AcercaDeNosotras"
 import Productos from "@/components/Productos"
 import FormularioContacto from "@/components/Formulario"
@@ -49,9 +51,9 @@ export default function Home() {
 
   return (
     <main className="main-container">
-      <Header />
-      <div id="slider">
-        <Slider />
+   
+      <div id="parallax">
+        <ParallaxCooperativa />
       </div>
       <div id="about">
         <AcercaDeNosotras />
@@ -59,10 +61,26 @@ export default function Home() {
       <div id="products">
         <Productos />
       </div>
-      <div id="registro">
+         <Header />
+      <div id="slider">
+        <Slider />
+      </div>
+
+      {/* Aquí puedes agregar la sección de testimonios con id="testimonios" 
+      
+      <Header />
+      <div id="slider">
+        <Slider />
+      </div>
+
+
+
+       <div id="registro">
         <FormularioContacto />
       </div>
-      {/* Aquí puedes agregar la sección de testimonios con id="testimonios" */}
+      
+      
+      */}
       <div id="footer">
         <Footer />
       </div>
