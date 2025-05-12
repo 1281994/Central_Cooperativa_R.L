@@ -3,11 +3,13 @@
 import { useEffect } from "react"
 import Header from "@/components/Header"
 import Slider from "@/components/Slider"
-import ParallaxCooperativa from "@/components/ParallaxCooperativa"
 
+import ParallaxCooperativa from "@/components/ParallaxCooperativa"
+import Cooperativa from "@/components/Cooperativa"
+import ProcesoProduccion from "@/components/ProcesoProduccion"
 import AcercaDeNosotras from "@/components/AcercaDeNosotras"
 import Productos from "@/components/Productos"
-import FormularioContacto from "@/components/Formulario"
+
 import Footer from "@/components/Footer"
 import BackToTop from "@/components/BackToTop"
 
@@ -51,40 +53,42 @@ export default function Home() {
 
   return (
     <main className="main-container">
-   
-      <div id="parallax">
-        <ParallaxCooperativa />
-      </div>
-      <div id="about">
-        <AcercaDeNosotras />
-      </div>
-      <div id="products">
-        <Productos />
-      </div>
-         <Header />
-      <div id="slider">
-        <Slider />
-      </div>
+  <div id="parallax">
+    <ParallaxCooperativa />
+  </div>
 
-      {/* Aquí puedes agregar la sección de testimonios con id="testimonios" 
-      
-      <Header />
-      <div id="slider">
-        <Slider />
-      </div>
+  <div id="cooperativa">
+    <Cooperativa />
+  </div>
+  <div id="proceso">
+    <ProcesoProduccion />
+  </div>
 
 
+  <div id="about">
+    <AcercaDeNosotras />
+  </div>
 
-       <div id="registro">
-        <FormularioContacto />
-      </div>
-      
-      
-      */}
-      <div id="footer">
-        <Footer />
-      </div>
-      <BackToTop />
-    </main>
+  <div id="products">
+    <Productos />
+  </div>
+
+  <Header />
+
+
+  {/* Sección de Cooperativa */}
+
+
+  {/* Aquí puedes agregar la sección de testimonios con id="testimonios" */}
+  {/* <div id="testimonios">
+    <Testimonios />
+  </div> */}
+
+  <div id="footer">
+    <Footer />
+  </div>
+
+  <BackToTop />
+</main>
   )
 }

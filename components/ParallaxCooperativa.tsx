@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import "./parallax-cooperativa.css"
@@ -15,6 +17,18 @@ export default function ParallaxCooperativa() {
   const [isIOS, setIsIOS] = useState(false)
   // Estado para detectar si el dispositivo es móvil
   const [isMobile, setIsMobile] = useState(false)
+  // Estado para controlar qué contenido se muestra
+  const [activeContent, setActiveContent] = useState("mision")
+
+  // Contenidos para cada enlace
+  const contents = {
+    mision:
+      "Somos una Central de Cooperativas Multisectoriales comprometidas con los intereses de las mujeres campesinas sustentada en la economía solidaria, creativa, circular, popular a través del fortalecimiento de las agro cadenas alimentarías, la producción agroecológica, la conciencia crítica de género y la trenza de dominación hegemónica para la defensa de los derechos de las mujeres estableciendo alianzas con organizaciones que comparten nuestros principios y valores. ",
+    vision:
+      "Ser una organización líder que apuesta a la autonomía económica de las mujeres campesinas mediante la organización cooperativa, auto sostenible, contribuyendo a su desarrollo económico y calidad de vida integral de sus socias, fortaleciendo capacidades para la defensa de sus derechos para erradicar la desigualdad que enfrentan las mujeres rurales..",
+    valores:
+      "Igualdad de oportunidades, Ayuda Mutua (mano vuelta), Responsabilidad compartida, Democracia (poder compartido), Compromiso Social, Transparencia, Solidaridad, Honestidad.",
+  }
 
   useEffect(() => {
     // Detectar si es iOS
@@ -92,6 +106,12 @@ export default function ParallaxCooperativa() {
     }
   }, [isIOS, isMobile])
 
+  // Función para manejar el clic en los enlaces
+  const handleLinkClick = (content: string, e: React.MouseEvent) => {
+    e.preventDefault() // Prevenir la navegación por defecto
+    setActiveContent(content)
+  }
+
   return (
     <div className="parallax-container">
       {/* Primera sección - Hero con parallax */}
@@ -140,9 +160,35 @@ export default function ParallaxCooperativa() {
           campesinas, que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos
           del pais siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
         </p>
+        <p className="dynamic-content">{contents[activeContent as keyof typeof contents]}</p>
       </section>
 
-      <footer></footer>
+      <footer>
+        <a
+          href="#"
+          onClick={(e) => handleLinkClick("mision", e)}
+          className={activeContent === "mision" ? "active" : ""}
+        >
+          <img src="/assets/imagenes/iconos/mision.ico" alt="Misión" className="footer-icon" />
+          Misión
+        </a>
+        <a
+          href="#"
+          onClick={(e) => handleLinkClick("vision", e)}
+          className={activeContent === "vision" ? "active" : ""}
+        >
+          <img src="/assets/imagenes/iconos/vision.ico" alt="Visión" className="footer-icon" />
+          Visión
+        </a>
+        <a
+          href="#"
+          onClick={(e) => handleLinkClick("valores", e)}
+          className={activeContent === "valores" ? "active" : ""}
+        >
+          <img src="/assets/imagenes/iconos/valores.ico" alt="Valores" className="footer-icon" />
+          Valores
+        </a>
+      </footer>
 
       {/* Secciones del segundo proyecto */}
       <div id="parallax-world-of-ugg">
@@ -180,7 +226,7 @@ export default function ParallaxCooperativa() {
 
         <section>
           <div className="parallax-two">
-            <h2>LO QUE NOS HACEMOS</h2>
+            <h2>LO QUE HACEMOS</h2>
           </div>
         </section>
 
@@ -205,7 +251,7 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="colored-paragraph">
-              <span className="first-character atw">L</span>a cooperativa nació en 1995, como una necesidad de las
+              <span className="first-character atw">L</span>a cooperativa nació en 2012, como una necesidad de las
               mujeres de ser parte activa y demostrar sus capacidades en el campo. Desde entonces, poco a poco han
               venido colocándose a la vanguardia en la actividad productiva a nivel nacional.
             </p>

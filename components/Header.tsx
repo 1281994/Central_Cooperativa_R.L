@@ -26,7 +26,7 @@ export default function Header() {
     const handleScroll = () => {
       if (pathname !== "/") return // Solo activar en la página principal
 
-      const sections = ["slider", "about", "products", "registro", "testimonios", "footer"]
+      const sections = ["slider", "sec", "cooperativa", "products", "registro", "testimonios", "footer"]
       let currentSection = ""
 
       for (const section of sections) {
@@ -94,11 +94,20 @@ export default function Header() {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("slider") ? "active" : ""}`}
+                className={`nav-link nav-item-custom ${isActive("top") ? "active" : ""}`}
                 href={pathname === "/" ? "#slider" : "/"}
-                onClick={(e) => scrollToSection("slider", e)}
+                onClick={(e) => scrollToSection("top", e)}
               >
                 Inicio
+              </Link>
+            </li>
+             <li className="nav-item">
+              <Link
+                className={`nav-link nav-item-custom ${isActive("sec") ? "active" : ""}`}
+                href={pathname === "/" ? "#sec" : "/"}
+                onClick={(e) => scrollToSection("sec", e)}
+              >
+                Conocenos
               </Link>
             </li>
             <li className="nav-item">
@@ -110,6 +119,16 @@ export default function Header() {
                 Acerca de Nosotros
               </Link>
             </li>
+           <li className="nav-item">
+              <Link
+                 className={`nav-link nav-item-custom ${isActive("cooperativa") ? "active" : ""}`}
+                href={pathname === "/" ? "#cooperativa" : "/cooperativa"}
+                onClick={(e) => scrollToSection("cooperativa", e)}
+              >
+                 Cooperativa
+              </Link>
+              </li>
+
             <li className="nav-item">
               <Link
                 className={`nav-link nav-item-custom ${isActive("products") ? "active" : ""}`}
@@ -119,15 +138,7 @@ export default function Header() {
                 Productos
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link nav-item-custom ${isActive("registro") ? "active" : ""}`}
-                href={pathname === "/" ? "#registro" : "/registro"}
-                onClick={(e) => scrollToSection("registro", e)}
-              >
-                Registrarse
-              </Link>
-            </li>
+
             <li className="nav-item">
               <Link
                 className={`nav-link nav-item-custom ${isActive("testimonios") ? "active" : ""}`}

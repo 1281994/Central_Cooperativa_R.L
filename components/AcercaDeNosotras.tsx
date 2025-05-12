@@ -7,7 +7,7 @@ export default function AcercaDeNosotras() {
   const [activeTab, setActiveTab] = useState<"mision" | "vision" | "valores">("mision")
 
   return (
-    <section id="about" className="about-section">
+    <section id="abouto" className="about-section">
       <header className="about-header">
         <h2>Acerca de nosotras</h2>
       </header>
