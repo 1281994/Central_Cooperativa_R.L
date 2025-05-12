@@ -88,63 +88,6 @@
   color: #20496a;
 }
 
-/* Estilos para el párrafo dinámico */
-.dynamic-content {
-  padding: 20px;
-  background-color: rgba(4, 104, 21, 0.05);
-  border-left: 4px solid #046815;
-  border-radius: 0 8px 8px 0;
-  transition: all 0.5s ease;
-  margin-top: 20px;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-footer {
-  margin-top: 30px;
-  display: flex;
-  padding: 20px;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #046815;
-}
-
-footer a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.footer-icon {
-  width: 34px; /* Ajusta el tamaño del ícono */
-  height: 34px;
-  margin-right: 8px; /* Espacio entre el ícono y el texto */
-}
-
-footer a.active {
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  transform: translateY(-5px);
-}
-
-footer a:hover {
-  color: #ffffff; /* Cambia el color del texto al hacer hover */
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-5px); /* Efecto de desplazamiento al hacer hover */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Mejora legibilidad */
-  text-decoration: none; /* Elimina subrayado al hacer hover */
-}
-
-footer a i:hover {
-  transform: translateY(-10px);
-}
-
 /* Estilos del segundo proyecto */
 #parallax-world-of-ugg h1 {
   font-family: "Oswald", sans-serif;
@@ -420,16 +363,6 @@ footer a i:hover {
 
   .colored-paragraph {
     font-size: 1rem;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  footer a {
-    width: 80%;
-    justify-content: center;
   }
 }
 

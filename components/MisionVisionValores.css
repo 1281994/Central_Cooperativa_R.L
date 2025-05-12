@@ -1,0 +1,203 @@
+
+
+.mision-vision-valores-container {
+  background-color: #046815; /* Color verde */
+  color: rgb(0, 0, 0); /* Cambia el color del texto a blanco para mejor legibilidad */
+  padding: 4rem 2rem;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+.mvv-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.mvv-badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f7f7f7;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.mvv-title {
+  font-size: 2.5rem;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.mvv-subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mvv-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.mvv-card {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mvv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mvv-card-header {
+
+height: 200px; /* Aumenta el alto según lo que necesites */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mision-card .mvv-card-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/assets/imagenes/mision.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.vision-card .mvv-card-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/assets/imagenes/vision.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.valores-card .mvv-card-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/assets/imagenes/cooperativa/cooperativa3.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.mvv-icon-container {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mision-card .mvv-icon-container {
+  color: #046815;
+}
+
+.vision-card .mvv-icon-container {
+  color: #2b6cb0;
+}
+
+.valores-card .mvv-icon-container {
+  color: #c53030;
+}
+
+.mvv-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mvv-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mvv-card-content {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.mvv-card-content p {
+  color: #4a5568;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.valores-content {
+  padding-top: 1.5rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.valor-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.check-icon {
+  color: #046815;
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mision-vision-valores-container {
+    padding: 3rem 1.5rem;
+  }
+
+  .mvv-title {
+    font-size: 2rem;
+  }
+
+  .mvv-subtitle {
+    font-size: 1rem;
+  }
+
+  .mvv-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .mision-vision-valores-container {
+    padding: 2rem 1rem;
+  }
+
+  .mvv-title {
+    font-size: 1.8rem;
+  }
+
+  .mvv-card-header {
+    padding: 1.5rem;
+  }
+
+  .mvv-card-content {
+    padding: 1.5rem;
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+  }
+}

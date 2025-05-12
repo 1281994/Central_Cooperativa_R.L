@@ -32,17 +32,18 @@
 /* Slider */
 #slider {
   width: 100%;
-  height: 500px;
+  height: 550px; /* Mantén el alto del contenedor */
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Asegúrate de ocultar cualquier contenido que sobresalga */
 }
+
 
 /* Overlay estático */
 .static-legend {
   position: absolute;
   bottom: 0;
   left: 0;
-  border: 500px solid transparent;
+  border: 550px solid transparent;
   border-left: 800px solid rgba(52, 73, 94, 0.7);
   border-bottom: 0;
   z-index: 5;
@@ -198,12 +199,14 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Botón de navegación anterior */
 .nav-button.prev {
-  left: 20px;
+  right: 60px; /* Ajusta la posición horizontal del botón izquierdo */
 }
 
+/* Botón de navegación siguiente */
 .nav-button.next {
-  right: 20px;
+  right: 20px; /* Ajusta la posición horizontal del botón derecho */
 }
 
 /* Responsive adjustments */
@@ -261,5 +264,24 @@
   .nav-button {
     width: 30px;
     height: 30px;
+  }
+}
+@media (max-width: 768px) {
+  #slider {
+    height: 500px; /* Ajusta el alto para dispositivos móviles */
+  }
+
+  #slider img {
+    object-fit: fill; /* Asegúrate de que las imágenes también se ajusten */
+  }
+}
+
+@media (max-width: 480px) {
+  #slider {
+    height: 400px; /* Ajusta el alto para pantallas muy pequeñas */
+  }
+
+  #slider img {
+    object-fit: fill; /* Asegúrate de que las imágenes también se ajusten */
   }
 }

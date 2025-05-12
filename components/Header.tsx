@@ -26,7 +26,7 @@ export default function Header() {
     const handleScroll = () => {
       if (pathname !== "/") return // Solo activar en la página principal
 
-      const sections = ["slider", "sec", "cooperativa", "products", "registro", "testimonios", "footer"]
+      const sections = ["slider", "sec", "cooperativa", "products", "footer"]
       let currentSection = ""
 
       for (const section of sections) {
@@ -74,9 +74,14 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         {/* Logo */}
-        <Link href="/" className="navbar-brand nav-item-custom">
-          Las Diosas R.L
-        </Link>
+       <Link href="/" className="navbar-brand nav-item-custom">
+      <img
+        src="/assets/imagenes/iconos/logoLasDiosas-Photoroom.ico"
+        alt="Logo Las Diosas"
+        className="navbar-logo"
+      />
+      Las Diosas R.L
+    </Link>
 
         {/* Botón para dispositivos móviles */}
         <button
@@ -110,15 +115,7 @@ export default function Header() {
                 Conocenos
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link nav-item-custom ${isActive("about") ? "active" : ""}`}
-                href={pathname === "/" ? "#about" : "/acerca-de-nosotras"}
-                onClick={(e) => scrollToSection("about", e)}
-              >
-                Acerca de Nosotros
-              </Link>
-            </li>
+          
            <li className="nav-item">
               <Link
                  className={`nav-link nav-item-custom ${isActive("cooperativa") ? "active" : ""}`}
@@ -139,15 +136,6 @@ export default function Header() {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link
-                className={`nav-link nav-item-custom ${isActive("testimonios") ? "active" : ""}`}
-                href={pathname === "/" ? "#testimonios" : "/testimonios"}
-                onClick={(e) => scrollToSection("testimonios", e)}
-              >
-                Testimonios
-              </Link>
-            </li>
             <li className="nav-item">
               <Link
                 className={`nav-link nav-item-custom ${isActive("footer") ? "active" : ""}`}

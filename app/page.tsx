@@ -6,8 +6,11 @@ import Slider from "@/components/Slider"
 
 import ParallaxCooperativa from "@/components/ParallaxCooperativa"
 import Cooperativa from "@/components/Cooperativa"
+import MisionVisionValores from "@/components/MisionVisionValores"
+import NuestraMision from "@/components/NuestraMision"
+import NuestraVision from "@/components/NuestraVision"
 import ProcesoProduccion from "@/components/ProcesoProduccion"
-import AcercaDeNosotras from "@/components/AcercaDeNosotras"
+
 import Productos from "@/components/Productos"
 
 import Footer from "@/components/Footer"
@@ -56,6 +59,9 @@ export default function Home() {
   <div id="parallax">
     <ParallaxCooperativa />
   </div>
+  <div>
+    <MisionVisionValores />
+  </div>
 
   <div id="cooperativa">
     <Cooperativa />
@@ -63,11 +69,12 @@ export default function Home() {
   <div id="proceso">
     <ProcesoProduccion />
   </div>
-
-
-  <div id="about">
-    <AcercaDeNosotras />
-  </div>
+ <div id="nuestra-mision">
+    <NuestraMision />
+</div>
+ <div id="nuestra-vision">
+    <NuestraVision />
+</div>
 
   <div id="products">
     <Productos />
@@ -76,13 +83,7 @@ export default function Home() {
   <Header />
 
 
-  {/* Sección de Cooperativa */}
 
-
-  {/* Aquí puedes agregar la sección de testimonios con id="testimonios" */}
-  {/* <div id="testimonios">
-    <Testimonios />
-  </div> */}
 
   <div id="footer">
     <Footer />

@@ -5,7 +5,7 @@ import "./Cooperativa.css"
 
 export default function Cooperativa() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 4
+  const totalSlides = 5
 
   // Función para avanzar al siguiente slide
   const nextSlide = () => {
@@ -55,6 +55,13 @@ export default function Cooperativa() {
         "Forma parte de nuestra comunidad y contribuye al desarrollo económico de las mujeres rurales. Juntas podemos crear un futuro más justo y sostenible para todas.",
       image: "/assets/imagenes/cooperativa/cooperativa4.jpeg",
       link: "https://v0-single-file-styling.vercel.app/",
+    },
+      {
+      title: "Cooperativa Apícola de Mujeres en Acción La Campanita R.L",
+      description:
+        "Somos una cooperativa apícola integrada por 16 mujeres comprometidas con el trabajo colaborativo, el empoderamiento femenino y la agroecología.",
+      image: "/assets/imagenes/cooperativa/cooperativa5.jpeg",
+      link: "https://v0-landing-page-design-six-rust.vercel.app/#contacto",
     },
   ]
 

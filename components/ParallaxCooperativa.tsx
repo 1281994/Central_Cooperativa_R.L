@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import "./parallax-cooperativa.css"
@@ -17,18 +15,6 @@ export default function ParallaxCooperativa() {
   const [isIOS, setIsIOS] = useState(false)
   // Estado para detectar si el dispositivo es móvil
   const [isMobile, setIsMobile] = useState(false)
-  // Estado para controlar qué contenido se muestra
-  const [activeContent, setActiveContent] = useState("mision")
-
-  // Contenidos para cada enlace
-  const contents = {
-    mision:
-      "Somos una Central de Cooperativas Multisectoriales comprometidas con los intereses de las mujeres campesinas sustentada en la economía solidaria, creativa, circular, popular a través del fortalecimiento de las agro cadenas alimentarías, la producción agroecológica, la conciencia crítica de género y la trenza de dominación hegemónica para la defensa de los derechos de las mujeres estableciendo alianzas con organizaciones que comparten nuestros principios y valores. ",
-    vision:
-      "Ser una organización líder que apuesta a la autonomía económica de las mujeres campesinas mediante la organización cooperativa, auto sostenible, contribuyendo a su desarrollo económico y calidad de vida integral de sus socias, fortaleciendo capacidades para la defensa de sus derechos para erradicar la desigualdad que enfrentan las mujeres rurales..",
-    valores:
-      "Igualdad de oportunidades, Ayuda Mutua (mano vuelta), Responsabilidad compartida, Democracia (poder compartido), Compromiso Social, Transparencia, Solidaridad, Honestidad.",
-  }
 
   useEffect(() => {
     // Detectar si es iOS
@@ -106,12 +92,6 @@ export default function ParallaxCooperativa() {
     }
   }, [isIOS, isMobile])
 
-  // Función para manejar el clic en los enlaces
-  const handleLinkClick = (content: string, e: React.MouseEvent) => {
-    e.preventDefault() // Prevenir la navegación por defecto
-    setActiveContent(content)
-  }
-
   return (
     <div className="parallax-container">
       {/* Primera sección - Hero con parallax */}
@@ -160,35 +140,7 @@ export default function ParallaxCooperativa() {
           campesinas, que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos
           del pais siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
         </p>
-        <p className="dynamic-content">{contents[activeContent as keyof typeof contents]}</p>
       </section>
-
-      <footer>
-        <a
-          href="#"
-          onClick={(e) => handleLinkClick("mision", e)}
-          className={activeContent === "mision" ? "active" : ""}
-        >
-          <img src="/assets/imagenes/iconos/mision.ico" alt="Misión" className="footer-icon" />
-          Misión
-        </a>
-        <a
-          href="#"
-          onClick={(e) => handleLinkClick("vision", e)}
-          className={activeContent === "vision" ? "active" : ""}
-        >
-          <img src="/assets/imagenes/iconos/vision.ico" alt="Visión" className="footer-icon" />
-          Visión
-        </a>
-        <a
-          href="#"
-          onClick={(e) => handleLinkClick("valores", e)}
-          className={activeContent === "valores" ? "active" : ""}
-        >
-          <img src="/assets/imagenes/iconos/valores.ico" alt="Valores" className="footer-icon" />
-          Valores
-        </a>
-      </footer>
 
       {/* Secciones del segundo proyecto */}
       <div id="parallax-world-of-ugg">
@@ -235,7 +187,7 @@ export default function ParallaxCooperativa() {
             <p className="colored-paragraph">
               <span className="first-character ny">A</span> la fecha, la cooperativa se dedica a la producción de café,
               miel y la agregación de valor a la flor de jamaica la cual es comercializada en mermelada, té y vino,
-              productos que se van posicionando en el mercado nacional y extranjero y mucho más.
+              productos que se van posicionando en el mercado nacional e internacional.
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="colored-paragraph margin-top-10">.</p>
@@ -251,16 +203,21 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="colored-paragraph">
-              <span className="first-character atw">L</span>a cooperativa nació en 2012, como una necesidad de las
-              mujeres de ser parte activa y demostrar sus capacidades en el campo. Desde entonces, poco a poco han
-              venido colocándose a la vanguardia en la actividad productiva a nivel nacional.
+              <span className="first-character atw">L</span>a Central de Cooperativas Las Diosas es una organización 
+              cooperativa de segundo grado integrada mujeres campesinas, que agrupa a ocho cooperativas de base. 
+              Las socias están ubicadas en diferentes comunidades y zonas productivas de los departamentos 
+              de Estelí, Matagalpa, Nueva Segovia y Jinotega, al norte de Nicaragua.  
+              La Central Las Diosas, organización certificada con el comercio justo, producción orgánica y sello a 
+             la producción más limpia, surgió el 17 de mayo de 2012 como un sujeto insurgente indignado por las desigualdades que padecían las mujeres desde antes del 2004 que se habían constituido las primeras cooperativas, con una agenda propia que dio respuestas afirmativas a las mujeres campesinas.
+             Promueve el fortalecimiento organizativo de las cooperativas de base asociadas a la Central sus ocho
+             cooperativas de base aglutinan a 430 mujeres productoras , apicultoras pertenecientes a 15 comunidades donde tiene trabajo las Diosas en la región norte del país. 
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="colored-paragraph margin-top-10">
-              Nacimos en el periodo del neoliberalismo donde no había valoración a las mujeres y en una situación muy
-              difícil para las mujeres, porque teníamos espacios reducidos, donde únicamente nos limitaban a la cocina,
-              cuidar los hijos y es ahí cuando miramos que no era natural y fue así que nos organizamos no solo para la
-              venta de café sino para una superación de nosotras.
+              De esta manera, poco a poco hemos ido construyendo una organización que ha logrado posicionarse en el mercado 
+              nacional e internacional, siendo un referente en la producción de café y miel, así como en la comercialización 
+              de productos agroecológicos. La Central Las Diosas ha sido reconocida por su compromiso con la equidad de género y la defensa de los derechos de las mujeres, convirtiéndose en un modelo a seguir para otras organizaciones cooperativas en el país.
+              logrando asi colocarnos a la vanguardia en la actividad productiva a nivel nacional.
             </p>
           </div>
         </section>

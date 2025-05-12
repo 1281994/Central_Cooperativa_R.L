@@ -50,7 +50,12 @@ h2 {
   background-color: #1a1a1a !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-
+.navbar-logo {
+  height: 100%; /* Ajusta la altura del logo al 100% del header */
+  max-height: 50px; /* Limita la altura máxima del logo */
+  width: auto; /* Mantén las proporciones del logo */
+  margin-right: 10px; /* Espacio entre el logo y el texto (opcional) */
+}
 .navbar.scrolled {
   background-color: rgba(26, 26, 26, 0.95) !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
