@@ -1,8 +1,8 @@
 
 
 .mision-vision-valores-container {
-  background-color: #046815; /* Color verde */
-  color: rgb(0, 0, 0); /* Cambia el color del texto a blanco para mejor legibilidad */
+  background-color: #f0f8f0; /* Color verde */
+  color: rgb(17, 18, 17); /* Cambia el color del texto a blanco para mejor legibilidad */
   padding: 4rem 2rem;
   width: 100%;
   margin: 0 auto;
@@ -26,14 +26,14 @@
 
 .mvv-title {
   font-size: 2.5rem;
-  color: #1a202c;
+  color: #1a5522;
   margin-bottom: 1.5rem;
   font-weight: 700;
 }
 
 .mvv-subtitle {
   font-size: 1.1rem;
-  color: #ffffff;
+  color: #101010;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
@@ -49,7 +49,7 @@
   background-color: white;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(16, 150, 7, 0.714), 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;

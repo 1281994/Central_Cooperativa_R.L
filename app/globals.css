@@ -73,16 +73,16 @@ h2 {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Animación al pasar el mouse */
+/* Animación al pasar el mouse  */
 .nav-item-custom:hover {
   transform: translateY(-3px);
-  color: #00d4ff !important;
+  color: #077714 !important;
 }
 
 /* Animación al hacer clic */
 .nav-item-custom:active {
   transform: scale(0.95);
-  color: #ff007a !important;
+  color: #0ab61e !important;
 }
 
 /* Línea inferior animada */
@@ -622,7 +622,7 @@ h2 {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   margin-right: 15px;
-  color: #344ea2;
+  color: #34a23d;
   flex-shrink: 0;
 }
 

@@ -136,9 +136,9 @@ export default function ParallaxCooperativa() {
       <section id="sec">
         <h2>Conoce acerca de nosotras</h2>
         <p>
-          La Central de Cooperativas Las Diosas es una organización cooperativa de segundo grado, integrada por mujeres
+          La Central de Cooperativas Las Diosas es una organización de segundo grado, integrada por mujeres
           campesinas, que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos
-          del pais siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
+          del país siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
         </p>
       </section>
 
@@ -169,7 +169,7 @@ export default function ParallaxCooperativa() {
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="margin-top-10">
-              La organizacion esta integrada por más de 400 mujeres que se dedican al procesamiento de café y miel
+              La organización esta integrada por más de cuatrocientas mujeres que se dedican al procesamiento de café y miel
               generando beneficos ya que la organización les ha permitido salir adelante y ser piezas claves en la
               economía de sus familias y de su comunidad.
             </p>
@@ -204,20 +204,20 @@ export default function ParallaxCooperativa() {
           <div className="block">
             <p className="colored-paragraph">
               <span className="first-character atw">L</span>a Central de Cooperativas Las Diosas es una organización 
-              cooperativa de segundo grado integrada mujeres campesinas, que agrupa a ocho cooperativas de base. 
+              de segundo grado integrando mujeres campesinas, que agrupa a ocho cooperativas de base. 
               Las socias están ubicadas en diferentes comunidades y zonas productivas de los departamentos 
               de Estelí, Matagalpa, Nueva Segovia y Jinotega, al norte de Nicaragua.  
               La Central Las Diosas, organización certificada con el comercio justo, producción orgánica y sello a 
              la producción más limpia, surgió el 17 de mayo de 2012 como un sujeto insurgente indignado por las desigualdades que padecían las mujeres desde antes del 2004 que se habían constituido las primeras cooperativas, con una agenda propia que dio respuestas afirmativas a las mujeres campesinas.
-             Promueve el fortalecimiento organizativo de las cooperativas de base asociadas a la Central sus ocho
-             cooperativas de base aglutinan a 430 mujeres productoras , apicultoras pertenecientes a 15 comunidades donde tiene trabajo las Diosas en la región norte del país. 
+             Promueve el fortalecimiento organizativo de las cooperativas de base asociadas a la central, estas se dividen en ocho grupos, 
+              aglomeran a cuatrocientos treinta mujeres productoras, apicultoras pertenecientes a quince comunidades donde tiene trabajo las Diosas en la región norte del país. 
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="colored-paragraph margin-top-10">
               De esta manera, poco a poco hemos ido construyendo una organización que ha logrado posicionarse en el mercado 
               nacional e internacional, siendo un referente en la producción de café y miel, así como en la comercialización 
               de productos agroecológicos. La Central Las Diosas ha sido reconocida por su compromiso con la equidad de género y la defensa de los derechos de las mujeres, convirtiéndose en un modelo a seguir para otras organizaciones cooperativas en el país.
-              logrando asi colocarnos a la vanguardia en la actividad productiva a nivel nacional.
+              Logrando asi colocarnos a la vanguardia en la actividad productiva a nivel nacional.
             </p>
           </div>
         </section>

@@ -70,9 +70,11 @@
 }
 
 #sec {
-  padding: 100px;
+  padding: 100px 5%;
   padding-bottom: 20px;
   background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #sec h2 {
@@ -125,7 +127,7 @@
 #parallax-world-of-ugg p {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px; 
   line-height: 24px;
 }
 
@@ -152,9 +154,11 @@
 
 #parallax-world-of-ugg .title {
   background: white;
-  padding: 60px;
+  padding: 60px 5%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
 }
 
 #parallax-world-of-ugg .title h1 {
@@ -164,15 +168,18 @@
 
 #parallax-world-of-ugg .block {
   background: white;
-  padding: 60px;
-  width: 820px;
+  padding: 60px 5%;
+  width: 100%;
   margin: 0 auto;
   text-align: justify;
+  box-sizing: border-box;
 }
 
 #parallax-world-of-ugg .block-gray {
   background: #f2f2f2;
-  padding: 60px;
+  padding: 60px 5%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #parallax-world-of-ugg .section-overlay-mask {
@@ -269,8 +276,8 @@
   }
 
   #parallax-world-of-ugg .block {
-    width: 1000px;
-    padding: 30px;
+    width: 100%;
+    padding: 60px 5%;
   }
 
   .highlight-paragraph {
@@ -281,9 +288,8 @@
 /* Responsive - Tablets */
 @media screen and (max-width: 959px) and (min-width: 768px) {
   #parallax-world-of-ugg .block {
-    padding: 40px;
-    width: 90%;
-    max-width: 620px;
+    padding: 40px 5%;
+    width: 100%;
   }
 
   #text {
@@ -304,7 +310,7 @@
   }
 
   #sec {
-    padding: 60px 40px;
+    padding: 60px 5%;
   }
 
   #sec h2 {
@@ -315,9 +321,8 @@
 /* Responsive - Móviles grandes */
 @media screen and (max-width: 767px) {
   #parallax-world-of-ugg .block {
-    padding: 30px;
-    width: 90%;
-    max-width: 420px;
+    padding: 30px 5%;
+    width: 100%;
   }
 
   #parallax-world-of-ugg h2 {
@@ -341,7 +346,7 @@
   }
 
   #sec {
-    padding: 40px 20px;
+    padding: 40px 5%;
   }
 
   #sec h2 {
@@ -369,9 +374,8 @@
 /* Responsive - Móviles pequeños */
 @media screen and (max-width: 479px) {
   #parallax-world-of-ugg .block {
-    padding: 20px 15px;
-    width: 90%;
-    max-width: 290px;
+    padding: 20px 5%;
+    width: 100%;
   }
 
   #parallax-world-of-ugg h2 {
@@ -385,7 +389,7 @@
   }
 
   #parallax-world-of-ugg .title {
-    padding: 30px 15px;
+    padding: 30px 5%;
   }
 
   #parallax-world-of-ugg .title h1 {

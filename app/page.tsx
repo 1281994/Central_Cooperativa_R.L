@@ -2,13 +2,13 @@
 
 import { useEffect } from "react"
 import Header from "@/components/Header"
-import Slider from "@/components/Slider"
 
 import ParallaxCooperativa from "@/components/ParallaxCooperativa"
 import Cooperativa from "@/components/Cooperativa"
 import MisionVisionValores from "@/components/MisionVisionValores"
 import NuestraMision from "@/components/NuestraMision"
 import NuestraVision from "@/components/NuestraVision"
+import Slider from "@/components/Slider"
 import ProcesoProduccion from "@/components/ProcesoProduccion"
 
 import Productos from "@/components/Productos"
@@ -62,7 +62,9 @@ export default function Home() {
   <div>
     <MisionVisionValores />
   </div>
-
+<div id="SLIDER">
+    <Slider />
+  </div>
   <div id="cooperativa">
     <Cooperativa />
   </div>
