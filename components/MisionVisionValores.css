@@ -88,7 +88,7 @@ height: 200px; /* Aumenta el alto según lo que necesites */
 
 .valores-card .mvv-card-header {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/assets/imagenes/cooperativa/cooperativa3.jpeg");
+    url("/assets/imagenes/valores.jpeg");
   background-size: cover;
   background-position: center;
   color: white;

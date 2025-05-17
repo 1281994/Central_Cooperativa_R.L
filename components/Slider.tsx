@@ -2,33 +2,32 @@
 
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
+import "./Slider.css"
 
 // Extender la interfaz HTMLDivElement para incluir la propiedad timer
 interface DragContainer extends HTMLDivElement {
   timer?: number
 }
+
 // Datos para los slides
 const slidesData = [
   {
     type: "image",
-    src: "/assets/imagenes/lasdiosas.jpg",
-    title: "Cooperativa 01",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+    src: "/assets/imagenes/cooperativa/Desarrollo R.L COPEMUDESA.jpeg",
+    title: "COPEMUDESA",
+    description: "Cooperativa Multisectorial Mujeres en Desarrollo R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/logoLasDiosas.png",
-    title: "Cooperativa 02",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+    src: "/assets/imagenes/cooperativa/Tierra Nuestra R.L COMTINUE R.L.jpeg",
+    title: "COMTINUE R.L",
+    description: "Cooperativa Multisectorial Tierra Nuestra R.L COMTINUE R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa 1.jpg",
-    title: "Cooperativa 03",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+    src: "/assets/imagenes/cooperativa/Mujeres Trabajadoras de Dipilto R.L CMTINUE R.L.jpeg",
+    title: "COMUTRADI R.L",
+    description: "Cooperativa Multisectorial Mujeres Trabajadoras de Dipilto R.L",
   },
   {
     type: "image",
@@ -114,15 +113,11 @@ export default function Slider() {
     let imgHeight = 220
     const autoRotate = true
     let tX = 0
-    // Variable tY declarada pero no utilizada, la comentamos para evitar el error
-    // let tY = 10
 
     // Función para ajustar tamaño de thumbnails según pantalla
     const adjustThumbnailSize = () => {
-      // Obtener el ancho de la ventana
       const windowWidth = window.innerWidth
 
-      // Ajustar el radio según el ancho de la ventana
       if (windowWidth <= 400) {
         radius = 180
         imgWidth = 60
@@ -149,7 +144,6 @@ export default function Slider() {
         imgHeight = 180
       }
 
-      // Aplicar los cambios a los elementos
       if (spinContainerRef.current) {
         spinContainerRef.current.style.width = imgWidth + "px"
         spinContainerRef.current.style.height = imgHeight + "px"
@@ -160,10 +154,8 @@ export default function Slider() {
         groundRef.current.style.height = radius * 3 + "px"
       }
 
-      // Ajustar la posición vertical del carrusel
       const thumbnailContainer = document.querySelector(".thumbnail")
       if (thumbnailContainer) {
-        // Ajustar la posición según el tamaño de la pantalla
         if (windowWidth <= 400) {
           ;(thumbnailContainer as HTMLElement).style.bottom = "200px"
         } else if (windowWidth <= 480) {
@@ -179,7 +171,6 @@ export default function Slider() {
         }
       }
 
-      // Reinicializar el carrusel con los nuevos tamaños
       initCarousel(0.1)
     }
 
@@ -227,7 +218,6 @@ export default function Slider() {
       sX = e.clientX
       sY = e.clientY
 
-      // Usar estas funciones para manejar los eventos
       const handlePointerMove = (e: PointerEvent) => {
         e = e || window.event
         nX = e.clientX
@@ -235,7 +225,6 @@ export default function Slider() {
         desX = nX - sX
         desY = nY - sY
         tX += desX * 0.1
-        // tY += desY * 0.1 - No usamos tY para evitar el error
 
         if (odrag) applyTransform(odrag)
 
@@ -249,14 +238,12 @@ export default function Slider() {
             desX *= 0.95
             desY *= 0.95
             tX += desX * 0.1
-            // tY += desY * 0.1 - No usamos tY para evitar el error
 
             applyTransform(odrag)
 
             if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
               clearInterval(odrag.timer)
 
-              // Reiniciar animación
               if (spinContainerRef.current && autoRotate) {
                 const animationName = "spin"
                 spinContainerRef.current.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`
@@ -265,28 +252,23 @@ export default function Slider() {
           }, 17)
         }
 
-        // Eliminar los event listeners cuando se suelta el puntero
         window.removeEventListener("pointermove", handlePointerMove)
         window.removeEventListener("pointerup", handlePointerUp)
       }
 
-      // Agregar event listeners solo mientras se arrastra
       window.addEventListener("pointermove", handlePointerMove)
       window.addEventListener("pointerup", handlePointerUp)
 
       return false
     }
 
-    // Asignar el evento solo al contenedor del carrusel
     if (dragContainerRef.current) {
       dragContainerRef.current.onpointerdown = handlePointerDown
     }
 
-    // Resize event
     window.addEventListener("resize", adjustThumbnailSize)
 
     return () => {
-      // Limpiar el evento al desmontar
       if (dragContainerRef.current) {
         dragContainerRef.current.onpointerdown = null
       }
@@ -299,19 +281,16 @@ export default function Slider() {
 
   // Configurar el autoplay para avanzar por todos los slides
   useEffect(() => {
-    // Limpiar cualquier intervalo existente
     if (autoplayInterval) {
       clearInterval(autoplayInterval)
     }
 
-    // Configurar un nuevo intervalo
     const interval = setInterval(() => {
       nextSlide()
     }, 5000)
 
     setAutoplayInterval(interval)
 
-    // Limpiar el intervalo cuando el componente se desmonte
     return () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval)
@@ -335,7 +314,6 @@ export default function Slider() {
     if (slide.type === "video") {
       return <video src={slide.src} controls autoPlay muted loop className="video-class" />
     } else {
-      // Para imágenes
       try {
         if (isThumbnail) {
           return (
@@ -359,7 +337,6 @@ export default function Slider() {
           )
         }
       } catch (_error) {
-        // Fallback para imágenes que no se encuentran (cambiamos 'error' por '_error' para evitar el error de variable no utilizada)
         if (isThumbnail) {
           return (
             <Image

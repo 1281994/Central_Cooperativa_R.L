@@ -1,0 +1,538 @@
+/* CSS Slider */
+.slider {
+  height: calc(80vh - 56px); /* Altura total de la ventana menos la altura del navbar */
+  position: relative;
+  overflow: hidden; /* Evitar que el contenido se desborde */
+}
+
+.slider .list .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: .5s;
+}
+
+.slider .list .item img,
+.slider .list .item video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.slider .list .item::after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to top, #aeacac, transparent);
+}
+
+.slider .list .item .content {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  max-width: 500px;
+  z-index: 12;
+}
+
+.slider .list .item .content p:nth-child(1) {
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: 0.9rem;
+}
+
+.slider .list .item .content h2 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: bold;
+  color: #f4f0f0;
+}
+
+.slider .list .item .content p:nth-child(3) {
+  font-size: 1rem;
+}
+
+.slider .list .item.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+@keyframes showContent {
+  to {
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3) {
+  transform: translateY(30px);
+  filter: blur(20px);
+  opacity: 0;
+  animation: showContent .5s .7s ease-in-out 1 forwards;
+}
+
+.slider .list .item.active h2 {
+  animation-delay: 1s;
+}
+
+.slider .list .item.active p:nth-child(3) {
+  animation-duration: 1.3s;
+}
+
+/* Estilo base para los botones del slider */
+.slider .buttons {
+  position: relative;
+  z-index: 20;
+  margin-top: 10px;
+  margin-bottom: 80px; /* Reducido de 120px a 80px para subir más el carrusel */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.slider .buttons button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #080908;
+  color: #e6e6e6;
+  cursor: pointer;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  text-transform: uppercase;
+  border-radius: 99rem;
+  border-width: 2px;
+  padding: 0.8rem 3rem;
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Clase para mostrar los botones con animación */
+.slider .buttons button.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider .buttons button .text-container {
+  display: block;
+  mix-blend-mode: difference;
+}
+
+.slider .buttons button .text {
+  display: block;
+  position: relative;
+}
+
+.slider .buttons button:hover .text {
+  -webkit-animation: move-up-alternate 0.3s forwards;
+  animation: move-up-alternate 0.3s forwards;
+}
+
+@-webkit-keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(80%);
+  }
+  51% {
+    transform: translateY(-80%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(80%);
+  }
+  51% {
+    transform: translateY(-80%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slider .buttons button:after,
+.slider .buttons button:before {
+  --skew: 0.2;
+  background: #fff;
+  content: "";
+  display: block;
+  height: 102%;
+  left: calc(-50% - 50% * var(--skew));
+  pointer-events: none;
+  position: absolute;
+  top: -104%;
+  transform: skew(calc(150deg * var(--skew))) translateY(var(--progress, 0));
+  transition: transform 0.2s ease;
+  width: 100%;
+}
+
+.slider .buttons button:after {
+  --progress: 0%;
+  left: calc(50% + 50% * var(--skew));
+  top: 102%;
+  z-index: -1;
+}
+
+.slider .buttons button:hover:before {
+  --progress: 100%;
+}
+
+.slider .buttons button:hover:after {
+  --progress: -102%;
+}
+
+.arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arrows button {
+  background-color: #eee5;
+  border: none;
+  font-family: monospace;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: x-large;
+  color: #eee;
+  transition: .5s;
+}
+
+.arrows button:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* Thumbnail (Carrusel 3D) */
+.thumbnail {
+  position: absolute;
+  bottom: 100px; /* Aumentado de 50px a 100px para subir más el carrusel */
+  z-index: 11;
+  width: 100%;
+  height: 200px; /* Reducido de 250px a 200px para que ocupe menos espacio vertical */
+  padding: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#drag-container,
+#spin-container {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: scale(1); /* Escala inicial */
+}
+
+#drag-container .item {
+  transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px; /* Tamaño base más pequeño */
+  height: 180px;
+  filter: brightness(0.5);
+  transition: filter 0.5s;
+  flex-shrink: 0;
+  -webkit-box-shadow: 0 0 8px hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px #fff;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #555862);
+}
+
+#drag-container .item.active {
+  filter: brightness(1.5);
+}
+
+#drag-container .item img,
+#drag-container .item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#drag-container .item .content {
+  position: absolute;
+  inset: auto 10px 10px 10px;
+  color: #eee;
+  font-size: 0.9rem;
+}
+
+#drag-container p {
+  font-family: Serif;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#ground {
+  width: 900px;
+  height: 900px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  background: -webkit-radial-gradient(center center, farthest-side, #727683, transparent);
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+/* Estilos para los videos en el carrusel */
+.video-class {
+  width: 100%; /* Ajusta el ancho al contenedor */
+  height: 100%; /* Ajusta la altura al contenedor */
+  object-fit: cover; /* Hace que el video se comporte como una imagen */
+  border-radius: 10px; /* Opcional: bordes redondeados si las imágenes los tienen */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Opcional: sombra si las imágenes la tienen */
+}
+
+/* Media Queries específicas para el slider */
+@media screen and (max-width: 992px) {
+  .slider .list .item .content {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+  }
+
+  .slider .list .item .content h2 {
+    font-size: 2.5rem;
+  }
+
+  .slider .list .item .content p:nth-child(1) {
+    letter-spacing: 6px;
+    font-size: 0.8rem;
+  }
+
+  .slider .list .item .content p:nth-child(3) {
+    font-size: 0.9rem;
+  }
+
+  .arrows {
+    top: 50%;
+    right: 10px;
+  }
+
+  .arrows button {
+    width: 35px;
+    height: 35px;
+    font-size: large;
+  }
+
+  .thumbnail {
+    height: 25vh;
+    max-height: 250px;
+  }
+
+  .slider .buttons {
+    margin-bottom: 70px;
+  }
+
+  .thumbnail {
+    bottom: 90px;
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider .list .item .content {
+    top: 5%;
+  }
+
+  .slider .list .item .content h2 {
+    font-size: 2rem;
+  }
+
+  .slider .list .item .content p:nth-child(1) {
+    letter-spacing: 4px;
+    font-size: 0.7rem;
+  }
+
+  .slider .list .item .content p:nth-child(3) {
+    font-size: 0.8rem;
+  }
+
+  .slider .buttons button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .thumbnail {
+    height: 20vh;
+    max-height: 200px;
+    bottom: 120px;
+  }
+
+  #drag-container .item {
+    width: 100px;
+    height: 150px;
+  }
+
+  #drag-container .item .content {
+    font-size: 0.8rem;
+  }
+
+  #drag-container p {
+    font-size: 1rem;
+  }
+
+  .slider .buttons {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .slider .list .item .content {
+    top: 2%;
+  }
+
+  .slider .list .item .content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .slider .list .item .content p:nth-child(1) {
+    letter-spacing: 3px;
+    font-size: 0.6rem;
+  }
+
+  .slider .list .item .content p:nth-child(3) {
+    font-size: 0.7rem;
+  }
+
+  .slider .buttons {
+    margin-top: 10px;
+  }
+
+  .slider .buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .thumbnail {
+    height: 15vh;
+    max-height: 150px;
+    bottom: 150px;
+  }
+
+  #drag-container .item {
+    width: 80px;
+    height: 120px;
+    -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, #555862);
+  }
+
+  #drag-container .item .content {
+    font-size: 0.7rem;
+  }
+
+  #drag-container p {
+    font-size: 0.9rem;
+  }
+
+  .arrows {
+    right: 10px;
+    top: 50%;
+  }
+
+  .arrows button {
+    width: 30px;
+    height: 30px;
+    font-size: medium;
+  }
+
+  .slider .buttons {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #drag-container {
+    transform: scale(0.6);
+  }
+
+  #drag-container .item {
+    width: 70px;
+    height: 105px;
+  }
+
+  .slider .buttons {
+    margin-bottom: 40px;
+  }
+
+  .thumbnail {
+    bottom: 180px;
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #drag-container {
+    transform: scale(0.5);
+  }
+
+  #drag-container .item {
+    width: 60px;
+    height: 90px;
+    -webkit-box-reflect: below 3px linear-gradient(transparent, transparent, #555862);
+  }
+
+  .slider .buttons {
+    margin-bottom: 30px;
+  }
+
+  .thumbnail {
+    bottom: 200px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,267 @@
+/* Estilos generales */
+.image-marquee-section {
+  width: 100%;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  background-color: #eff6eb;
+  padding: 60px 0;
+}
+
+.block {
+  position: relative;
+  width: 100%;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.inner--xl {
+  max-width: 1400px;
+}
+
+/* Estilos del encabezado */
+.c-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.c-heading__top {
+  margin-bottom: 15px;
+}
+
+.budget-tag {
+  display: inline-block;
+  background-color: #046815;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.budget-tag--big {
+  font-size: 16px;
+  padding: 8px 20px;
+}
+
+.c-heading__middle {
+  margin-bottom: 20px;
+}
+
+.heading-3 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #333;
+  margin: 0;
+}
+
+.c-heading__large-desc {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Estilos de la oferta promocional */
+
+
+
+
+
+
+
+
+
+
+/* Estilos del carrusel de imágenes */
+.header-marquees {
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+.header-marquees__grid {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.header-marquees__track {
+  display: flex;
+  animation: marquee var(--slides-speed, 200s) linear infinite;
+  animation-direction: var(--slides-direction, normal);
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.header-marquees__item {
+  flex-shrink: 0;
+  padding: 0 10px;
+}
+
+.header-marquees__figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.header-marquees__figure:hover {
+  transform: scale(1.02);
+}
+
+.header-marquees__img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilos de la sección hero-discover */
+.hero-discover {
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+}
+
+.ring-text {
+  position: relative;
+  width: 154px;
+  height: 154px;
+  margin: 0 auto 30px;
+}
+
+.ring-text__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ring-text__svg text {
+  fill: #046815;
+  font-size: 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ring-text__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 82px;
+  height: auto;
+}
+
+.hero-discover__heading {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #333;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.hero-discover__desc {
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 20px;
+}
+/* Estilos de los usuarios */
+.hero-discover__users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: -10px;
+}
+
+.hero-discover__users img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-discover__users img:first-child {
+  margin-left: 0;
+}
+/* fin Estilos de los usuarios */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heading-3 {
+    font-size: 32px;
+  }
+
+  .c-heading__large-desc {
+    font-size: 16px;
+  }
+
+  .header-marquees__img {
+    width: 250px;
+    height: 170px;
+  }
+
+  .hero-discover__heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-3 {
+    font-size: 28px;
+  }
+
+  .promo-offer {
+    gap: 10px;
+  }
+
+  .promo-offer__prices {
+    font-size: 20px;
+  }
+
+  .header-marquees__img {
+    width: 200px;
+    height: 140px;
+  }
+
+  .hero-discover__heading {
+    font-size: 20px;
+  }
+
+  .ring-text {
+    width: 120px;
+    height: 120px;
+  }
+}

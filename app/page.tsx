@@ -8,10 +8,11 @@ import Cooperativa from "@/components/Cooperativa"
 import MisionVisionValores from "@/components/MisionVisionValores"
 import NuestraMision from "@/components/NuestraMision"
 import NuestraVision from "@/components/NuestraVision"
+import ImageMarquee from "@/components/ImageMarquee"
 import Slider from "@/components/Slider"
 import ProcesoProduccion from "@/components/ProcesoProduccion"
 
-import Productos from "@/components/Productos"
+
 
 import Footer from "@/components/Footer"
 import BackToTop from "@/components/BackToTop"
@@ -62,15 +63,14 @@ export default function Home() {
   <div>
     <MisionVisionValores />
   </div>
+
+  <div id="image-marquee">
+    <ImageMarquee />
+  </div>
 <div id="SLIDER">
     <Slider />
   </div>
-  <div id="cooperativa">
-    <Cooperativa />
-  </div>
-  <div id="proceso">
-    <ProcesoProduccion />
-  </div>
+
  <div id="nuestra-mision">
     <NuestraMision />
 </div>
@@ -78,9 +78,6 @@ export default function Home() {
     <NuestraVision />
 </div>
 
-  <div id="products">
-    <Productos />
-  </div>
 
   <Header />
 

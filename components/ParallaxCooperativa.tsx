@@ -97,7 +97,7 @@ export default function ParallaxCooperativa() {
       {/* Primera sección - Hero con parallax */}
       <section id="top">
         <Image
-          src="/assets/imagenes/parallax/fondo2.jpg"
+          src="/assets/imagenes/parallax/portada principal.jpg"
           alt="Fondo"
           fill
           priority
