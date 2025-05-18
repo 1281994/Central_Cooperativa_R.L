@@ -2,29 +2,36 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic");
 
-/* Estilos generales */
+/* Mejoras generales para compatibilidad y rendimiento */
 .parallax-container {
   width: 100%;
   overflow-x: hidden;
-  font-family: "Source Sans Pro", serif;
+  font-family: "Source Sans Pro", serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Estilos del primer proyecto */
+/* Estilos del primer proyecto con mejoras de compatibilidad */
 #top {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100); /* Ajuste para móviles */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  will-change: transform; /* Optimización para navegadores modernos */
+  will-change: transform;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 #top::before {
-  content: "Source Sans Pro";
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -32,6 +39,7 @@
   width: 100%;
   background: linear-gradient(to top, #eff6eb, transparent);
   z-index: 1000;
+  pointer-events: none;
 }
 
 #background,
@@ -48,43 +56,66 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transform: translateZ(0); /* Fuerza aceleración por hardware */
-  backface-visibility: hidden; /* Mejora rendimiento en algunos navegadores */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 #text {
   position: relative;
   font-weight: bold;
   color: white;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Tamaño responsivo */
   text-align: center;
   z-index: 10;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
-  will-change: transform; /* Optimización para navegadores modernos */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+  padding: 0 1rem; /* Espacio para pantallas pequeñas */
+  max-width: 90%; /* Evitar que el texto se salga en móviles */
 }
 
 #text span {
   display: block;
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 5rem); /* Tamaño responsivo */
   color: #20496a;
 }
 
-/* Estilos para la animación de pájaros */
+/* Estilos para la animación de pájaros con mejoras de compatibilidad */
 .flying-birds {
   position: absolute;
-  z-index: 2; /* Reducir el z-index para que esté detrás de las montañas pero encima del fondo */
+  z-index: 2; /* Detrás de las montañas pero encima del fondo */
   top: 20%;
   right: -100px; /* Comienza fuera de la pantalla a la derecha */
-  width: 90px;
-  height: 75px;
+  width: clamp(60px, 10vw, 90px); /* Tamaño responsivo */
+  height: clamp(50px, 8vw, 75px); /* Tamaño responsivo */
   opacity: 0;
   transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
+  will-change: transform, opacity;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  pointer-events: none; /* Evitar que interfiera con clics */
+}
+
+.flying-birds.animate-birds {
+  -webkit-animation: flyAcross 15s linear forwards;
+  animation: flyAcross 15s linear forwards;
+  opacity: 1 !important; /* Forzar visibilidad */
+  display: block !important; /* Asegurar que sea visible */
 }
 
 /* Asegurar que las montañas tengan un z-index mayor que los pájaros */
 #mountain_left,
 #mountain_right {
-  z-index: 3; /* Mayor que el z-index de los pájaros */
+  z-index: 3;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* La imagen de fondo ya tiene z-index 1 por defecto */
@@ -97,51 +128,134 @@
   z-index: 10; /* Mantener el texto por encima de todo */
 }
 
+/* Animaciones con prefijos para compatibilidad */
 .flying-birds.animate-birds {
+  -webkit-animation: flyAcross 15s linear forwards;
   animation: flyAcross 15s linear forwards;
   opacity: 1;
+}
+
+@-webkit-keyframes flyAcross {
+  0% {
+    -webkit-transform: translateX(0) scale(1);
+    transform: translateX(0) scale(1);
+    right: -100px;
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateX(-20vw) scale(0.9);
+    transform: translateX(-20vw) scale(0.9);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateX(-40vw) scale(0.8);
+    transform: translateX(-40vw) scale(0.8);
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: translateX(-60vw) scale(0.7);
+    transform: translateX(-60vw) scale(0.7);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translateX(-80vw) scale(0.6);
+    transform: translateX(-80vw) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-100vw) scale(0.5);
+    transform: translateX(-100vw) scale(0.5);
+    opacity: 1;
+  }
 }
 
 @keyframes flyAcross {
   0% {
     transform: translateX(0) scale(1);
     right: -100px;
+    opacity: 1;
   }
   20% {
     transform: translateX(-20vw) scale(0.9);
+    opacity: 1;
   }
   40% {
     transform: translateX(-40vw) scale(0.8);
+    opacity: 1;
   }
   60% {
     transform: translateX(-60vw) scale(0.7);
+    opacity: 1;
   }
   80% {
     transform: translateX(-80vw) scale(0.6);
+    opacity: 1;
   }
   100% {
     transform: translateX(-100vw) scale(0.5);
+    opacity: 1;
   }
 }
 
-/* Añadir después de la animación de pájaros existente */
-
-/* Estilos para la segunda animación de pájaros (diagonal) */
+/* Estilos para la segunda animación de pájaros con mejoras */
 .flying-birds-diagonal {
   position: absolute;
-  z-index: 2; /* Mismo z-index que los otros pájaros para estar detrás de las montañas */
-  bottom: 10%; /* Posición inicial en la parte inferior */
-  left: -100px; /* Comienza fuera de la pantalla a la izquierda */
-  width: 90px;
-  height: 75px;
+  z-index: 2;
+  bottom: 10%;
+  left: -100px;
+  width: clamp(60px, 10vw, 90px);
+  height: clamp(50px, 8vw, 75px);
   opacity: 0;
   transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
   transform-origin: center center;
+  -webkit-transform-origin: center center;
+  will-change: transform, opacity;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  pointer-events: none; /* Evitar que interfiera con clics */
 }
 
 .flying-birds-diagonal.animate-birds-diagonal {
+  -webkit-animation: flyDiagonal 15s linear forwards;
   animation: flyDiagonal 15s linear forwards;
-  opacity: 1;
+  opacity: 1 !important; /* Forzar visibilidad */
+  display: block !important; /* Asegurar que sea visible */
+}
+
+@-webkit-keyframes flyDiagonal {
+  0% {
+    -webkit-transform: translateX(0) translateY(0) scale(1);
+    transform: translateX(0) translateY(0) scale(1);
+    bottom: 10%;
+    left: -100px;
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateX(20vw) translateY(-15vh) scale(0.9);
+    transform: translateX(20vw) translateY(-15vh) scale(0.9);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateX(40vw) translateY(-30vh) scale(0.8);
+    transform: translateX(40vw) translateY(-30vh) scale(0.8);
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: translateX(60vw) translateY(-45vh) scale(0.7);
+    transform: translateX(60vw) translateY(-45vh) scale(0.7);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translateX(80vw) translateY(-60vh) scale(0.6);
+    transform: translateX(80vw) translateY(-60vh) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(100vw) translateY(-75vh) scale(0.5);
+    transform: translateX(100vw) translateY(-75vh) scale(0.5);
+    opacity: 1;
+  }
 }
 
 @keyframes flyDiagonal {
@@ -149,49 +263,56 @@
     transform: translateX(0) translateY(0) scale(1);
     bottom: 10%;
     left: -100px;
+    opacity: 1;
   }
   20% {
     transform: translateX(20vw) translateY(-15vh) scale(0.9);
+    opacity: 1;
   }
   40% {
     transform: translateX(40vw) translateY(-30vh) scale(0.8);
+    opacity: 1;
   }
   60% {
     transform: translateX(60vw) translateY(-45vh) scale(0.7);
+    opacity: 1;
   }
   80% {
     transform: translateX(80vw) translateY(-60vh) scale(0.6);
+    opacity: 1;
   }
   100% {
     transform: translateX(100vw) translateY(-75vh) scale(0.5);
+    opacity: 1;
   }
 }
 
+/* Secciones de contenido con mejoras responsivas */
 #sec {
-  padding: 100px 5%;
-  padding-bottom: 20px;
+  padding: clamp(40px, 5vw, 100px) 5%;
+  padding-bottom: clamp(20px, 2vw, 40px);
   background-color: #fff;
   width: 100%;
   box-sizing: border-box;
 }
 
 #sec h2 {
-  font-size: 4rem;
-  margin-bottom: 30px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: clamp(15px, 3vw, 30px);
   color: #20496a;
 }
 
 #sec p {
-  font-size: 1.2rem;
-  line-height: 2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
   font-weight: 300;
   color: #20496a;
 }
 
-/* Estilos del segundo proyecto */
+/* Mejoras para el segundo proyecto */
 #parallax-world-of-ugg h1 {
-  font-family: "Montserrat", serif;
-  font-size: 24px;
+  font-family: "Montserrat", serif, system-ui;
+  font-size: clamp(18px, 4vw, 24px);
   font-weight: 400;
   text-transform: uppercase;
   color: black;
@@ -200,59 +321,49 @@
 }
 
 #parallax-world-of-ugg h2 {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 70px;
-  letter-spacing: 10px;
+  font-family: "Source Sans Pro", sans-serif, system-ui;
+  font-size: clamp(30px, 8vw, 70px);
+  letter-spacing: clamp(5px, 1vw, 10px);
   text-align: center;
   color: white;
   font-weight: 400;
   text-transform: uppercase;
   z-index: 10;
   opacity: 0.9;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #parallax-world-of-ugg h3 {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
-  line-height: 0;
+  font-family: "Source Sans Pro", sans-serif, system-ui;
+  font-size: clamp(14px, 3vw, 18px);
+  line-height: 1.2;
   font-weight: 400;
-  letter-spacing: 8px;
+  letter-spacing: clamp(4px, 1vw, 8px);
   text-transform: uppercase;
   color: black;
 }
 
 #parallax-world-of-ugg p {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", sans-serif, system-ui;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: clamp(16px, 3vw, 18px);
+  line-height: 1.5;
 }
 
 .first-character {
   font-weight: 400;
   float: left;
-  font-size: 84px;
-  line-height: 64px;
+  font-size: clamp(50px, 10vw, 84px);
+  line-height: clamp(40px, 8vw, 64px);
   padding-top: 4px;
   padding-right: 8px;
   padding-left: 3px;
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-.sc {
-  color: #3b8595;
-}
-.ny {
-  color: #3d3c3a;
-}
-.atw {
-  color: #c48660;
+  font-family: "Source Sans Pro", sans-serif, system-ui;
 }
 
 #parallax-world-of-ugg .title {
   background: white;
-  padding: 60px 5%;
+  padding: clamp(30px, 5vw, 60px) 5%;
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -260,13 +371,13 @@
 }
 
 #parallax-world-of-ugg .title h1 {
-  font-size: 35px;
-  letter-spacing: 8px;
+  font-size: clamp(24px, 5vw, 35px);
+  letter-spacing: clamp(4px, 1vw, 8px);
 }
 
 #parallax-world-of-ugg .block {
   background: white;
-  padding: 60px 5%;
+  padding: clamp(30px, 5vw, 60px) 5%;
   width: 100%;
   margin: 0 auto;
   text-align: justify;
@@ -290,19 +401,21 @@
   opacity: 0.7;
 }
 
-/* Restaurando el efecto parallax original */
+/* Mejoras para el efecto parallax */
 #parallax-world-of-ugg .parallax-one,
 #parallax-world-of-ugg .parallax-two,
 #parallax-world-of-ugg .parallax-three {
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: clamp(100px, 20vh, 200px);
+  padding-bottom: clamp(100px, 20vh, 200px);
   overflow: hidden;
   position: relative;
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  /* Eliminamos las propiedades que podrían interferir con el efecto parallax */
+  background-position: center center;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 #parallax-world-of-ugg .parallax-one {
@@ -320,12 +433,23 @@
   background-position: center center;
 }
 
-/* Fallback para dispositivos iOS que no soportan background-attachment: fixed */
+/* Fallbacks mejorados para dispositivos que no soportan fixed */
 @supports (-webkit-touch-callout: none) {
   #parallax-world-of-ugg .parallax-one,
   #parallax-world-of-ugg .parallax-two,
   #parallax-world-of-ugg .parallax-three {
     background-attachment: scroll;
+    background-position: center center !important;
+  }
+}
+
+/* Fallback para IE y Edge */
+@supports (-ms-ime-align: auto) or (-ms-accelerator: true) {
+  #parallax-world-of-ugg .parallax-one,
+  #parallax-world-of-ugg .parallax-two,
+  #parallax-world-of-ugg .parallax-three {
+    background-attachment: scroll;
+    background-position: center center !important;
   }
 }
 
@@ -336,14 +460,14 @@
 }
 
 .highlight-paragraph {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   color: #20496a;
   line-height: 1.6;
 }
 
 .margin-top-10 {
   color: #20496a;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.8;
   text-align: justify;
   margin-top: 10px;
@@ -351,12 +475,36 @@
 
 .colored-paragraph {
   color: #20496a;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.8;
 }
 
-/* Responsive - Pantallas grandes */
-@media screen and (min-width: 1440px) {
+/* Media queries mejorados y más específicos */
+/* Pantallas extra grandes */
+@media screen and (min-width: 1600px) {
+  #text {
+    font-size: 5rem;
+  }
+
+  #text span {
+    font-size: 6.5rem;
+  }
+
+  #sec h2 {
+    font-size: 5.5rem;
+  }
+
+  #sec p {
+    font-size: 1.5rem;
+  }
+
+  .highlight-paragraph {
+    font-size: 2rem;
+  }
+}
+
+/* Pantallas grandes */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
   #text {
     font-size: 4.5rem;
   }
@@ -373,21 +521,38 @@
     font-size: 1.4rem;
   }
 
-  #parallax-world-of-ugg .block {
-    width: 100%;
-    padding: 60px 5%;
-  }
-
   .highlight-paragraph {
     font-size: 1.8rem;
   }
 }
 
-/* Responsive - Tablets */
-@media screen and (max-width: 959px) and (min-width: 768px) {
+/* Tablets grandes y laptops */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  #text {
+    font-size: 3.5rem;
+  }
+
+  #text span {
+    font-size: 4.5rem;
+  }
+
+  #sec h2 {
+    font-size: 3.5rem;
+  }
+
+  #sec p {
+    font-size: 1.3rem;
+  }
+
+  .highlight-paragraph {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) and (max-width: 991px) {
   #parallax-world-of-ugg .block {
     padding: 40px 5%;
-    width: 100%;
   }
 
   #text {
@@ -416,11 +581,10 @@
   }
 }
 
-/* Responsive - Móviles grandes */
-@media screen and (max-width: 767px) {
+/* Móviles grandes */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   #parallax-world-of-ugg .block {
     padding: 30px 5%;
-    width: 100%;
   }
 
   #parallax-world-of-ugg h2 {
@@ -468,34 +632,39 @@
     font-size: 1rem;
   }
 
-  /* Ajustar animación de pájaros para móviles */
+  /* Optimizar animación de pájaros para móviles */
+  .flying-birds,
+  .flying-birds-diagonal {
+    width: 70px;
+    height: 58px;
+  }
+
   @keyframes flyAcross {
     0% {
-      transform: scale(0.8) translateX(100vw);
-    }
-    20% {
-      transform: scale(0.7) translateX(60vw) translateY(-5vh);
-    }
-    40% {
-      transform: scale(0.6) translateX(20vw) translateY(-10vh);
-    }
-    60% {
-      transform: scale(0.5) translateX(-20vw) translateY(-15vh);
-    }
-    80% {
-      transform: scale(0.4) translateX(-60vw) translateY(-20vh);
+      transform: translateX(0) scale(0.8);
+      right: -70px;
     }
     100% {
-      transform: scale(0.3) translateX(-100vw) translateY(-25vh);
+      transform: translateX(-100vw) scale(0.4);
+    }
+  }
+
+  @keyframes flyDiagonal {
+    0% {
+      transform: translateX(0) translateY(0) scale(0.8);
+      bottom: 10%;
+      left: -70px;
+    }
+    100% {
+      transform: translateX(100vw) translateY(-50vh) scale(0.4);
     }
   }
 }
 
-/* Responsive - Móviles pequeños */
-@media screen and (max-width: 479px) {
+/* Móviles pequeños */
+@media screen and (max-width: 575px) {
   #parallax-world-of-ugg .block {
     padding: 20px 5%;
-    width: 100%;
   }
 
   #parallax-world-of-ugg h2 {
@@ -519,6 +688,7 @@
 
   #text {
     font-size: 2rem;
+    width: 90%;
   }
 
   #text span {
@@ -536,6 +706,57 @@
 
   .highlight-paragraph {
     font-size: 1rem;
+  }
+
+  /* Simplificar animaciones para mejor rendimiento */
+  .flying-birds,
+  .flying-birds-diagonal {
+    width: 60px;
+    height: 50px;
+  }
+
+  @keyframes flyAcross {
+    0% {
+      transform: translateX(0) scale(0.7);
+      right: -60px;
+    }
+    50% {
+      transform: translateX(-50vw) scale(0.5);
+    }
+    100% {
+      transform: translateX(-100vw) scale(0.3);
+    }
+  }
+
+  @keyframes flyDiagonal {
+    0% {
+      transform: translateX(0) translateY(0) scale(0.7);
+      bottom: 10%;
+      left: -60px;
+    }
+    50% {
+      transform: translateX(50vw) translateY(-25vh) scale(0.5);
+    }
+    100% {
+      transform: translateX(100vw) translateY(-40vh) scale(0.3);
+    }
+  }
+
+  /* Ajustes para pantallas muy pequeñas */
+  @media screen and (max-width: 360px) {
+    #text {
+      font-size: 1.7rem;
+    }
+
+    #text span {
+      font-size: 2.2rem;
+    }
+
+    .flying-birds,
+    .flying-birds-diagonal {
+      width: 50px;
+      height: 42px;
+    }
   }
 }
 
@@ -579,24 +800,31 @@
 @media screen and (max-width: 767px) {
   @keyframes flyDiagonal {
     0% {
-      transform: scale(0.8) translateX(0) translateY(0);
+      transform: translateX(0) translateY(0) scale(0.8);
       bottom: 10%;
       left: -100px;
     }
     20% {
-      transform: scale(0.7) translateX(20vw) translateY(-15vh);
+      transform: translateX(20vw) translateY(-15vh) scale(0.7);
     }
     40% {
-      transform: scale(0.6) translateX(40vw) translateY(-30vh);
+      transform: translateX(40vw) translateY(-30vh) scale(0.6);
     }
     60% {
-      transform: scale(0.5) translateX(60vw) translateY(-45vh);
+      transform: translateX(60vw) translateY(-45vh) scale(0.5);
     }
     80% {
-      transform: scale(0.4) translateX(80vw) translateY(-60vh);
+      transform: translateX(80vw) translateY(-60vh) scale(0.4);
     }
     100% {
-      transform: scale(0.3) translateX(100vw) translateY(-75vh);
+      transform: translateX(100vw) translateY(-75vh) scale(0.3);
     }
+  }
+}
+
+/* Script para ajustar la altura en móviles */
+@media screen {
+  :root {
+    --vh: 1vh;
   }
 }

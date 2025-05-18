@@ -1,8 +1,11 @@
 "use client"
 
+// Añadir importación del script de ajuste de altura al inicio del componente
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import "./parallax-cooperativa.css"
+// Importar el script de ajuste de altura
+import "./vh-fix.js"
 
 export default function ParallaxCooperativa() {
   // Referencias para los elementos con animación parallax
@@ -15,55 +18,75 @@ export default function ParallaxCooperativa() {
   const [isIOS, setIsIOS] = useState(false)
   // Estado para detectar si el dispositivo es móvil
   const [isMobile, setIsMobile] = useState(false)
-  // Estado para controlar la animación de los pájaros
+  // Estados para controlar las animaciones de pájaros
   const [showBirds, setShowBirds] = useState(false)
-  // Añadir un nuevo estado para controlar la animación diagonal de pájaros
   const [showDiagonalBirds, setShowDiagonalBirds] = useState(false)
+  // Referencia para los temporizadores
+  const timersRef = useRef<NodeJS.Timeout[]>([])
 
+  // Modificar la función useEffect que maneja el parallax para mejorar la compatibilidad
   useEffect(() => {
-    // Detectar si es iOS
+    // Detectar si es iOS con una detección más robusta
     const isIOSDevice =
       /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ||
+      /iPhone|iPad|iPod/.test(navigator.platform)
     setIsIOS(isIOSDevice)
 
-    // Detectar si es móvil
-    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    // Detectar si es móvil con una detección más completa
+    const isMobileDevice =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      window.innerWidth < 768
     setIsMobile(isMobileDevice)
 
-    // Efecto parallax para la primera sección
+    // Detectar navegador para ajustes específicos
+    const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+    const isEdge = navigator.userAgent.indexOf("Edge") > -1 || navigator.userAgent.indexOf("Edg") > -1
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
+    // Efecto parallax para la primera sección con ajustes por navegador
     const handleScroll = () => {
       const value = window.scrollY
 
-      // Reducir la intensidad del efecto en dispositivos móviles
-      const mobileFactor = isMobile ? 0.4 : 0.7
+      // Factores de ajuste basados en dispositivo y navegador
+      let mobileFactor = isMobile ? 0.3 : 0.7
+      const iosFactor = isIOS ? 0.2 : mobileFactor
 
-      // En iOS, reducimos aún más la intensidad para evitar problemas de rendimiento
-      const iosFactor = isIOS ? 0.3 : mobileFactor
+      // Ajustes específicos por navegador
+      if (isFirefox) mobileFactor *= 0.8
+      if (isEdge) mobileFactor *= 0.9
+      if (isSafari) mobileFactor *= 0.7
 
+      // Aplicar transformaciones con mejor rendimiento
       if (mountainLeftRef.current) {
-        mountainLeftRef.current.style.left = `-${value / iosFactor}px`
+        mountainLeftRef.current.style.transform = `translateX(${-value / iosFactor}px)`
       }
 
       if (mountainRightRef.current) {
-        mountainRightRef.current.style.left = `${value / iosFactor}px`
+        mountainRightRef.current.style.transform = `translateX(${value / iosFactor}px)`
       }
 
       if (textRef.current) {
         // Reducir el efecto en el texto para dispositivos móviles
-        const textFactor = isMobile ? value * 0.5 : value
-        textRef.current.style.bottom = `-${textFactor}px`
+        const textFactor = isMobile ? value * 0.3 : value * 0.5
+        textRef.current.style.transform = `translateY(${textFactor}px)`
       }
 
       if (manRef.current) {
         // Ajustar la altura de manera más suave en dispositivos móviles
-        manRef.current.style.height = `${window.innerHeight - (isMobile ? value * 0.7 : value)}px`
+        const heightAdjustment = isMobile ? value * 0.5 : value
+        const newHeight = Math.max(50, window.innerHeight - heightAdjustment)
+        manRef.current.style.height = `${newHeight}px`
       }
     }
 
-    // Optimización: usar requestAnimationFrame para el scroll
+    // Optimización: usar requestAnimationFrame para el scroll con throttling
+    let lastKnownScrollPosition = 0
     let ticking = false
+
     const scrollListener = () => {
+      lastKnownScrollPosition = window.scrollY
+
       if (!ticking) {
         window.requestAnimationFrame(() => {
           handleScroll()
@@ -75,14 +98,18 @@ export default function ParallaxCooperativa() {
 
     window.addEventListener("scroll", scrollListener, { passive: true })
 
-    // Manejar cambios de tamaño de ventana
+    // Manejar cambios de tamaño de ventana con debounce
+    let resizeTimer
     const handleResize = () => {
-      // Actualizar estado de dispositivo móvil
-      const isMobileDevice = window.innerWidth < 768
-      setIsMobile(isMobileDevice)
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        // Actualizar estado de dispositivo móvil
+        const newIsMobileDevice = window.innerWidth < 768
+        setIsMobile(newIsMobileDevice)
 
-      // Forzar una actualización de los efectos parallax
-      handleScroll()
+        // Forzar una actualización de los efectos parallax
+        handleScroll()
+      }, 100)
     }
 
     window.addEventListener("resize", handleResize)
@@ -90,46 +117,93 @@ export default function ParallaxCooperativa() {
     // Ejecutar una vez al inicio para configurar correctamente
     handleScroll()
 
-    // Mostrar los pájaros después de un tiempo para la primera animación
-    const birdsTimer = setTimeout(() => {
-      setShowBirds(true)
-
-      // Iniciar la segunda animación con un retraso
-      setTimeout(() => {
-        setShowDiagonalBirds(true)
-      }, 3000) // 3 segundos después de la primera animación
-    }, 1000)
+    // AÑADIR ESTA LÍNEA: Iniciar la secuencia de animaciones de pájaros
+    startAnimationSequence()
 
     return () => {
       window.removeEventListener("scroll", scrollListener)
       window.removeEventListener("resize", handleResize)
-      clearTimeout(birdsTimer)
+      clearTimeout(resizeTimer)
+      // Limpiar todos los temporizadores al desmontar
+      timersRef.current.forEach((timer) => clearTimeout(timer))
     }
   }, [isIOS, isMobile])
 
-  // Modificar la función resetBirdsAnimation para incluir la nueva animación
-  const resetBirdsAnimation = () => {
-    setShowBirds(false)
-    setShowDiagonalBirds(false)
+  // Modificar la función startAnimationSequence para hacerla más robusta
 
-    setTimeout(() => {
-      setShowBirds(true)
-    }, 100)
+  const startAnimationSequence = () => {
+    // Limpiar cualquier temporizador existente
+    timersRef.current.forEach((timer) => clearTimeout(timer))
+    timersRef.current = []
 
-    // Iniciar la animación diagonal con un pequeño retraso
-    setTimeout(() => {
-      setShowDiagonalBirds(true)
-    }, 3000) // 3 segundos después de la primera animación
+    // Ajustar duración de animaciones según el dispositivo
+    const isMobileView = window.innerWidth < 768
+
+    // Duración de las animaciones (en ms) - más cortas en móviles para mejor rendimiento
+    const firstAnimationDuration = isMobileView ? 12000 : 15000
+    const secondAnimationDuration = isMobileView ? 12000 : 15000
+    const pauseBetweenAnimations = 3000
+
+    // Función recursiva para alternar entre animaciones con mejor manejo de errores
+    const runAnimationCycle = () => {
+      try {
+        // Iniciar primera animación (horizontal)
+        console.log("Iniciando animación horizontal de pájaros")
+        setShowBirds(true)
+        setShowDiagonalBirds(false)
+
+        // Programar el fin de la primera animación y el inicio de la segunda
+        const timer1 = setTimeout(() => {
+          console.log("Finalizando animación horizontal de pájaros")
+          setShowBirds(false)
+
+          // Pausa de 3 segundos antes de la segunda animación
+          const timer2 = setTimeout(() => {
+            // Iniciar segunda animación (diagonal)
+            console.log("Iniciando animación diagonal de pájaros")
+            setShowDiagonalBirds(true)
+
+            // Programar el fin de la segunda animación y reiniciar el ciclo
+            const timer3 = setTimeout(() => {
+              console.log("Finalizando animación diagonal de pájaros")
+              setShowDiagonalBirds(false)
+
+              // Pausa de 3 segundos antes de reiniciar el ciclo
+              const timer4 = setTimeout(() => {
+                console.log("Reiniciando ciclo de animaciones")
+                runAnimationCycle()
+              }, pauseBetweenAnimations)
+              timersRef.current.push(timer4)
+            }, secondAnimationDuration)
+            timersRef.current.push(timer3)
+          }, pauseBetweenAnimations)
+          timersRef.current.push(timer2)
+        }, firstAnimationDuration)
+        timersRef.current.push(timer1)
+      } catch (error) {
+        console.error("Error en la secuencia de animación:", error)
+        // Reintentar la animación después de un tiempo si falla
+        const recoveryTimer = setTimeout(runAnimationCycle, 5000)
+        timersRef.current.push(recoveryTimer)
+      }
+    }
+
+    // Iniciar el ciclo de animaciones inmediatamente
+    console.log("Iniciando secuencia de animación de pájaros")
+    runAnimationCycle()
   }
 
-  // Efecto para reiniciar la animación de los pájaros periódicamente
+  // Añadir un useEffect específico para iniciar las animaciones
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      resetBirdsAnimation()
-    }, 15000) // Reiniciar cada 15 segundos
+    // Iniciar la secuencia de animaciones con un pequeño retraso para asegurar que todo esté cargado
+    const initTimer = setTimeout(() => {
+      startAnimationSequence()
+    }, 1000)
 
-    return () => clearInterval(intervalId)
-  }, [])
+    return () => {
+      clearTimeout(initTimer)
+    }
+  }, []) // Este efecto solo se ejecuta una vez al montar el componente
 
   return (
     <div className="parallax-container">
@@ -155,10 +229,11 @@ export default function ParallaxCooperativa() {
             style={{ objectFit: "contain" }}
           />
         </div>
-        {/* Añadir el nuevo elemento de pájaros diagonales dentro de la sección #top */}
+
+        {/* Animación diagonal de pájaros */}
         <div className={`flying-birds-diagonal ${showDiagonalBirds ? "animate-birds-diagonal" : ""}`}>
           <Image
-            src="/assets/imagenes/parallax/pajaros2.gif"
+            src="/assets/imagenes/parallax/pajaros3.gif"
             alt="Pájaros volando en diagonal"
             width={90}
             height={75}
