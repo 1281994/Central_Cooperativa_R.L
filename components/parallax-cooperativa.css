@@ -30,7 +30,7 @@
   left: 0;
   height: 200px;
   width: 100%;
-  background: linear-gradient(to top, #fff, transparent);
+  background: linear-gradient(to top, #eff6eb, transparent);
   z-index: 1000;
 }
 
@@ -67,6 +67,104 @@
   display: block;
   font-size: 5rem;
   color: #20496a;
+}
+
+/* Estilos para la animación de pájaros */
+.flying-birds {
+  position: absolute;
+  z-index: 2; /* Reducir el z-index para que esté detrás de las montañas pero encima del fondo */
+  top: 20%;
+  right: -100px; /* Comienza fuera de la pantalla a la derecha */
+  width: 90px;
+  height: 75px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Asegurar que las montañas tengan un z-index mayor que los pájaros */
+#mountain_left,
+#mountain_right {
+  z-index: 3; /* Mayor que el z-index de los pájaros */
+}
+
+/* La imagen de fondo ya tiene z-index 1 por defecto */
+#top img:first-child {
+  z-index: 1; /* Asegurar que la imagen de fondo esté en la capa más atrás */
+}
+
+/* El texto debe estar por encima de todo */
+#text {
+  z-index: 10; /* Mantener el texto por encima de todo */
+}
+
+.flying-birds.animate-birds {
+  animation: flyAcross 15s linear forwards;
+  opacity: 1;
+}
+
+@keyframes flyAcross {
+  0% {
+    transform: translateX(0) scale(1);
+    right: -100px;
+  }
+  20% {
+    transform: translateX(-20vw) scale(0.9);
+  }
+  40% {
+    transform: translateX(-40vw) scale(0.8);
+  }
+  60% {
+    transform: translateX(-60vw) scale(0.7);
+  }
+  80% {
+    transform: translateX(-80vw) scale(0.6);
+  }
+  100% {
+    transform: translateX(-100vw) scale(0.5);
+  }
+}
+
+/* Añadir después de la animación de pájaros existente */
+
+/* Estilos para la segunda animación de pájaros (diagonal) */
+.flying-birds-diagonal {
+  position: absolute;
+  z-index: 2; /* Mismo z-index que los otros pájaros para estar detrás de las montañas */
+  bottom: 10%; /* Posición inicial en la parte inferior */
+  left: -100px; /* Comienza fuera de la pantalla a la izquierda */
+  width: 90px;
+  height: 75px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transform-origin: center center;
+}
+
+.flying-birds-diagonal.animate-birds-diagonal {
+  animation: flyDiagonal 15s linear forwards;
+  opacity: 1;
+}
+
+@keyframes flyDiagonal {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+    bottom: 10%;
+    left: -100px;
+  }
+  20% {
+    transform: translateX(20vw) translateY(-15vh) scale(0.9);
+  }
+  40% {
+    transform: translateX(40vw) translateY(-30vh) scale(0.8);
+  }
+  60% {
+    transform: translateX(60vw) translateY(-45vh) scale(0.7);
+  }
+  80% {
+    transform: translateX(80vw) translateY(-60vh) scale(0.6);
+  }
+  100% {
+    transform: translateX(100vw) translateY(-75vh) scale(0.5);
+  }
 }
 
 #sec {
@@ -127,7 +225,7 @@
 #parallax-world-of-ugg p {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
-  font-size: 18px; 
+  font-size: 18px;
   line-height: 24px;
 }
 
@@ -369,6 +467,28 @@
   .colored-paragraph {
     font-size: 1rem;
   }
+
+  /* Ajustar animación de pájaros para móviles */
+  @keyframes flyAcross {
+    0% {
+      transform: scale(0.8) translateX(100vw);
+    }
+    20% {
+      transform: scale(0.7) translateX(60vw) translateY(-5vh);
+    }
+    40% {
+      transform: scale(0.6) translateX(20vw) translateY(-10vh);
+    }
+    60% {
+      transform: scale(0.5) translateX(-20vw) translateY(-15vh);
+    }
+    80% {
+      transform: scale(0.4) translateX(-60vw) translateY(-20vh);
+    }
+    100% {
+      transform: scale(0.3) translateX(-100vw) translateY(-25vh);
+    }
+  }
 }
 
 /* Responsive - Móviles pequeños */
@@ -452,5 +572,31 @@
   /* Firefox */
   #top img {
     transform: none;
+  }
+}
+
+/* Ajuste para dispositivos móviles */
+@media screen and (max-width: 767px) {
+  @keyframes flyDiagonal {
+    0% {
+      transform: scale(0.8) translateX(0) translateY(0);
+      bottom: 10%;
+      left: -100px;
+    }
+    20% {
+      transform: scale(0.7) translateX(20vw) translateY(-15vh);
+    }
+    40% {
+      transform: scale(0.6) translateX(40vw) translateY(-30vh);
+    }
+    60% {
+      transform: scale(0.5) translateX(60vw) translateY(-45vh);
+    }
+    80% {
+      transform: scale(0.4) translateX(80vw) translateY(-60vh);
+    }
+    100% {
+      transform: scale(0.3) translateX(100vw) translateY(-75vh);
+    }
   }
 }

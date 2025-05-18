@@ -10,6 +10,7 @@ import NuestraMision from "@/components/NuestraMision"
 import NuestraVision from "@/components/NuestraVision"
 import ImageMarquee from "@/components/ImageMarquee"
 import Slider from "@/components/Slider"
+import ProductosCards from "@/components/ProductosCards"
 import ProcesoProduccion from "@/components/ProcesoProduccion"
 
 
@@ -69,6 +70,9 @@ export default function Home() {
   </div>
 <div id="SLIDER">
     <Slider />
+  </div>
+  <div id="productos">
+    <ProductosCards />
   </div>
 
  <div id="nuestra-mision">

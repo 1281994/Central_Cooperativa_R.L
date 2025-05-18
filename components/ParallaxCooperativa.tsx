@@ -15,6 +15,10 @@ export default function ParallaxCooperativa() {
   const [isIOS, setIsIOS] = useState(false)
   // Estado para detectar si el dispositivo es móvil
   const [isMobile, setIsMobile] = useState(false)
+  // Estado para controlar la animación de los pájaros
+  const [showBirds, setShowBirds] = useState(false)
+  // Añadir un nuevo estado para controlar la animación diagonal de pájaros
+  const [showDiagonalBirds, setShowDiagonalBirds] = useState(false)
 
   useEffect(() => {
     // Detectar si es iOS
@@ -86,31 +90,83 @@ export default function ParallaxCooperativa() {
     // Ejecutar una vez al inicio para configurar correctamente
     handleScroll()
 
+    // Mostrar los pájaros después de un tiempo para la primera animación
+    const birdsTimer = setTimeout(() => {
+      setShowBirds(true)
+
+      // Iniciar la segunda animación con un retraso
+      setTimeout(() => {
+        setShowDiagonalBirds(true)
+      }, 3000) // 3 segundos después de la primera animación
+    }, 1000)
+
     return () => {
       window.removeEventListener("scroll", scrollListener)
       window.removeEventListener("resize", handleResize)
+      clearTimeout(birdsTimer)
     }
   }, [isIOS, isMobile])
+
+  // Modificar la función resetBirdsAnimation para incluir la nueva animación
+  const resetBirdsAnimation = () => {
+    setShowBirds(false)
+    setShowDiagonalBirds(false)
+
+    setTimeout(() => {
+      setShowBirds(true)
+    }, 100)
+
+    // Iniciar la animación diagonal con un pequeño retraso
+    setTimeout(() => {
+      setShowDiagonalBirds(true)
+    }, 3000) // 3 segundos después de la primera animación
+  }
+
+  // Efecto para reiniciar la animación de los pájaros periódicamente
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      resetBirdsAnimation()
+    }, 15000) // Reiniciar cada 15 segundos
+
+    return () => clearInterval(intervalId)
+  }, [])
 
   return (
     <div className="parallax-container">
       {/* Primera sección - Hero con parallax */}
       <section id="top">
+        {/* 1. Imagen de fondo (capa más atrás) */}
         <Image
           src="/assets/imagenes/parallax/portada principal.jpg"
           alt="Fondo"
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", zIndex: 1 }}
         />
 
-        <h2 id="text" ref={textRef}>
-          Central de Cooperativas <br />
-          Las Diosas R.L
-          <br />
-        </h2>
+        {/* 2. Animación de pájaros volando (capa intermedia) */}
+        <div className={`flying-birds ${showBirds ? "animate-birds" : ""}`}>
+          <Image
+            src="/assets/imagenes/parallax/pajaros1.gif"
+            alt="Pájaros volando"
+            width={90}
+            height={75}
+            style={{ objectFit: "contain" }}
+          />
+        </div>
+        {/* Añadir el nuevo elemento de pájaros diagonales dentro de la sección #top */}
+        <div className={`flying-birds-diagonal ${showDiagonalBirds ? "animate-birds-diagonal" : ""}`}>
+          <Image
+            src="/assets/imagenes/parallax/pajaros2.gif"
+            alt="Pájaros volando en diagonal"
+            width={90}
+            height={75}
+            style={{ objectFit: "contain" }}
+          />
+        </div>
 
+        {/* 3. Montañas (capa superior) */}
         <Image
           src="/assets/imagenes/parallax/2.png"
           alt="Montaña izquierda"
@@ -118,7 +174,7 @@ export default function ParallaxCooperativa() {
           ref={mountainLeftRef}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", zIndex: 3 }}
         />
 
         <Image
@@ -128,17 +184,24 @@ export default function ParallaxCooperativa() {
           ref={mountainRightRef}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", zIndex: 3 }}
         />
+
+        {/* 4. Texto (capa superior a todo) */}
+        <h2 id="text" ref={textRef}>
+          Central de Cooperativas <br />
+          Las Diosas R.L
+          <br />
+        </h2>
       </section>
 
       {/* Sección de información */}
       <section id="sec">
         <h2>Conoce acerca de nosotras</h2>
         <p>
-          La Central de Cooperativas Las Diosas es una organización de segundo grado, integrada por mujeres
-          campesinas, que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos
-          del país siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
+          La Central de Cooperativas Las Diosas es una organización de segundo grado, integrada por mujeres campesinas,
+          que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos del país
+          siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
         </p>
       </section>
 
@@ -169,8 +232,8 @@ export default function ParallaxCooperativa() {
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="margin-top-10">
-              La organización esta integrada por más de cuatrocientas mujeres que se dedican al procesamiento de café y miel
-              generando beneficos ya que la organización les ha permitido salir adelante y ser piezas claves en la
+              La organización esta integrada por más de cuatrocientas mujeres que se dedican al procesamiento de café y
+              miel generando beneficos ya que la organización les ha permitido salir adelante y ser piezas claves en la
               economía de sus familias y de su comunidad.
             </p>
           </div>
@@ -203,21 +266,25 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="colored-paragraph">
-              <span className="first-character atw">L</span>a Central de Cooperativas Las Diosas es una organización 
-              de segundo grado integrando mujeres campesinas, que agrupa a ocho cooperativas de base. 
-              Las socias están ubicadas en diferentes comunidades y zonas productivas de los departamentos 
-              de Estelí, Matagalpa, Nueva Segovia y Jinotega, al norte de Nicaragua.  
-              La Central Las Diosas, organización certificada con el comercio justo, producción orgánica y sello a 
-             la producción más limpia, surgió el 17 de mayo de 2012 como un sujeto insurgente indignado por las desigualdades que padecían las mujeres desde antes del 2004 que se habían constituido las primeras cooperativas, con una agenda propia que dio respuestas afirmativas a las mujeres campesinas.
-             Promueve el fortalecimiento organizativo de las cooperativas de base asociadas a la central, estas se dividen en ocho grupos, 
-              aglomeran a cuatrocientos treinta mujeres productoras, apicultoras pertenecientes a quince comunidades donde tiene trabajo las Diosas en la región norte del país. 
+              <span className="first-character atw">L</span>a Central de Cooperativas Las Diosas es una organización de
+              segundo grado integrando mujeres campesinas, que agrupa a ocho cooperativas de base. Las socias están
+              ubicadas en diferentes comunidades y zonas productivas de los departamentos de Estelí, Matagalpa, Nueva
+              Segovia y Jinotega, al norte de Nicaragua. La Central Las Diosas, organización certificada con el comercio
+              justo, producción orgánica y sello a la producción más limpia, surgió el 17 de mayo de 2012 como un sujeto
+              insurgente indignado por las desigualdades que padecían las mujeres desde antes del 2004 que se habían
+              constituido las primeras cooperativas, con una agenda propia que dio respuestas afirmativas a las mujeres
+              campesinas. Promueve el fortalecimiento organizativo de las cooperativas de base asociadas a la central,
+              estas se dividen en ocho grupos, aglomeran a cuatrocientos treinta mujeres productoras, apicultoras
+              pertenecientes a quince comunidades donde tiene trabajo las Diosas en la región norte del país.
             </p>
             <p className="line-break margin-top-10"></p>
             <p className="colored-paragraph margin-top-10">
-              De esta manera, poco a poco hemos ido construyendo una organización que ha logrado posicionarse en el mercado 
-              nacional e internacional, siendo un referente en la producción de café y miel, así como en la comercialización 
-              de productos agroecológicos. La Central Las Diosas ha sido reconocida por su compromiso con la equidad de género y la defensa de los derechos de las mujeres, convirtiéndose en un modelo a seguir para otras organizaciones cooperativas en el país.
-              Logrando asi colocarnos a la vanguardia en la actividad productiva a nivel nacional.
+              De esta manera, poco a poco hemos ido construyendo una organización que ha logrado posicionarse en el
+              mercado nacional e internacional, siendo un referente en la producción de café y miel, así como en la
+              comercialización de productos agroecológicos. La Central Las Diosas ha sido reconocida por su compromiso
+              con la equidad de género y la defensa de los derechos de las mujeres, convirtiéndose en un modelo a seguir
+              para otras organizaciones cooperativas en el país. Logrando asi colocarnos a la vanguardia en la actividad
+              productiva a nivel nacional.
             </p>
           </div>
         </section>
