@@ -175,7 +175,7 @@ export default function ParallaxCooperativa() {
         {/* Animación diagonal de pájaros */}
         <div className={`flying-birds-diagonal ${showDiagonalBirds ? "animate-birds-diagonal" : ""}`}>
           <Image
-            src="/assets/imagenes/parallax/pajaros2.gif"
+            src="/assets/imagenes/parallax/pajaros3.gif"
             alt="Pájaros volando en diagonal"
             width={90}
             height={75}
