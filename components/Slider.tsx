@@ -78,7 +78,7 @@ export default function Slider() {
     showSlider(newActive)
   }
 
-  // Inicializar carrusel 3D y eventos táctiles
+  // Inicializar carrusel 3D
   useEffect(() => {
     // Variables para el carrusel 3D
     let radius = 340
@@ -131,17 +131,17 @@ export default function Slider() {
       const thumbnailContainer = document.querySelector(".thumbnail")
       if (thumbnailContainer) {
         if (windowWidth <= 400) {
-          (thumbnailContainer as HTMLElement).style.bottom = "200px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "200px"
         } else if (windowWidth <= 480) {
-          (thumbnailContainer as HTMLElement).style.bottom = "180px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "180px"
         } else if (windowWidth <= 576) {
-          (thumbnailContainer as HTMLElement).style.bottom = "150px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "150px"
         } else if (windowWidth <= 768) {
-          (thumbnailContainer as HTMLElement).style.bottom = "120px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "120px"
         } else if (windowWidth <= 992) {
-          (thumbnailContainer as HTMLElement).style.bottom = "90px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "90px"
         } else {
-          (thumbnailContainer as HTMLElement).style.bottom = "100px"
+          ;(thumbnailContainer as HTMLElement).style.bottom = "100px"
         }
       }
 
@@ -174,7 +174,7 @@ export default function Slider() {
     adjustThumbnailSize()
     setTimeout(() => initCarousel(), 1000)
 
-    // Eventos de arrastre (soporte para pointer y touch)
+    // Eventos de arrastre
     let sX: number,
       sY: number,
       nX: number,
@@ -183,32 +183,19 @@ export default function Slider() {
       desY = 0
     const odrag = dragContainerRef.current
 
-    const handleStart = (e: PointerEvent | TouchEvent) => {
+    const handlePointerDown = (e: PointerEvent) => {
       if (odrag && odrag.timer) {
         clearInterval(odrag.timer)
       }
 
-      e.preventDefault() // Evitar comportamiento predeterminado (como scroll en móviles)
-      if ("touches" in e) {
-        // Evento táctil
-        sX = e.touches[0].clientX
-        sY = e.touches[0].clientY
-      } else {
-        // Evento de pointer
-        sX = (e as PointerEvent).clientX
-        sY = (e as PointerEvent).clientY
-      }
+      e = e || window.event
+      sX = e.clientX
+      sY = e.clientY
 
-      const handleMove = (e: PointerEvent | TouchEvent) => {
-        e.preventDefault()
-        if ("touches" in e) {
-          nX = e.touches[0].clientX
-          nY = e.touches[0].clientY
-        } else {
-          nX = (e as PointerEvent).clientX
-          nY = (e as PointerEvent).clientY
-        }
-
+      const handlePointerMove = (e: PointerEvent) => {
+        e = e || window.event
+        nX = e.clientX
+        nY = e.clientY
         desX = nX - sX
         desY = nY - sY
         tX += desX * 0.1
@@ -219,7 +206,7 @@ export default function Slider() {
         sY = nY
       }
 
-      const handleEnd = () => {
+      const handlePointerUp = () => {
         if (odrag) {
           odrag.timer = window.setInterval(() => {
             desX *= 0.95
@@ -239,29 +226,25 @@ export default function Slider() {
           }, 17)
         }
 
-        document.removeEventListener("pointermove", handleMove as EventListener)
-        document.removeEventListener("pointerup", handleEnd)
-        document.removeEventListener("touchmove", handleMove as EventListener)
-        document.removeEventListener("touchend", handleEnd)
+        window.removeEventListener("pointermove", handlePointerMove)
+        window.removeEventListener("pointerup", handlePointerUp)
       }
 
-      document.addEventListener("pointermove", handleMove as EventListener)
-      document.addEventListener("pointerup", handleEnd)
-      document.addEventListener("touchmove", handleMove as EventListener)
-      document.addEventListener("touchend", handleEnd)
+      window.addEventListener("pointermove", handlePointerMove)
+      window.addEventListener("pointerup", handlePointerUp)
+
+      return false
     }
 
-    if (odrag) {
-      odrag.onpointerdown = handleStart as any
-      odrag.ontouchstart = handleStart as any
+    if (dragContainerRef.current) {
+      dragContainerRef.current.onpointerdown = handlePointerDown
     }
 
     window.addEventListener("resize", adjustThumbnailSize)
 
     return () => {
-      if (odrag) {
-        odrag.onpointerdown = null
-        odrag.ontouchstart = null
+      if (dragContainerRef.current) {
+        dragContainerRef.current.onpointerdown = null
       }
       window.removeEventListener("resize", adjustThumbnailSize)
       if (odrag && odrag.timer) {
