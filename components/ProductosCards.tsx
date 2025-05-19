@@ -1,174 +1,168 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import "./ProductosCards.css"
+import { useEffect, useRef } from "react";
+import "./ProductosCards.css";
 
 interface ProductCard {
-  id: number
-  title: string
-  description: string
-  timeAgo: string
-  readTime: number
-  views: number
-  comments: number
-  image: string
-  color: string
+  id: number;
+  title: string;
+  description: string;
+  timeAgo: string;
+  readTime: number;
+  views: number;
+  comments: number;
+  image: string;
+  color: string;
 }
 
 export default function ProductosCards() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  // Datos de las tarjetas de productos
   const productCards: ProductCard[] = [
-    {
-      id: 1,
-      title: "Café Orgánico",
-      description:
-        "Nuestro café orgánico es cultivado por mujeres campesinas bajo sombra, respetando los ciclos naturales y sin utilizar productos químicos.",
-      timeAgo: "1 semana",
-      readTime: 4,
-      views: 5123,
-      comments: 32,
-      image: "/assets/imagenes/productos/cafe organico molido.png",
-      color: "#e91e63", // Rosa
-    },
-    {
-      id: 2,
-      title: "Miel Natural",
-      description:
-        "Miel 100% natural producida por abejas que se alimentan de flores silvestres, sin aditivos ni conservantes, manteniendo todas sus propiedades.",
-      timeAgo: "2 semanas",
-      readTime: 7,
-      views: 7152,
-      comments: 21,
-      image: "/assets/imagenes/productos/miel.jpeg",
-      color: "#ff5722", // Naranja
-    },
-    {
-      id: 3,
-      title: "Flor de Jamaica",
-      description:
-        "Flor de jamaica deshidratada orgánica, perfecta para preparar refrescantes bebidas, tés e infusiones con propiedades antioxidantes.",
-      timeAgo: "3 semanas",
-      readTime: 5,
-      views: 3021,
-      comments: 15,
-      image: "/assets/imagenes/productos/jamaica.jpeg",
-      color: "#4caf50", // Verde
-    },
-    {
-      id: 4,
-      title: "Vino de Jamaica",
-      description:
-        "Delicioso vino artesanal elaborado a partir de flor de jamaica, con un sabor único y un proceso de fermentación natural y tradicional.",
-      timeAgo: "1 mes",
-      readTime: 6,
-      views: 4562,
-      comments: 27,
-      image: "/assets/imagenes/productos/vino.jpeg",
-      color: "#9c27b0", // Púrpura
-    },
-    {
-      id: 5,
-      title: "Café Molido",
-      description:
-        "Café molido de altura, tostado artesanalmente para resaltar sus notas de chocolate y frutos secos. Ideal para un despertar perfecto.",
-      timeAgo: "2 meses",
-      readTime: 3,
-      views: 6789,
-      comments: 18,
-      image: "/assets/imagenes/productos/cafe-molido.jpeg",
-      color: "#ff9800", // Ámbar
-    },
-    {
-      id: 6,
-      title: "Mermelada de Jamaica",
-      description:
-        "Mermelada artesanal de flor de jamaica, elaborada con ingredientes naturales. Deliciosa combinación de dulzura y acidez para tus desayunos.",
-      timeAgo: "3 meses",
-      readTime: 5,
-      views: 2468,
-      comments: 14,
-      image: "/assets/imagenes/productos/mermelada.jpeg",
-      color: "#8bc34a", // Verde claro
-    },
-  ]
+  {
+    id: 1,
+    title: "Café Orgánico",
+    description: "...",
+    timeAgo: "1 semana",
+    readTime: 4,
+    views: 5123,
+    comments: 32,
+    image: "/assets/imagenes/productos/cafe-organico-molido-P.png",
+    color: "#e91e63",
+  },
+  {
+    id: 2,
+    title: "Miel Natural",
+    description: "...",
+    timeAgo: "2 semanas",
+    readTime: 7,
+    views: 7152,
+    comments: 21,
+    image: "/assets/imagenes/productos/miel-de-abeja-P.png",
+    color: "#ff5722",
+  },
+  {
+    id: 3,
+    title: "Flor de Jamaica",
+    description: "...",
+    timeAgo: "3 semanas",
+    readTime: 5,
+    views: 3021,
+    comments: 15,
+    image: "/assets/imagenes/productos/flor-de-jamaica-P.png",
+    color: "#4caf50",
+  },
+  {
+    id: 4,
+    title: "Vino de Jamaica",
+    description: "...",
+    timeAgo: "1 mes",
+    readTime: 6,
+    views: 4562,
+    comments: 27,
+    image: "/assets/imagenes/productos/vino-de-rosa-de-jamaica-P.png",
+    color: "#9c27b0",
+  },
+  {
+    id: 5,
+    title: "Café Molido",
+    description: "...",
+    timeAgo: "2 meses",
+    readTime: 3,
+    views: 6789,
+    comments: 18,
+    image: "/assets/imagenes/productos/miel-de-abeja2-P.png",
+    color: "#ff9800",
+  },
+  {
+    id: 6,
+    title: "Mermelada de Jamaica",
+    description: "...",
+    timeAgo: "3 meses",
+    readTime: 5,
+    views: 2468,
+    comments: 14,
+    image: "/assets/imagenes/productos/mermelada-de-jamaica-P.png",
+    color: "#8bc34a",
+  },
+];
 
   useEffect(() => {
-    // Implementación del fondo animado con cajas
-    if (!wrapperRef.current) return
+    if (!wrapperRef.current) return;
 
-    const wrapper = wrapperRef.current
+    const wrapper = wrapperRef.current;
+    let animationFrameIds: number[] = [];
+    let isMounted = true;
+
     const createBox = () => {
-      const box = document.createElement("div")
-      box.classList.add("box")
+      const box = document.createElement("div");
+      box.classList.add("box");
 
-      // Tamaño aleatorio entre 15 y 75px
-      const size = Math.floor(Math.random() * (75 - 15)) + 15
-      box.style.width = `${size}px`
-      box.style.height = `${size}px`
+      const size = Math.floor(Math.random() * (75 - 15)) + 15;
+      box.style.width = `${size}px`;
+      box.style.height = `${size}px`;
 
-      // Posición inicial
-      const maxX = wrapper.clientWidth
-      const y = wrapper.clientHeight + size
-      const x = Math.floor(Math.random() * maxX)
+      const maxX = wrapper.clientWidth;
+      const y = wrapper.clientHeight + size;
+      const x = Math.floor(Math.random() * maxX);
 
-      // Velocidades aleatorias
-      const speedX = Math.random() * 2 - 1 // Entre -1 y 1
-      const speedY = Math.random() * -2 - 0.2 // Entre -2.2 y -0.2
-      const speedAngle = Math.random() * 6 - 3 // Entre -3 y 3
+      const speedX = Math.random() * 2 - 1;
+      const speedY = Math.random() * -2 - 0.2;
+      const speedAngle = Math.random() * 6 - 3;
 
-      // Ángulo inicial aleatorio
-      const angle = Math.floor(Math.random() * 360)
+      let angle = Math.floor(Math.random() * 360);
+      box.style.transform = `translateX(${x}px) translateY(${y}px) rotateZ(${angle}deg)`;
 
-      box.style.transform = `translateX(${x}px) translateY(${y}px) rotateZ(${angle}deg)`
+      wrapper.appendChild(box);
 
-      // Añadir la caja al wrapper
-      wrapper.appendChild(box)
-
-      // Animar la caja
-      let posX = x
-      let posY = y
-      let currentAngle = angle
+      let posX = x;
+      let posY = y;
+      let currentAngle = angle;
 
       const animateBox = () => {
-        if (!wrapper.contains(box)) return
-
-        posX += speedX
-        posY += speedY
-        currentAngle += speedAngle
-
-        box.style.transform = `translateX(${posX}px) translateY(${posY}px) rotateZ(${currentAngle}deg)`
-
-        // Eliminar la caja si sale de la pantalla
-        if (posY < -size || posX < -size || posX > wrapper.clientWidth + size) {
-          wrapper.removeChild(box)
-          return
+        if (!isMounted || !wrapper.contains(box)) {
+          return;
         }
 
-        requestAnimationFrame(animateBox)
-      }
+        posX += speedX;
+        posY += speedY;
+        currentAngle += speedAngle;
 
-      animateBox()
-    }
+        box.style.transform = `translateX(${posX}px) translateY(${posY}px) rotateZ(${currentAngle}deg)`;
 
-    // Crear cajas periódicamente
+        if (posY < -size || posX < -size || posX > wrapper.clientWidth + size) {
+          if (wrapper.contains(box)) {
+            wrapper.removeChild(box);
+          }
+          return;
+        }
+
+        const animationId = requestAnimationFrame(animateBox);
+        animationFrameIds.push(animationId);
+      };
+
+      animateBox();
+    };
+
     const interval = setInterval(() => {
       if (Math.random() < 0.25) {
-        // 25% de probabilidad de crear una caja
-        createBox()
+        createBox();
       }
-    }, 250)
+    }, 250);
 
-    // Crear algunas cajas iniciales
     for (let i = 0; i < 10; i++) {
-      createBox()
+      createBox();
     }
 
     return () => {
-      clearInterval(interval)
-    }
-  }, [])
+      isMounted = false;
+      clearInterval(interval);
+      animationFrameIds.forEach((id) => cancelAnimationFrame(id));
+      if (wrapper) {
+        wrapper.innerHTML = "";
+      }
+    };
+  }, []);
 
   return (
     <div className="productos-section">
@@ -214,5 +208,5 @@ export default function ProductosCards() {
         </div>
       </div>
     </div>
-  )
+  );
 }

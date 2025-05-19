@@ -13,76 +13,54 @@ interface DragContainer extends HTMLDivElement {
 const slidesData = [
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Desarrollo R.L COPEMUDESA.jpeg",
+    src: "/assets/imagenes/cooperativa/Desarrollo-R.L-COPEMUDESA.jpeg",
     title: "COPEMUDESA",
     description: "Cooperativa Multisectorial Mujeres en Desarrollo R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Tierra Nuestra R.L COMTINUE R.L.jpeg",
+    src: "/assets/imagenes/cooperativa/Tierra-Nuestra-R.L-COMTINUE R.L.jpeg",
     title: "COMTINUE R.L",
     description: "Cooperativa Multisectorial Tierra Nuestra R.L COMTINUE R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Mujeres Trabajadoras de Dipilto R.L CMTINUE R.L.jpeg",
+    src: "/assets/imagenes/cooperativa/Mujeres-Trabajadoras-de-Dipilto-R.L-CMTINUE-R.L.jpeg",
     title: "COMUTRADI R.L",
     description: "Cooperativa Multisectorial Mujeres Trabajadoras de Dipilto R.L",
   },
   {
     type: "image",
-    src: "/assets/imagenes/centraldiosas.jpg",
-    title: "Cooperativa 04",
+    src: "/assets/imagenes/cooperativa/Paz-y-Amor-Entre-Mujeres.jpeg",
+    title: "COOPAMUJER R.L.",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+      "Cooperativa Multisectorial Paz y Amor Entre Mujeres R.L COOPAMUJER R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa 2.jpg",
-    title: "Cooperativa 05",
+    src: "/assets/imagenes/cooperativa/Agropecuaria-Las-Perlas-del-Horno.jpeg",
+    title: "COASPEHO R.L",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+      "Cooperativa Agropecuaria Las Perlas Del Horno R.L COASPEHO R.L"
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa 3.jpg",
-    title: "Cooperativa 06",
+    src: "/assets/imagenes/cooperativa/Mujeres-del-Norte.jpeg",
+    title: "COPEMUJER R.L",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+      "Cooperativa Multisectorial Mujeres del Norte R.L COPEMUJER R.L",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa 4.jpg",
-    title: "Cooperativa 07",
+    src: "/assets/imagenes/cooperativa/Luz-Entre-Mujeres.jpeg",
+    title: "COOPELUZ R.L",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
-  },
-  {
-    type: "image",
-    src: "/assets/imagenes/cooperativa 5.jpg",
-    title: "Cooperativa 08",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
-  },
-  {
-    type: "image",
-    src: "/assets/imagenes/productos/granos.jpg",
-    title: "Cooperativa 09",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
-  },
-  {
-    type: "image",
-    src: "/assets/imagenes/cooperativa.jpg",
-    title: "Cooperativa 10",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.",
+      "Cooperativa Multisectorial Luz Entre Mujeres R.L COOPELUZ R.L",
   },
 ]
 
 export default function Slider() {
   const [itemActive, setItemActive] = useState(0)
-  const [autoplayInterval, setAutoplayInterval] = useState<NodeJS.Timeout | null>(null)
   const dragContainerRef = useRef<DragContainer>(null)
   const spinContainerRef = useRef<HTMLDivElement>(null)
   const groundRef = useRef<HTMLDivElement>(null)
@@ -281,22 +259,14 @@ export default function Slider() {
 
   // Configurar el autoplay para avanzar por todos los slides
   useEffect(() => {
-    if (autoplayInterval) {
-      clearInterval(autoplayInterval)
-    }
-
     const interval = setInterval(() => {
       nextSlide()
     }, 5000)
 
-    setAutoplayInterval(interval)
-
     return () => {
-      if (autoplayInterval) {
-        clearInterval(autoplayInterval)
-      }
+      clearInterval(interval)
     }
-  }, [itemActive, autoplayInterval])
+  }, []) // Dependencias vacías
 
   // Efecto para mostrar botones con animación al cambiar de slide
   useEffect(() => {

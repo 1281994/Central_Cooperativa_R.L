@@ -74,6 +74,9 @@ export default function Home() {
   <div id="productos">
     <ProductosCards />
   </div>
+  <div id="proceso-produccion">
+    <ProcesoProduccion />
+  </div>
 
  <div id="nuestra-mision">
     <NuestraMision />

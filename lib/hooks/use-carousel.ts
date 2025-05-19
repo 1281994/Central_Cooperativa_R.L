@@ -57,8 +57,6 @@ export function useCarousel({
     let imgHeight = 220
     const autoRotate = true
     let tX = 0
-    // Comentamos tY para evitar el error de variable no utilizada
-    // let tY = 10
 
     // Función para ajustar tamaño de thumbnails según pantalla
     const adjustThumbnailSize = () => {
@@ -135,7 +133,6 @@ export function useCarousel({
         desX = nX - sX
         desY = nY - sY
         tX += desX * 0.1
-        // tY += desY * 0.1 - No usamos tY para evitar el error
 
         if (odrag) applyTransform(odrag)
 
@@ -149,14 +146,12 @@ export function useCarousel({
             desX *= 0.95
             desY *= 0.95
             tX += desX * 0.1
-            // tY += desY * 0.1 - No usamos tY para evitar el error
 
             applyTransform(odrag)
 
             if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
               clearInterval(odrag.timer)
 
-              // Reiniciar animación
               if (spinContainerRef.current && autoRotate) {
                 const animationName = "spin"
                 spinContainerRef.current.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`
@@ -173,21 +168,17 @@ export function useCarousel({
 
     document.onpointerdown = handlePointerDown
 
-    // Auto run slider
-    const refreshInterval = setInterval(nextSlide, autoPlayInterval)
-
     // Resize event
     window.addEventListener("resize", adjustThumbnailSize)
 
     return () => {
       document.onpointerdown = null
       window.removeEventListener("resize", adjustThumbnailSize)
-      clearInterval(refreshInterval)
       if (odrag && odrag.timer) {
         clearInterval(odrag.timer)
       }
     }
-  }, [dragContainerRef, groundRef, spinContainerRef, autoPlayInterval, totalItems])
+  }, [dragContainerRef, groundRef, spinContainerRef])
 
   // Efecto para mostrar botones con animación al cambiar de slide
   useEffect(() => {
@@ -198,11 +189,7 @@ export function useCarousel({
         button.classList.add("show")
       }, 100)
     })
-
-    // Resetear intervalo de autoplay
-    const refreshInterval = setInterval(nextSlide, autoPlayInterval)
-    return () => clearInterval(refreshInterval)
-  }, [itemActive, autoPlayInterval, nextSlide])
+  }, [itemActive])
 
   return { itemActive, setItemActive: showSlider, nextSlide, prevSlide }
 }
