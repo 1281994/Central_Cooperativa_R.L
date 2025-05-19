@@ -13,49 +13,45 @@ interface DragContainer extends HTMLDivElement {
 const slidesData = [
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Desarrollo-R.L-COPEMUDESA.jpeg",
+    src: "/assets/imagenes/cooperativa/desarrollo-r.l-copemudesa.jpeg",
     title: "COPEMUDESA",
     description: "Cooperativa Multisectorial Mujeres en Desarrollo R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Tierra-Nuestra-R.L-COMTINUE R.L.jpeg",
+    src: "/assets/imagenes/cooperativa/tierra-nuestra-r.l-comtinue-r.l.jpeg",
     title: "COMTINUE R.L",
     description: "Cooperativa Multisectorial Tierra Nuestra R.L COMTINUE R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Mujeres-Trabajadoras-de-Dipilto-R.L-CMTINUE-R.L.jpeg",
+    src: "/assets/imagenes/cooperativa/mujeres-trabajadoras-de-dipilto-r.l-cmtinue-r.l.jpeg",
     title: "COMUTRADI R.L",
     description: "Cooperativa Multisectorial Mujeres Trabajadoras de Dipilto R.L",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Paz-y-Amor-Entre-Mujeres.jpeg",
+    src: "/assets/imagenes/cooperativa/paz-y-amor-entre-mujeres.jpeg",
     title: "COOPAMUJER R.L.",
-    description:
-      "Cooperativa Multisectorial Paz y Amor Entre Mujeres R.L COOPAMUJER R.L.",
+    description: "Cooperativa Multisectorial Paz y Amor Entre Mujeres R.L COOPAMUJER R.L.",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Agropecuaria-Las-Perlas-del-Horno.jpeg",
+    src: "/assets/imagenes/cooperativa/agropecuaria-las-perlas-del-horno.jpeg",
     title: "COASPEHO R.L",
-    description:
-      "Cooperativa Agropecuaria Las Perlas Del Horno R.L COASPEHO R.L"
+    description: "Cooperativa Agropecuaria Las Perlas Del Horno R.L COASPEHO R.L",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Mujeres-del-Norte.jpeg",
+    src: "/assets/imagenes/cooperativa/mujeres-del-norte.jpeg",
     title: "COPEMUJER R.L",
-    description:
-      "Cooperativa Multisectorial Mujeres del Norte R.L COPEMUJER R.L",
+    description: "Cooperativa Multisectorial Mujeres del Norte R.L COPEMUJER R.L",
   },
   {
     type: "image",
-    src: "/assets/imagenes/cooperativa/Luz-Entre-Mujeres.jpeg",
+    src: "/assets/imagenes/cooperativa/luz-entre-mujeres.jpeg",
     title: "COOPELUZ R.L",
-    description:
-      "Cooperativa Multisectorial Luz Entre Mujeres R.L COOPELUZ R.L",
+    description: "Cooperativa Multisectorial Luz Entre Mujeres R.L COOPELUZ R.L",
   },
 ]
 
