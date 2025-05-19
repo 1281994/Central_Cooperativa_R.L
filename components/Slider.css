@@ -1,23 +1,33 @@
 /* CSS Slider */
 .slider {
-  height: calc(100vh - 56px); /* Altura total de la ventana menos la altura del navbar */
   position: relative;
-  overflow: hidden; /* Evitar que el contenido se desborde */
+  width: 100%;
+  height: 100vh; /* Cambiado para usar 100vh directamente */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slider .list {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .slider .list .item {
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0;
   overflow: hidden;
   opacity: 0;
-  transition: .5s;
+  transition: opacity 0.5s ease;
+  width: 100%;
+  height: 100%;
 }
 
 .slider .list .item img,
 .slider .list .item video {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover; /* Asegurar que las imágenes se ajusten correctamente */
 }
 
 .slider .list .item::after {
@@ -37,6 +47,7 @@
   width: 90%;
   max-width: 500px;
   z-index: 12;
+  box-sizing: border-box;
 }
 
 .slider .list .item .content p:nth-child(1) {
@@ -75,7 +86,7 @@
   transform: translateY(30px);
   filter: blur(20px);
   opacity: 0;
-  animation: showContent .5s .7s ease-in-out 1 forwards;
+  animation: showContent 0.5s 0.7s ease-in-out 1 forwards;
 }
 
 .slider .list .item.active h2 {
@@ -91,7 +102,7 @@
   position: relative;
   z-index: 20;
   margin-top: 10px;
-  margin-bottom: 80px; /* Reducido de 120px a 80px para subir más el carrusel */
+  margin-bottom: 80px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -99,14 +110,10 @@
 
 .slider .buttons button {
   -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: button;
   background-color: #080908;
   color: #e6e6e6;
   cursor: pointer;
-  font-family:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 100%;
   font-weight: 900;
   line-height: 1.5;
@@ -224,7 +231,7 @@
   border-radius: 5px;
   font-size: x-large;
   color: #eee;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .arrows button:hover {
@@ -235,10 +242,10 @@
 /* Thumbnail (Carrusel 3D) */
 .thumbnail {
   position: absolute;
-  bottom: 100px; /* Aumentado de 50px a 100px para subir más el carrusel */
+  bottom: 100px;
   z-index: 11;
   width: 100%;
-  height: 200px; /* Reducido de 250px a 200px para que ocupe menos espacio vertical */
+  height: 200px;
   padding: 0;
   box-sizing: border-box;
   overflow: visible;
@@ -253,7 +260,7 @@
   display: flex;
   margin: auto;
   transform-style: preserve-3d;
-  transform: scale(1); /* Escala inicial */
+  transform: scale(1);
 }
 
 #drag-container .item {
@@ -261,14 +268,12 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 120px; /* Tamaño base más pequeño */
+  width: 120px;
   height: 180px;
   filter: brightness(0.5);
   transition: filter 0.5s;
   flex-shrink: 0;
-  -webkit-box-shadow: 0 0 8px hsl(0, 0%, 100%);
   box-shadow: 0 0 8px #fff;
-  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #555862);
 }
 
 #drag-container .item.active {
@@ -308,7 +313,7 @@
   top: 100%;
   left: 50%;
   transform: translate(-50%, -50%) rotateX(90deg);
-  background: -webkit-radial-gradient(center center, farthest-side, #727683, transparent);
+  background: radial-gradient(center center, farthest-side, #727683, transparent);
 }
 
 @-webkit-keyframes spin {
@@ -331,15 +336,19 @@
 
 /* Estilos para los videos en el carrusel */
 .video-class {
-  width: 100%; /* Ajusta el ancho al contenedor */
-  height: 100%; /* Ajusta la altura al contenedor */
-  object-fit: cover; /* Hace que el video se comporte como una imagen */
-  border-radius: 10px; /* Opcional: bordes redondeados si las imágenes los tienen */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Opcional: sombra si las imágenes la tienen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Queries específicas para el slider */
 @media screen and (max-width: 992px) {
+  .slider {
+    height: 100vh; /* Asegurar altura completa */
+  }
+
   .slider .list .item .content {
     left: 5%;
     top: 5%;
@@ -373,19 +382,19 @@
   .thumbnail {
     height: 25vh;
     max-height: 250px;
+    bottom: 90px;
   }
 
   .slider .buttons {
     margin-bottom: 70px;
   }
-
-  .thumbnail {
-    bottom: 90px;
-    height: 180px;
-  }
 }
 
 @media screen and (max-width: 768px) {
+  .slider {
+    height: 100vh;
+  }
+
   .slider .list .item .content {
     top: 5%;
   }
@@ -433,8 +442,14 @@
 }
 
 @media screen and (max-width: 576px) {
+  .slider {
+    height: 100vh;
+  }
+
   .slider .list .item .content {
     top: 2%;
+    left: 3%;
+    width: 94%;
   }
 
   .slider .list .item .content h2 {
@@ -453,6 +468,7 @@
 
   .slider .buttons {
     margin-top: 10px;
+    margin-bottom: 50px;
   }
 
   .slider .buttons button {
@@ -469,7 +485,6 @@
   #drag-container .item {
     width: 80px;
     height: 120px;
-    -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, #555862);
   }
 
   #drag-container .item .content {
@@ -489,10 +504,6 @@
     width: 30px;
     height: 30px;
     font-size: medium;
-  }
-
-  .slider .buttons {
-    margin-bottom: 50px;
   }
 }
 
@@ -524,7 +535,6 @@
   #drag-container .item {
     width: 60px;
     height: 90px;
-    -webkit-box-reflect: below 3px linear-gradient(transparent, transparent, #555862);
   }
 
   .slider .buttons {
@@ -534,5 +544,22 @@
   .thumbnail {
     bottom: 200px;
     height: 100px;
+  }
+}
+
+/* Ajustes para Safari */
+@supports (-webkit-overflow-scrolling: touch) {
+  .slider {
+    height: 100vh; /* Asegurar compatibilidad con Safari */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #drag-container,
+  #spin-container {
+    transform-style: flat; /* Evitar problemas con transform-style en Safari */
+  }
+
+  #ground {
+    display: none; /* Desactivar el fondo 3D que puede causar problemas */
   }
 }

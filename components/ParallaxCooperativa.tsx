@@ -153,7 +153,7 @@ export default function ParallaxCooperativa() {
       <section id="top">
         {/* 1. Imagen de fondo (capa más atrás) */}
         <Image
-          src="/assets/imagenes/parallax/portada principal.jpg"
+          src="/assets/imagenes/parallax/portada-principal.jpg"
           alt="Fondo"
           fill
           priority
