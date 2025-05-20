@@ -97,7 +97,7 @@
   flex-wrap: wrap;
 }
 
-.slider .buttons button {
+.slider .buttons a.btn-17 {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
   background-color: #080908;
@@ -120,25 +120,26 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
+  text-decoration: none; /* Remove underline from Link */
 }
 
 /* Clase para mostrar los botones con animación */
-.slider .buttons button.show {
+.slider .buttons a.btn-17.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.slider .buttons button .text-container {
+.slider .buttons a.btn-17 .text-container {
   display: block;
   mix-blend-mode: difference;
 }
 
-.slider .buttons button .text {
+.slider .buttons a.btn-17 .text {
   display: block;
   position: relative;
 }
 
-.slider .buttons button:hover .text {
+.slider .buttons a.btn-17:hover .text {
   -webkit-animation: move-up-alternate 0.3s forwards;
   animation: move-up-alternate 0.3s forwards;
 }
@@ -173,8 +174,8 @@
   }
 }
 
-.slider .buttons button:after,
-.slider .buttons button:before {
+.slider .buttons a.btn-17:after,
+.slider .buttons a.btn-17:before {
   --skew: 0.2;
   background: #fff;
   content: "";
@@ -189,18 +190,18 @@
   width: 100%;
 }
 
-.slider .buttons button:after {
+.slider .buttons a.btn-17:after {
   --progress: 0%;
   left: calc(50% + 50% * var(--skew));
   top: 102%;
   z-index: -1;
 }
 
-.slider .buttons button:hover:before {
+.slider .buttons a.btn-17:hover:before {
   --progress: 100%;
 }
 
-.slider .buttons button:hover:after {
+.slider .buttons a.btn-17:hover:after {
   --progress: -102%;
 }
 
@@ -403,7 +404,7 @@
     font-size: 0.8rem;
   }
 
-  .slider .buttons button {
+  .slider .buttons a.btn-17 {
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
   }
@@ -455,7 +456,7 @@
     margin-top: 10px;
   }
 
-  .slider .buttons button {
+  .slider .buttons a.btn-17 {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }

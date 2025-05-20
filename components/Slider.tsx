@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import "./Slider.css"
 
 // Extender la interfaz HTMLDivElement para incluir la propiedad timer
@@ -9,49 +10,56 @@ interface DragContainer extends HTMLDivElement {
   timer?: number
 }
 
-// Datos para los slides
+// Datos para los slides con URLs asociadas
 const slidesData = [
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/desarrollo-r.l-copemudesa.jpg",
     title: "COPEMUDESA",
     description: "Cooperativa Multisectorial Mujeres en Desarrollo R.L.",
+    url: "https://example.com/copemudesa",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/tierra-nuestra-r.l-comtinue-r.l.jpeg",
     title: "COMTINUE R.L",
     description: "Cooperativa Multisectorial Tierra Nuestra R.L COMTINUE R.L.",
+    url: "https://example.com/comtinue",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/mujeres-trabajadoras-de-dipilto-r.l-cmtinue-r.l.jpeg",
     title: "COMUTRADI R.L",
     description: "Cooperativa Multisectorial Mujeres Trabajadoras de Dipilto R.L",
+    url: "https://example.com/comutradi",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/paz-y-amor-entre-mujeres.jpeg",
     title: "COOPAMUJER R.L.",
     description: "Cooperativa Multisectorial Paz y Amor Entre Mujeres R.L COOPAMUJER R.L.",
+    url: "https://example.com/coopamujer",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/agropecuaria-las-perlas-del-horno.jpeg",
     title: "COASPEHO R.L",
     description: "Cooperativa Agropecuaria Las Perlas Del Horno R.L COASPEHO R.L",
+    url: "https://example.com/coaspeho",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/mujeres-del-norte.jpg",
     title: "COPEMUJER R.L",
     description: "Cooperativa Multisectorial Mujeres del Norte R.L COPEMUJER R.L",
+    url: "https://mujeresdelnorte.netlify.app/",
   },
   {
     type: "image",
     src: "/assets/imagenes/cooperativas/luz-entre-mujeres.jpeg",
     title: "COOPELUZ R.L",
     description: "Cooperativa Multisectorial Luz Entre Mujeres R.L COOPELUZ R.L",
+    url: "https://example.com/coopeluz",
   },
 ]
 
@@ -80,7 +88,6 @@ export default function Slider() {
 
   // Inicializar carrusel 3D
   useEffect(() => {
-    // Variables para el carrusel 3D
     let radius = 340
     const rotateSpeed = 60
     let imgWidth = 150
@@ -88,7 +95,6 @@ export default function Slider() {
     const autoRotate = true
     let tX = 0
 
-    // Función para ajustar tamaño de thumbnails según pantalla
     const adjustThumbnailSize = () => {
       const windowWidth = window.innerWidth
 
@@ -148,7 +154,6 @@ export default function Slider() {
       initCarousel(0.1)
     }
 
-    // Inicializar el carrusel 3D
     const initCarousel = (delayTime?: number) => {
       const thumbnails = document.querySelectorAll(".thumbnail .item")
       thumbnails.forEach((thumbnail, i) => {
@@ -159,34 +164,23 @@ export default function Slider() {
       })
     }
 
-    // Aplicar transformación
     const applyTransform = (obj: HTMLElement) => {
       obj.style.transform = `rotateX(-10deg) rotateY(${tX}deg)`
     }
 
-    // Evento de rotación automática
     if (autoRotate && spinContainerRef.current) {
       const animationName = "spin"
       spinContainerRef.current.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`
     }
 
-    // Inicializar
     adjustThumbnailSize()
     setTimeout(() => initCarousel(), 1000)
 
-    // Eventos de arrastre
-    let sX: number,
-      sY: number,
-      nX: number,
-      nY: number,
-      desX = 0,
-      desY = 0
+    let sX: number, sY: number, nX: number, nY: number, desX = 0, desY = 0
     const odrag = dragContainerRef.current
 
     const handlePointerDown = (e: PointerEvent) => {
-      if (odrag && odrag.timer) {
-        clearInterval(odrag.timer)
-      }
+      if (odrag && odrag.timer) clearInterval(odrag.timer)
 
       e = e || window.event
       sX = e.clientX
@@ -243,30 +237,15 @@ export default function Slider() {
     window.addEventListener("resize", adjustThumbnailSize)
 
     return () => {
-      if (dragContainerRef.current) {
-        dragContainerRef.current.onpointerdown = null
-      }
+      if (dragContainerRef.current) dragContainerRef.current.onpointerdown = null
       window.removeEventListener("resize", adjustThumbnailSize)
-      if (odrag && odrag.timer) {
-        clearInterval(odrag.timer)
-      }
+      if (odrag && odrag.timer) clearInterval(odrag.timer)
     }
   }, [])
 
-  // Configurar el autoplay para avanzar por todos los slides
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide()
-    }, 5000)
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, []) // Dependencias vacías
-
   // Efecto para mostrar botones con animación al cambiar de slide
   useEffect(() => {
-    const buttons = document.querySelectorAll(`.slider .list .item:nth-child(${itemActive + 1}) .buttons button`)
+    const buttons = document.querySelectorAll(`.slider .list .item:nth-child(${itemActive + 1}) .buttons a.btn-17`)
     buttons.forEach((button) => {
       button.classList.remove("show")
       setTimeout(() => {
@@ -275,7 +254,6 @@ export default function Slider() {
     })
   }, [itemActive])
 
-  // Función para renderizar el contenido del slide según su tipo
   const renderSlideContent = (slide: (typeof slidesData)[0], index: number, isThumbnail = false) => {
     if (slide.type === "video") {
       return <video src={slide.src} controls autoPlay muted loop className="video-class" />
@@ -288,11 +266,7 @@ export default function Slider() {
               alt={slide.title}
               width={150}
               height={220}
-              style={{
-                objectFit: "cover",
-                width: "100%",
-                height: "100%",
-              }}
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
             />
           )
         } else {
@@ -331,7 +305,6 @@ export default function Slider() {
 
   return (
     <div className="slider">
-      {/* List Items */}
       <div className="list">
         {slidesData.map((slide, index) => (
           <div key={index} className={`item ${index === itemActive ? "active" : ""}`}>
@@ -341,23 +314,17 @@ export default function Slider() {
               <h2>{slide.title}</h2>
               <p>{slide.description}</p>
               <div className="buttons">
-                <button className="btn-17">
+                <Link href={slide.url} className="btn-17">
                   <span className="text-container">
                     <span className="text">Ir al Sitio</span>
                   </span>
-                </button>
-                <button className="btn-17">
-                  <span className="text-container">
-                    <span className="text">SUBSCRIBE</span>
-                  </span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Button arrows */}
       <div className="arrows">
         <button id="prev" onClick={prevSlide}>
           {"<"}
@@ -367,7 +334,6 @@ export default function Slider() {
         </button>
       </div>
 
-      {/* Thumbnail (carrusel 3D) */}
       <div className="thumbnail">
         <div id="drag-container" ref={dragContainerRef}>
           <div id="spin-container" ref={spinContainerRef}>
@@ -381,7 +347,6 @@ export default function Slider() {
                 <div className="content">{slide.title}</div>
               </div>
             ))}
-            {/* Texto en el centro del carrusel */}
             <p>Cooperativa Las Diosas</p>
           </div>
           <div id="ground" ref={groundRef}></div>

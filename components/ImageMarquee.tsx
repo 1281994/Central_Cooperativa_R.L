@@ -162,9 +162,9 @@ export default function ImageMarquee() {
             </h2>
             <p className="hero-discover__desc">Más de 400 mujeres campesinas trabajando juntas</p>
             <div className="hero-discover__users">
-              <img src="/assets/imagenes/cooperativa/mujer1.jpeg" width="40" height="40" alt="Miembro 1" />
-              <img src="/assets/imagenes/cooperativa/mujer2.jpeg" width="40" height="40" alt="Miembro 2" />
-              <img src="/assets/imagenes/cooperativa/mujer3.jpeg" width="40" height="40" alt="Miembro 3" />
+              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 1" />
+              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 2" />
+              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 3" />
             </div>
           </div>
         </div>

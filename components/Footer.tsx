@@ -19,19 +19,11 @@ import {
 export default function Footer() {
   return (
     <footer id="footer" className="footer">
-      <div className="section-separator"></div>
-      <h2 className="section-title">acerca de nosotros</h2>
+    
+      <h2 className="section-title-footer">acerca de nosotros</h2>
 
       {/* Onda decorativa superior - Altura reducida */}
-      <div className="footer-wave">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-          <path
-            fill="#555454"
-            fillOpacity="1"
-            d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"
-          ></path>
-        </svg>
-      </div>
+    
 
       <div className="footer-content">
         {/* Información principal */}
@@ -40,13 +32,13 @@ export default function Footer() {
           <div className="footer-column footer-about">
             <div className="footer-logo">
               <Image
-                src="/assets/imagenes/perfil1.png"
+                src="/assets/imagenes/LOGOS/logoLasDiosas-Photoroom.png"
                 alt="Logo Cooperativa"
                 className="footer-logo-img"
                 width={50}
                 height={50}
               />
-              <h3 className="footer-logo-text">Cooperativa de Mujeres</h3>
+              <h3 className="footer-logo-text">Central de Cooperativa R.L</h3>
             </div>
             <p className="footer-description">
               Somos una red de cooperativas comprometidas con el empoderamiento de mujeres nicaragüenses, promoviendo el
@@ -72,29 +64,7 @@ export default function Footer() {
           </div>
 
           {/* Columna 2: Enlaces rápidos */}
-          <div className="footer-column footer-links">
-            <h3 className="footer-heading">Enlaces Rápidos</h3>
-            <ul className="footer-links-list">
-              <li>
-                <Link href="#Nuestra Organización">Nuestra Organización</Link>
-              </li>
-              <li>
-                <Link href="#Productos">Productos</Link>
-              </li>
-              <li>
-                <Link href="#Testimonios">Testimonios</Link>
-              </li>
-              <li>
-                <Link href="#Registro">Únete a Nosotras</Link>
-              </li>
-              <li>
-                <Link href="#">Proyectos Comunitarios</Link>
-              </li>
-              <li>
-                <Link href="#">Noticias y Eventos</Link>
-              </li>
-            </ul>
-          </div>
+         
 
           {/* Columna 3: Contacto */}
           <div className="footer-column footer-contact">
@@ -142,19 +112,6 @@ export default function Footer() {
                 </button>
               </div>
             </form>
-            <div className="footer-app-download">
-              <p>Descarga nuestra aplicación:</p>
-              <div className="app-buttons">
-                <Link href="#" className="app-button">
-                  <Apple size={16} />
-                  <span>App Store</span>
-                </Link>
-                <Link href="#" className="app-button">
-                  <Play size={16} />
-                  <span>Google Play</span>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
 

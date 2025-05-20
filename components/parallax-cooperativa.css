@@ -6,7 +6,7 @@
 .parallax-container {
   width: 100%;
   overflow-x: hidden;
-  font-family: "Source Sans Pro", serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,11 +20,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  will-change: transform; /* Optimización para navegadores modernos */
+  will-change: transform;
 }
 
 #top::before {
-  content: "Source Sans Pro";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -48,53 +47,54 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transform: translateZ(0); /* Fuerza aceleración por hardware */
-  backface-visibility: hidden; /* Mejora rendimiento en algunos navegadores */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 #text {
   position: relative;
   font-weight: bold;
   color: white;
-  font-size: 3.5rem;
+  font-size: 3rem;
+  line-height: 1.4;
   text-align: center;
-  z-index: 10;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
-  will-change: transform; /* Optimización para navegadores modernos */
+  z-index: 3; /* Adjusted to fit new layering order */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+  font-family: "Montserrat", sans-serif;
 }
 
 #text span {
   display: block;
-  font-size: 5rem;
+  font-size: 4rem;
+  line-height: 1.2;
   color: #20496a;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Estilos para la animación de pájaros */
 .flying-birds {
   position: absolute;
-  z-index: 2; /* Reducir el z-index para que esté detrás de las montañas pero encima del fondo */
+  z-index: 2; /* Remains in front of background, behind text */
   top: 20%;
-  right: -100px; /* Comienza fuera de la pantalla a la derecha */
+  right: -100px;
   width: 90px;
   height: 75px;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-/* Asegurar que las montañas tengan un z-index mayor que los pájaros */
 #mountain_left,
 #mountain_right {
-  z-index: 3; /* Mayor que el z-index de los pájaros */
+  z-index: 5; /* Adjusted to be the topmost layer */
 }
 
-/* La imagen de fondo ya tiene z-index 1 por defecto */
+#cespe {
+  z-index: 4; /* New layer for cespe image, between text and mountains */
+}
+
 #top img:first-child {
-  z-index: 1; /* Asegurar que la imagen de fondo esté en la capa más atrás */
-}
-
-/* El texto debe estar por encima de todo */
-#text {
-  z-index: 10; /* Mantener el texto por encima de todo */
+  z-index: 1; /* Background remains the furthest back */
 }
 
 .flying-birds.animate-birds {
@@ -124,14 +124,12 @@
   }
 }
 
-/* Añadir después de la animación de pájaros existente */
-
 /* Estilos para la segunda animación de pájaros (diagonal) */
 .flying-birds-diagonal {
   position: absolute;
-  z-index: 2; /* Mismo z-index que los otros pájaros para estar detrás de las montañas */
-  bottom: 10%; /* Posición inicial en la parte inferior */
-  left: -100px; /* Comienza fuera de la pantalla a la izquierda */
+  z-index: 2; /* Remains in front of background, behind text */
+  bottom: 10%;
+  left: -100px;
   width: 90px;
   height: 75px;
   opacity: 0;
@@ -176,22 +174,26 @@
 }
 
 #sec h2 {
-  font-size: 4rem;
+  font-size: 2.5rem;
+  line-height: 1.3;
   margin-bottom: 30px;
   color: #20496a;
+  font-family: "Montserrat", sans-serif;
 }
 
 #sec p {
-  font-size: 1.2rem;
-  line-height: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
   font-weight: 300;
   color: #20496a;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Estilos del segundo proyecto */
 #parallax-world-of-ugg h1 {
-  font-family: "Montserrat", serif;
-  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.3;
   font-weight: 400;
   text-transform: uppercase;
   color: black;
@@ -200,8 +202,9 @@
 }
 
 #parallax-world-of-ugg h2 {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 70px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.3;
   letter-spacing: 10px;
   text-align: center;
   color: white;
@@ -209,13 +212,13 @@
   text-transform: uppercase;
   z-index: 10;
   opacity: 0.9;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #parallax-world-of-ugg h3 {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
-  line-height: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
   font-weight: 400;
   letter-spacing: 8px;
   text-transform: uppercase;
@@ -223,21 +226,21 @@
 }
 
 #parallax-world-of-ugg p {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .first-character {
   font-weight: 400;
   float: left;
-  font-size: 84px;
-  line-height: 64px;
+  font-size: 4rem;
+  line-height: 3rem;
   padding-top: 4px;
   padding-right: 8px;
   padding-left: 3px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .sc {
@@ -260,7 +263,7 @@
 }
 
 #parallax-world-of-ugg .title h1 {
-  font-size: 35px;
+  font-size: 2.5rem;
   letter-spacing: 8px;
 }
 
@@ -290,7 +293,6 @@
   opacity: 0.7;
 }
 
-/* Restaurando el efecto parallax original */
 #parallax-world-of-ugg .parallax-one,
 #parallax-world-of-ugg .parallax-two,
 #parallax-world-of-ugg .parallax-three {
@@ -302,7 +304,6 @@
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  /* Eliminamos las propiedades que podrían interferir con el efecto parallax */
 }
 
 #parallax-world-of-ugg .parallax-one {
@@ -320,7 +321,6 @@
   background-position: center center;
 }
 
-/* Fallback para dispositivos iOS que no soportan background-attachment: fixed */
 @supports (-webkit-touch-callout: none) {
   #parallax-world-of-ugg .parallax-one,
   #parallax-world-of-ugg .parallax-two,
@@ -336,41 +336,44 @@
 }
 
 .highlight-paragraph {
-  font-size: 1.5rem;
-  color: #20496a;
+  font-size: 1.25rem;
   line-height: 1.6;
+  color: #20496a;
+  font-family: "Montserrat", sans-serif;
 }
 
 .margin-top-10 {
   color: #20496a;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.8;
   text-align: justify;
   margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .colored-paragraph {
   color: #20496a;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.8;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Responsive - Pantallas grandes */
 @media screen and (min-width: 1440px) {
   #text {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
   }
 
   #text span {
-    font-size: 6rem;
+    font-size: 4.5rem;
   }
 
   #sec h2 {
-    font-size: 5rem;
+    font-size: 3rem;
   }
 
   #sec p {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
   }
 
   #parallax-world-of-ugg .block {
@@ -379,7 +382,7 @@
   }
 
   .highlight-paragraph {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -391,20 +394,20 @@
   }
 
   #text {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   #text span {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .highlight-paragraph {
-    font-size: 1.3rem;
+    font-size: 1.125rem;
   }
 
   .first-character {
-    font-size: 70px;
-    line-height: 50px;
+    font-size: 3.5rem;
+    line-height: 2.5rem;
   }
 
   #sec {
@@ -412,7 +415,7 @@
   }
 
   #sec h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -424,7 +427,7 @@
   }
 
   #parallax-world-of-ugg h2 {
-    font-size: 30px;
+    font-size: 1.75rem;
     letter-spacing: 5px;
   }
 
@@ -436,11 +439,11 @@
   }
 
   #text {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   #text span {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   #sec {
@@ -448,7 +451,7 @@
   }
 
   #sec h2 {
-    font-size: 2.2rem;
+    font-size: 1.75rem;
   }
 
   #sec p {
@@ -456,19 +459,18 @@
   }
 
   .highlight-paragraph {
-    font-size: 1.1rem;
-  }
-
-  .first-character {
-    font-size: 60px;
-    line-height: 40px;
-  }
-
-  .colored-paragraph {
     font-size: 1rem;
   }
 
-  /* Ajustar animación de pájaros para móviles */
+  .first-character {
+    font-size: 3rem;
+    line-height: 2rem;
+  }
+
+  .colored-paragraph {
+    font-size: 0.875rem;
+  }
+
   @keyframes flyAcross {
     0% {
       transform: scale(0.8) translateX(100vw);
@@ -483,7 +485,7 @@
       transform: scale(0.5) translateX(-20vw) translateY(-15vh);
     }
     80% {
-      transform: scale(0.4) translateX(-60vw) translateY(-20vh);
+      transform: scale(0.4) translateX(-60vw jefe) translateY(-20vh);
     }
     100% {
       transform: scale(0.3) translateX(-100vw) translateY(-25vh);
@@ -499,12 +501,12 @@
   }
 
   #parallax-world-of-ugg h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
     letter-spacing: 3px;
   }
 
   #parallax-world-of-ugg h3 {
-    font-size: 12px;
+    font-size: 0.875rem;
     letter-spacing: 5px;
   }
 
@@ -513,29 +515,29 @@
   }
 
   #parallax-world-of-ugg .title h1 {
-    font-size: 24px;
+    font-size: 1.75rem;
     letter-spacing: 5px;
   }
 
   #text {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   #text span {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   #sec h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .first-character {
-    font-size: 50px;
-    line-height: 30px;
+    font-size: 2.5rem;
+    line-height: 1.875rem;
   }
 
   .highlight-paragraph {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -560,7 +562,6 @@
 
 /* Ajustes para navegadores específicos */
 @supports (-ms-ime-align: auto) {
-  /* Edge */
   #parallax-world-of-ugg .parallax-one,
   #parallax-world-of-ugg .parallax-two,
   #parallax-world-of-ugg .parallax-three {
@@ -569,7 +570,6 @@
 }
 
 @-moz-document url-prefix("") {
-  /* Firefox */
   #top img {
     transform: none;
   }

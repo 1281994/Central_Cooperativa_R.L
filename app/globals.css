@@ -18,7 +18,7 @@ body {
 /*separador*/
 .section-separator {
   height: 5px;
-  background: linear-gradient(-45deg, #03dbef, #3cd3e7, #23d58e, #0dc8f3);
+  background: linear-gradient(-45deg, #12f198, #0df346);
   background-size: 1000% 1000%;
   animation: gradient 10s ease infinite;
   width: 100%;
@@ -98,17 +98,17 @@ h2 {
 .footer {
   position: relative;
   width: 100%;
-  background-color: #000;
+  background-color: #000000b6;
   color: #fff;
   overflow: hidden;
   margin-top: 80px;
 }
 
-.section-title {
+.section-title-footer {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #f2f8f5;
+  color: #dae5db; /* Cambia este valor al color que desees */
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -246,7 +246,7 @@ h2 {
   content: "›";
   position: absolute;
   left: 0;
-  color: #ff7e5f;
+  color: #5fff6f;
   transition: transform 0.3s ease;
 }
 
@@ -321,7 +321,7 @@ h2 {
   padding: 0 20px;
   border: none;
   border-radius: 0 50px 50px 0;
-  background: linear-gradient(-45deg, #52b0ee, #3cd3e7, #555454, #23a6d5, #23b4d5);
+  background: linear-gradient(-45deg, #49ca85, #3cd3e7, #49ca85, #23a6d5, #23b4d5);
   background-size: 1000% 1000%;
   animation: gradient 10s ease infinite;
   color: #fff;
@@ -335,7 +335,7 @@ h2 {
 }
 
 .subscribe-btn:hover {
-  background: linear-gradient(-45deg, #e0e405, #2be0f8, #ed1682, #19f5d4);
+  background: linear-gradient(-45deg, #14a95f, #0b921d);
   background-size: 1000% 1000%;
   animation: gradient 10s ease infinite;
 }
@@ -374,9 +374,10 @@ h2 {
   transform: translateY(-3px);
 }
 
+/* Estilos para el pie de página esta es la linea verde del footer */
 .footer-divider {
   height: 1px;
-  background: linear-gradient(-45deg, #0190f0, #0a83fc, #03f630, #f80404);
+  background: linear-gradient(-45deg, #01f09c, #0afc3a, #03e2f6, #7af804);
   background-size: 1000% 1000%;
   animation: gradient 10s ease infinite;
   margin: 20px 0;
@@ -441,7 +442,7 @@ h2 {
 
 .back-to-top:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+  box-shadow: 0 8px 20px rgba(95, 255, 151, 0.6);
 }
 
 /* Animación para el botón de volver arriba */

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 /* Estilos para la sección de productos */
 .productos-section {
   position: relative;
@@ -5,6 +7,7 @@
   min-height: 100vh;
   padding: 80px 0;
   overflow: hidden;
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 /* Fondo con degradado y animación */
@@ -15,16 +18,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to left, #6edfd9 0%, #aadb8e 100%);
+  background-color: #ffffff;
   overflow: hidden;
-}
-
-.box {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  pointer-events: none;
 }
 
 /* Contenedor para el contenido */
@@ -37,21 +32,24 @@
 }
 
 .section-title {
-  font-size: 2.5rem;
-  color: #fff;
+  font-size: 2.5rem; /* 40px, aligns with h1-like headings */
+  color: #046815;
   text-align: center;
   margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1.3; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .section-description {
-  font-size: 1.1rem;
-  color: #fff;
+  font-size: 1.125rem; /* Adjusted to 18px (from 1.1rem) for body text */
+  color: #000000;
   text-align: center;
   max-width: 800px;
   margin: 0 auto 50px;
-  line-height: 1.6;
+  line-height: 1.8; /* Adjusted for readability */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 /* Contenedor de tarjetas de productos */
@@ -65,7 +63,7 @@
 /* Estilos para las tarjetas de productos con efecto glassmorphism */
 .product-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.919);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -83,16 +81,17 @@
 }
 
 .card-image {
-  height: 200px;
+  height: 200px; /* Maintain fixed height for consistency, but image will fill it */
   overflow: hidden;
   background: rgba(0, 0, 0, 0.05);
   position: relative;
+  width: 100%; /* Ensure the container takes full width */
 }
 
 .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Asegura que la imagen completa se muestre */
+  width: 100%; /* Ensure the image takes full width of the container */
+  height: 100%; /* Ensure the image takes full height of the container */
+  object-fit: cover; /* Changed from contain to cover to fill the container */
   transition: transform 0.5s ease;
 }
 
@@ -107,26 +106,32 @@
   position: relative;
 }
 
+/* time-ago esto es un texto que se muestra en la parte superior de la tarjeta */
 .time-ago {
   display: block;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  color: rgba(224, 127, 127, 0.8);
+  font-size: 0.875rem; /* Adjusted to 14px (from 0.9rem) for small text */
   margin-bottom: 8px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.972);
+  line-height: 1.5; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* 24px, aligns with h2-like headings */
   margin-bottom: 12px;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: rgb(7, 7, 7);
+  text-shadow: 0 1px 2px rgba(1, 2, 2, 0.2);
+  line-height: 1.4; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .card-description {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: rgba(9, 9, 9, 0.9);
+  font-size: 1rem; /* Adjusted to 16px (from 0.95rem) for body text */
+  line-height: 1.6; /* Adjusted for readability */
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .card-footer {
@@ -135,6 +140,9 @@
   padding: 15px 0;
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 60px;
+  height: 60px;
+  align-items: center;
 }
 
 .stat {
@@ -146,19 +154,23 @@
 }
 
 .stat-value {
-  font-size: 1.2rem;
+  font-size: 1.125rem; /* Adjusted to 18px (from 1.2rem) for emphasis */
   font-weight: bold;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  line-height: 1.4; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .stat-value sup {
-  font-size: 0.7rem;
+  font-size: 0.625rem; /* Adjusted to 10px (from 0.7rem) for superscript */
 }
 
 .stat-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* Adjusted to 12px (from 0.7rem) for small text */
   margin-top: 2px;
   opacity: 0.9;
+  line-height: 1.5; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 /* Responsive */
@@ -170,11 +182,23 @@
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 2rem; /* Adjusted to 32px (from 2rem), already appropriate */
   }
 
   .section-description {
-    font-size: 1rem;
+    font-size: 1rem; /* Adjusted to 16px (from 1rem), already appropriate */
+  }
+
+  .card-title {
+    font-size: 1.25rem; /* Adjusted to 20px */
+  }
+
+  .card-description {
+    font-size: 0.875rem; /* Adjusted to 14px */
+  }
+
+  .stat-value {
+    font-size: 1rem; /* Adjusted to 16px */
   }
 }
 
@@ -184,11 +208,35 @@
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem; /* Adjusted to 28px (from 1.8rem) */
+  }
+
+  .section-description {
+    font-size: 0.875rem; /* Adjusted to 14px */
   }
 
   .card-image {
-    height: 180px;
+    height: 180px; /* Adjusted height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1.125rem; /* Adjusted to 18px */
+  }
+
+  .card-description {
+    font-size: 0.875rem; /* Adjusted to 14px */
+  }
+
+  .stat-value {
+    font-size: 0.875rem; /* Adjusted to 14px */
+  }
+
+  .stat-label {
+    font-size: 0.625rem; /* Adjusted to 10px */
+  }
+
+  .time-ago {
+    font-size: 0.75rem; /* Adjusted to 12px */
   }
 
   .productos-section {

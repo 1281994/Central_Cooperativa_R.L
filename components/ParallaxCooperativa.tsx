@@ -5,42 +5,30 @@ import Image from "next/image"
 import "./parallax-cooperativa.css"
 
 export default function ParallaxCooperativa() {
-  // Referencias para los elementos con animación parallax
   const mountainLeftRef = useRef<HTMLImageElement>(null)
   const mountainRightRef = useRef<HTMLImageElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const manRef = useRef<HTMLImageElement>(null)
 
-  // Estado para detectar si el dispositivo es iOS (para manejar el parallax de manera diferente)
   const [isIOS, setIsIOS] = useState(false)
-  // Estado para detectar si el dispositivo es móvil
   const [isMobile, setIsMobile] = useState(false)
-  // Estados para controlar las animaciones de pájaros
   const [showBirds, setShowBirds] = useState(false)
   const [showDiagonalBirds, setShowDiagonalBirds] = useState(false)
-  // Referencia para los temporizadores
   const timersRef = useRef<NodeJS.Timeout[]>([])
 
   useEffect(() => {
-    // Detectar si es iOS
     const isIOSDevice =
       /iPad|iPhone|iPod/.test(navigator.userAgent) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
     setIsIOS(isIOSDevice)
 
-    // Detectar si es móvil
     const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     setIsMobile(isMobileDevice)
 
-    // Efecto parallax para la primera sección
     const handleScroll = () => {
       const value = window.scrollY
-
-      // Reducir la intensidad del efecto en dispositivos móviles
-      const mobileFactor = isMobile ? 0.4 : 0.7
-
-      // En iOS, reducimos aún más la intensidad para evitar problemas de rendimiento
-      const iosFactor = isIOS ? 0.3 : mobileFactor
+      const mobileFactor = isMobile ? 0.4 : 1.7
+      const iosFactor = isIOS ? 7.8 : mobileFactor
 
       if (mountainLeftRef.current) {
         mountainLeftRef.current.style.left = `-${value / iosFactor}px`
@@ -51,18 +39,15 @@ export default function ParallaxCooperativa() {
       }
 
       if (textRef.current) {
-        // Reducir el efecto en el texto para dispositivos móviles
         const textFactor = isMobile ? value * 0.5 : value
         textRef.current.style.bottom = `-${textFactor}px`
       }
 
       if (manRef.current) {
-        // Ajustar la altura de manera más suave en dispositivos móviles
         manRef.current.style.height = `${window.innerHeight - (isMobile ? value * 0.7 : value)}px`
       }
     }
 
-    // Optimización: usar requestAnimationFrame para el scroll
     let ticking = false
     const scrollListener = () => {
       if (!ticking) {
@@ -76,63 +61,41 @@ export default function ParallaxCooperativa() {
 
     window.addEventListener("scroll", scrollListener, { passive: true })
 
-    // Manejar cambios de tamaño de ventana
     const handleResize = () => {
-      // Actualizar estado de dispositivo móvil
       const isMobileDevice = window.innerWidth < 768
       setIsMobile(isMobileDevice)
-
-      // Forzar una actualización de los efectos parallax
       handleScroll()
     }
 
     window.addEventListener("resize", handleResize)
-
-    // Ejecutar una vez al inicio para configurar correctamente
     handleScroll()
-
-    // Iniciar la secuencia de animaciones
     startAnimationSequence()
 
     return () => {
       window.removeEventListener("scroll", scrollListener)
       window.removeEventListener("resize", handleResize)
-      // Limpiar todos los temporizadores
       timersRef.current.forEach((timer) => clearTimeout(timer))
     }
   }, [isIOS, isMobile])
 
-  // Función para iniciar la secuencia de animaciones
   const startAnimationSequence = () => {
-    // Limpiar cualquier temporizador existente
     timersRef.current.forEach((timer) => clearTimeout(timer))
     timersRef.current = []
 
-    // Duración de las animaciones (en ms)
-    const firstAnimationDuration = 15000 // 15 segundos para la primera animación
-    const secondAnimationDuration = 15000 // 15 segundos para la segunda animación
-    const pauseBetweenAnimations = 3000 // 3 segundos de pausa entre animaciones
+    const firstAnimationDuration = 15000
+    const secondAnimationDuration = 15000
+    const pauseBetweenAnimations = 3000
 
-    // Función recursiva para alternar entre animaciones
     const runAnimationCycle = () => {
-      // Iniciar primera animación (horizontal)
       setShowBirds(true)
       setShowDiagonalBirds(false)
 
-      // Programar el fin de la primera animación y el inicio de la segunda
       const timer1 = setTimeout(() => {
         setShowBirds(false)
-
-        // Pausa de 3 segundos antes de la segunda animación
         const timer2 = setTimeout(() => {
-          // Iniciar segunda animación (diagonal)
           setShowDiagonalBirds(true)
-
-          // Programar el fin de la segunda animación y reiniciar el ciclo
           const timer3 = setTimeout(() => {
             setShowDiagonalBirds(false)
-
-            // Pausa de 3 segundos antes de reiniciar el ciclo
             const timer4 = setTimeout(runAnimationCycle, pauseBetweenAnimations)
             timersRef.current.push(timer4)
           }, secondAnimationDuration)
@@ -143,15 +106,13 @@ export default function ParallaxCooperativa() {
       timersRef.current.push(timer1)
     }
 
-    // Iniciar el ciclo de animaciones
     runAnimationCycle()
   }
 
   return (
     <div className="parallax-container">
-      {/* Primera sección - Hero con parallax */}
       <section id="top">
-        {/* 1. Imagen de fondo (capa más atrás) */}
+        {/* 1. Background Image (portada-principal.jpg) */}
         <Image
           src="/assets/imagenes/parallax/portada-principal.jpg"
           alt="Fondo"
@@ -161,7 +122,7 @@ export default function ParallaxCooperativa() {
           style={{ objectFit: "cover", zIndex: 1 }}
         />
 
-        {/* 2. Animación de pájaros volando (capa intermedia) */}
+        {/* 2. Bird Animations */}
         <div className={`flying-birds ${showBirds ? "animate-birds" : ""}`}>
           <Image
             src="/assets/imagenes/parallax/pajaros1.gif"
@@ -172,7 +133,6 @@ export default function ParallaxCooperativa() {
           />
         </div>
 
-        {/* Animación diagonal de pájaros */}
         <div className={`flying-birds-diagonal ${showDiagonalBirds ? "animate-birds-diagonal" : ""}`}>
           <Image
             src="/assets/imagenes/parallax/pajaros3.gif"
@@ -183,7 +143,23 @@ export default function ParallaxCooperativa() {
           />
         </div>
 
-        {/* 3. Montañas (capa superior) */}
+        {/* 3. Text */}
+        <h2 id="text" ref={textRef}>
+          Central de Cooperativas <br />
+          Las Diosas R.L
+        </h2>
+
+        {/* 4. Cespe Image */}
+        <Image
+          src="/assets/imagenes/parallax/cespe.png"
+          alt="Cespe"
+          id="cespe"
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover", zIndex: 4 }}
+        />
+
+        {/* 5. Mountain Images (2.png and 3.png) */}
         <Image
           src="/assets/imagenes/parallax/2.png"
           alt="Montaña izquierda"
@@ -191,7 +167,7 @@ export default function ParallaxCooperativa() {
           ref={mountainLeftRef}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover", zIndex: 3 }}
+          style={{ objectFit: "cover", zIndex: 5 }}
         />
 
         <Image
@@ -201,18 +177,10 @@ export default function ParallaxCooperativa() {
           ref={mountainRightRef}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover", zIndex: 3 }}
+          style={{ objectFit: "cover", zIndex: 5 }}
         />
-
-        {/* 4. Texto (capa superior a todo) */}
-        <h2 id="text" ref={textRef}>
-          Central de Cooperativas <br />
-          Las Diosas R.L
-          <br />
-        </h2>
       </section>
 
-      {/* Sección de información */}
       <section id="sec">
         <h2>Conoce acerca de nosotras</h2>
         <p>
@@ -222,7 +190,6 @@ export default function ParallaxCooperativa() {
         </p>
       </section>
 
-      {/* Secciones del segundo proyecto */}
       <div id="parallax-world-of-ugg">
         <section>
           <div className="title">
@@ -270,7 +237,7 @@ export default function ParallaxCooperativa() {
               productos que se van posicionando en el mercado nacional e internacional.
             </p>
             <p className="line-break margin-top-10"></p>
-            <p className="colored-paragraph margin-top-10">.</p>
+            <p className="colored-paragraph margin-top-10"></p>
           </div>
         </section>
 

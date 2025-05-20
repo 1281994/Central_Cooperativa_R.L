@@ -8,9 +8,10 @@ interface ProductCard {
   title: string;
   description: string;
   timeAgo: string;
-  readTime: number;
-  views: number;
-  comments: number;
+  medida: string;
+  medidaSup?: string;
+  precio: string;
+  cantidad: number;
   image: string;
   color: string;
 }
@@ -19,73 +20,77 @@ export default function ProductosCards() {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const productCards: ProductCard[] = [
-  {
-    id: 1,
-    title: "Café Orgánico",
-    description: "...",
-    timeAgo: "1 semana",
-    readTime: 4,
-    views: 5123,
-    comments: 32,
-    image: "/assets/imagenes/productos/cafe-organico-molido-P.png",
-    color: "#e91e63",
-  },
-  {
-    id: 2,
-    title: "Miel Natural",
-    description: "...",
-    timeAgo: "2 semanas",
-    readTime: 7,
-    views: 7152,
-    comments: 21,
-    image: "/assets/imagenes/productos/miel-de-abeja-P.png",
-    color: "#ff5722",
-  },
-  {
-    id: 3,
-    title: "Flor de Jamaica",
-    description: "...",
-    timeAgo: "3 semanas",
-    readTime: 5,
-    views: 3021,
-    comments: 15,
-    image: "/assets/imagenes/productos/flor-de-jamaica-P.png",
-    color: "#4caf50",
-  },
-  {
-    id: 4,
-    title: "Vino de Jamaica",
-    description: "...",
-    timeAgo: "1 mes",
-    readTime: 6,
-    views: 4562,
-    comments: 27,
-    image: "/assets/imagenes/productos/vino-de-rosa-de-jamaica-P.png",
-    color: "#9c27b0",
-  },
-  {
-    id: 5,
-    title: "Café Molido",
-    description: "...",
-    timeAgo: "2 meses",
-    readTime: 3,
-    views: 6789,
-    comments: 18,
-    image: "/assets/imagenes/productos/miel-de-abeja2-P.png",
-    color: "#ff9800",
-  },
-  {
-    id: 6,
-    title: "Mermelada de Jamaica",
-    description: "...",
-    timeAgo: "3 meses",
-    readTime: 5,
-    views: 2468,
-    comments: 14,
-    image: "/assets/imagenes/productos/mermelada-de-jamaica-P.png",
-    color: "#8bc34a",
-  },
-];
+    {
+      id: 1,
+      title: "Café Orgánico",
+      description: "Café orgánico molido, cultivado en la región de Esteli.",
+      timeAgo: "1 semana",
+      medida: "400",
+      medidaSup: "gr",
+      precio: "C$450.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/cafe.png",
+      color: "#bf6805",
+    },
+    {
+      id: 2,
+      title: "Miel de Abeja multifloral",
+      description: "Producida por abejas que polinizan flores de Jamaica.",
+      timeAgo: "2 semanas",
+      medida: "365",
+      medidaSup: "ml",
+      precio: "C$110.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/miel1.png",
+      color: "#bfb705",
+    },
+    {
+      id: 3,
+      title: "Flor de Jamaica",
+      description: "Producto natural, rico en antioxidantes y vitaminas.",
+      timeAgo: "3 semanas",
+      medida: "",
+      precio: "C$450.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/flordejamaica.png",
+      color: "#bf055f",
+    },
+    {
+      id: 4,
+      title: "Vino de Jamaica",
+      description: "Vino elaborado con flor de Jamaica y añejado naturalmente.",
+      timeAgo: "1 mes",
+      medida: "750",
+      medidaSup: "ml",
+      precio: "C$220.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/vino.png",
+      color: "#9c27b0",
+    },
+    {
+      id: 5,
+      title: "Miel de Abeja edición grande",
+      description: "Producto natural, rico en antioxidantes y vitaminas.",
+      timeAgo: "2 meses",
+      medida: "",
+      precio: "C$450.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/miel2.png",
+      color: "#ff9800",
+    },
+    {
+      id: 6,
+      title: "Mermelada de Jamaica",
+      description: "Deliciosa mermelada elaborada con flor de Jamaica.",
+      timeAgo: "3 meses",
+      medida: "60",
+      medidaSup: "gr",
+      precio: "C$80.00",
+      cantidad: 1,
+      image: "/assets/imagenes/productos/mermelada.png",
+      color: "#bf055a",
+    },
+  ];
 
   useEffect(() => {
     if (!wrapperRef.current) return;
@@ -175,6 +180,7 @@ export default function ProductosCards() {
           sostenibles, respetando el medio ambiente y promoviendo el comercio justo.
         </p>
 
+
         <div className="product-cards-container">
           {productCards.map((card) => (
             <div key={card.id} className="product-card">
@@ -182,30 +188,32 @@ export default function ProductosCards() {
                 <img src={card.image || "/placeholder.svg"} alt={card.title} />
               </div>
               <div className="card-content">
-                <span className="time-ago">{card.timeAgo}</span>
+                <span className="time-ago" style={{ color: card.color }}>{card.timeAgo}</span>
                 <h3 className="card-title">{card.title}</h3>
                 <p className="card-description">{card.description}</p>
               </div>
               <div className="card-footer" style={{ backgroundColor: card.color }}>
                 <div className="stat">
                   <span className="stat-value">
-                    {card.readTime}
-                    <sup>m</sup>
+                    {card.medida}
+                    <sup>{card.medidaSup}</sup>
+
                   </span>
-                  <span className="stat-label">LECTURA</span>
+                  <span className="stat-label">MEDIDA</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-value">{card.views}</span>
-                  <span className="stat-label">VISTAS</span>
+                  <span className="stat-value">{card.precio}</span>
+                  <span className="stat-label">PRECIO</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-value">{card.comments}</span>
-                  <span className="stat-label">COMENTARIOS</span>
+                  <span className="stat-value">{card.cantidad}</span>
+                  <span className="stat-label">CANTIDAD</span>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 .nuestra-vision-container {
   padding: 5rem 2rem;
   background-color: #f8f9f6;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .vision-content {
@@ -20,7 +23,7 @@
   max-width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Añade espacio entre las imágenes */
+  gap: 20px;
 }
 
 .vision-image {
@@ -29,9 +32,8 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  margin: 0; /* Asegura que no haya márgenes adicionales */
+  margin: 0;
 }
-
 
 .vision-image:hover {
   transform: scale(1.02);
@@ -51,6 +53,9 @@
   border-radius: 20px;
   margin-bottom: 1rem;
   font-weight: 500;
+  font-size: 0.875rem; /* Set to 14px for small text */
+  line-height: 1.5; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .vision-icon {
@@ -59,18 +64,20 @@
 }
 
 .vision-title {
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* 40px, aligns with h1-like headings */
   color: #2e7d32;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  line-height: 1.3; /* Adjusted for better readability */
   font-weight: 700;
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .vision-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.125rem; /* Adjusted to 18px (from 1.1rem) for body text */
+  line-height: 1.8; /* Adjusted for readability */
   color: #333;
   margin-bottom: 2rem;
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .vision-objective {
@@ -82,16 +89,19 @@
 }
 
 .objective-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Adjusted to 24px (from 1.25rem) for h2-like headings */
   color: #2e7d32;
   margin-bottom: 0.75rem;
   font-weight: 600;
+  line-height: 1.4; /* Added for readability */
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 .objective-description {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1rem; /* 16px, aligns with body text */
+  line-height: 1.6; /* Adjusted for readability */
   color: #555;
+  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
 }
 
 /* Responsive styles */
@@ -107,7 +117,7 @@
   }
 
   .vision-title {
-    font-size: 2rem;
+    font-size: 2.25rem; /* Adjusted to 36px (from 2rem) */
   }
 }
 
@@ -117,11 +127,15 @@
   }
 
   .vision-title {
-    font-size: 1.75rem;
+    font-size: 2rem; /* Adjusted to 32px (from 1.75rem) */
   }
 
   .vision-description {
-    font-size: 1rem;
+    font-size: 1rem; /* Adjusted to 16px (from 1rem), already appropriate */
+  }
+
+  .objective-title {
+    font-size: 1.25rem; /* Adjusted to 20px */
   }
 }
 
@@ -131,14 +145,22 @@
   }
 
   .vision-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem; /* Adjusted to 28px (from 1.5rem) */
   }
 
   .vision-badge {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Adjusted to 12.8px (from 0.9rem) */
+  }
+
+  .vision-description {
+    font-size: 0.875rem; /* Adjusted to 14px */
   }
 
   .objective-title {
-    font-size: 1.1rem;
+    font-size: 1.125rem; /* Adjusted to 18px (from 1.1rem) */
+  }
+
+  .objective-description {
+    font-size: 0.875rem; /* Adjusted to 14px */
   }
 }

@@ -5,7 +5,7 @@ import "./Cooperativa.css"
 
 export default function Cooperativa() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 5
+  const totalSlides = 5 // Cambia este número según la cantidad de slides que tengas
 
   // Función para avanzar al siguiente slide
   const nextSlide = () => {
