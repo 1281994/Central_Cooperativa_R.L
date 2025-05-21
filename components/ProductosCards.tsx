@@ -76,7 +76,7 @@ export default function ProductosCards() {
       precio: "C$450.00",
       cantidad: 1,
       image: "/assets/imagenes/productos/miel2.png",
-      color: "#ff9800",
+      color: "#bfb705",
     },
     {
       id: 6,

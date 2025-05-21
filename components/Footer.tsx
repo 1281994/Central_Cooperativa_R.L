@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer id="footer" className="footer">
     
-      <h2 className="section-title-footer">acerca de nosotros</h2>
+      <h2 className="section-title-footer"></h2>
 
       {/* Onda decorativa superior - Altura reducida */}
     

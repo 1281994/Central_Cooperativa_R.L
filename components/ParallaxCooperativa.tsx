@@ -207,7 +207,7 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="highlight-paragraph">
-              <span className="first-character sc">I</span> Brindamos servicios multisectoriales comprometidas con los
+              <span className="first-character sc">B</span> rindamos servicios multisectoriales comprometidas con los
               intereses de las mujeres rurales, sustentada en la economía social, solidaria, popular creativa
               agroecológica y en defensa de los derechos de las mujeres a través del fortalecimiento de tres
               agro-cadenas alimentarías, la producción agroecológica, la conciencia crítica de género y la erradicación

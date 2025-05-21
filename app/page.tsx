@@ -12,6 +12,9 @@ import ImageMarquee from "@/components/ImageMarquee"
 import Slider from "@/components/Slider"
 import ProductosCards from "@/components/ProductosCards"
 import ProcesoProduccion from "@/components/ProcesoProduccion"
+import InteractiveGeoLocation from "@/components/InteractiveGeoLocation"
+
+
 
 
 
@@ -84,7 +87,9 @@ export default function Home() {
  <div id="nuestra-vision">
     <NuestraVision />
 </div>
-
+  <div id="interactive-geo-location">
+    <InteractiveGeoLocation />
+  </div>
 
   <Header />
 
