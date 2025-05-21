@@ -3,12 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 // El CSS de Bootstrap se cargará en el cliente
 import "@/app/globals.css"
-// Añadir la importación del CSS de registro
-import "@/app/acerca.css"
-// Añadir la importación del CSS de productos
-import "@/app/productos.css"
-// Añadir la importación del CSS para el modal de productos
-import "@/app/productos-modal.css"
+
 const inter = Inter({ subsets: ["latin"] })
 
 

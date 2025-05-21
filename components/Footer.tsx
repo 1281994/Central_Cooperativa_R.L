@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="footer-column footer-about">
             <div className="footer-logo">
               <Image
-                src="/assets/imagenes/LOGOS/logoLasDiosas-Photoroom.png"
+                src="/assets/imagenes/iconos/logo-las-diosas.ico"
                 alt="Logo Cooperativa"
                 className="footer-logo-img"
                 width={50}

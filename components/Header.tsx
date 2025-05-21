@@ -76,7 +76,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="navbar-brand nav-item-custom">
           <img
-            src="/assets/imagenes/iconos/logolasdiosas-photoroom.ico"
+            src="/assets/imagenes/logos/logo-las-diosas.png"
             alt="Logo Las Diosas"
             className="navbar-logo"
           />

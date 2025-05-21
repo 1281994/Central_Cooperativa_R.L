@@ -4,7 +4,6 @@ import { useEffect } from "react"
 import Header from "@/components/Header"
 
 import ParallaxCooperativa from "@/components/ParallaxCooperativa"
-import Cooperativa from "@/components/Cooperativa"
 import MisionVisionValores from "@/components/MisionVisionValores"
 import NuestraMision from "@/components/NuestraMision"
 import NuestraVision from "@/components/NuestraVision"
