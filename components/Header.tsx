@@ -74,14 +74,14 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         {/* Logo */}
-       <Link href="/" className="navbar-brand nav-item-custom">
-      <img
-        src="/assets/imagenes/iconos/logoLasDiosas-Photoroom.ico"
-        alt="Logo Las Diosas"
-        className="navbar-logo"
-      />
-      Las Diosas R.L
-    </Link>
+        <Link href="/" className="navbar-brand nav-item-custom">
+          <img
+            src="/assets/imagenes/iconos/logolasdiosas-photoroom.ico"
+            alt="Logo Las Diosas"
+            className="navbar-logo"
+          />
+          Las Diosas R.L
+        </Link>
 
         {/* Botón para dispositivos móviles */}
         <button
@@ -106,7 +106,7 @@ export default function Header() {
                 Inicio
               </Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link
                 className={`nav-link nav-item-custom ${isActive("sec") ? "active" : ""}`}
                 href={pathname === "/" ? "#sec" : "/"}
@@ -115,16 +115,16 @@ export default function Header() {
                 Conocenos
               </Link>
             </li>
-          
-           <li className="nav-item">
+
+            <li className="nav-item">
               <Link
-                 className={`nav-link nav-item-custom ${isActive("cooperativa") ? "active" : ""}`}
+                className={`nav-link nav-item-custom ${isActive("cooperativa") ? "active" : ""}`}
                 href={pathname === "/" ? "#cooperativa" : "/cooperativa"}
                 onClick={(e) => scrollToSection("cooperativa", e)}
               >
-                 Cooperativa
+                Cooperativa
               </Link>
-              </li>
+            </li>
 
             <li className="nav-item">
               <Link
