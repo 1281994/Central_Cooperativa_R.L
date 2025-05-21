@@ -1,12 +1,21 @@
 "use client"
 
-import React from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import "leaflet/dist/leaflet.css"; // CSS de Leaflet
 import "./InteractiveGeoLocation.css";
 
-// Datos de ejemplo para los departamentos de Nicaragua (coordenadas aproximadas)
-const geoJsonData = {
+// Cargar componentes de react-leaflet dinámicamente para evitar SSR
+const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), { ssr: false });
+const GeoJSON = dynamic(() => import("react-leaflet").then((mod) => mod.GeoJSON), { ssr: false });
+
+// Lista de departamentos con intervención actual y futura
+const currentIntervention = ["Estelí", "Jinotega", "Matagalpa", "Nueva Segovia", "Madriz"];
+const futureIntervention = ["Boaco", "León"];
+
+// Datos estáticos como respaldo (los mismos que tenías originalmente)
+const staticGeoJsonData = {
   type: "FeatureCollection",
   features: [
     {
@@ -96,9 +105,34 @@ const geoJsonData = {
   ]
 };
 
+// Función para asignar el estado (actual o futuro) a cada departamento
+const addStatusToGeoJson = (geoJson) => {
+  return {
+    ...geoJson,
+    features: geoJson.features.map((feature) => {
+      // Usar NAME_1 para GeoJSON real, o name para datos estáticos
+      const deptName = feature.properties.NAME_1 || feature.properties.name;
+      let status = "ninguno"; // Por defecto
+      if (currentIntervention.includes(deptName)) {
+        status = "actual";
+      } else if (futureIntervention.includes(deptName)) {
+        status = "futuro";
+      }
+      return {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          name: deptName, // Aseguramos que siempre haya un "name"
+          status: status
+        }
+      };
+    })
+  };
+};
+
 // Estilo para los polígonos (colores según el estado)
 const style = (feature) => ({
-  fillColor: feature.properties.status === "actual" ? "#ff9999" : "#cccccc",
+  fillColor: feature.properties.status === "actual" ? "#ff9999" : feature.properties.status === "futuro" ? "#cccccc" : "transparent",
   weight: 2,
   opacity: 1,
   color: "white",
@@ -108,23 +142,57 @@ const style = (feature) => ({
 
 // Mostrar un popup al hacer clic en un departamento
 const onEachFeature = (feature, layer) => {
-  layer.bindPopup(`<b>${feature.properties.name}</b><br>Estado: ${feature.properties.status}`);
+  const statusText = feature.properties.status === "actual" ? "actual" : feature.properties.status === "futuro" ? "futuro" : "ninguno";
+  layer.bindPopup(`<b>${feature.properties.name}</b><br>Estado: ${statusText}`);
 };
 
 export default function InteractiveGeoLocation() {
   const position = [12.8654, -85.2072]; // Centro de Nicaragua
+  const [geoJsonData, setGeoJsonData] = useState(null);
+  const [error, setError] = useState(null); // Estado para manejar errores
+
+  // Cargar el GeoJSON solo en el cliente (opcional, ya que usamos datos estáticos)
+  useEffect(() => {
+    fetch("/data/gadm36_NIC_1.geojson")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("No se pudo cargar el archivo GeoJSON. Usando datos estáticos como respaldo.");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        const processedData = addStatusToGeoJson(data);
+        setGeoJsonData(processedData);
+      })
+      .catch((error) => {
+        console.error("Error cargando el GeoJSON:", error);
+        setError(error.message);
+        // Usar datos estáticos como respaldo si el fetch falla
+        const processedStaticData = addStatusToGeoJson(staticGeoJsonData);
+        setGeoJsonData(processedStaticData);
+      });
+  }, []);
 
   return (
     <section className="geo-location-section">
       <div className="geo-container">
         <div className="geo-map">
-          <MapContainer center={position} zoom={7} style={{ height: "600px", width: "100%" }}>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <GeoJSON data={geoJsonData} style={style} onEachFeature={onEachFeature} />
-          </MapContainer>
+          {error && (
+            <div style={{ color: "red", padding: "10px" }}>
+              {error}
+            </div>
+          )}
+          {!geoJsonData ? (
+            <div style={{ padding: "20px" }}>Cargando mapa...</div>
+          ) : (
+            <MapContainer center={position} zoom={7} style={{ height: "600px", width: "100%" }}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              <GeoJSON data={geoJsonData} style={style} onEachFeature={onEachFeature} />
+            </MapContainer>
+          )}
         </div>
         <div className="geo-info">
           <h2 className="geo-title">Área de Influencia de la Cooperativa Las Diosas</h2>
@@ -147,7 +215,7 @@ export default function InteractiveGeoLocation() {
             </ul>
             <p className="geo-scale">Escala: Aproximada</p>
             <p className="geo-credits">Capa de servicio: OpenStreetMap contributors</p>
-            <p className="geo-date">11:43 PM CST, 20 de Mayo 2025</p>
+            <p className="geo-date">01:07 AM CST, 21 de Mayo 2025</p>
           </div>
           <p className="geo-description">
             La Central de Cooperativas Las Diosas opera en el norte de Nicaragua, con intervención actual en Estelí, Jinotega, Matagalpa, Nueva Segovia y Madriz, y planea expandirse a Boaco y León en el futuro. Este mapa interactivo muestra su área de influencia.
