@@ -6,7 +6,6 @@ import "@/app/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
-
 export const metadata: Metadata = {
   title: "Central de Cooperativas",
   description: "Cooperativa de mujeres comprometidas con el desarrollo sostenible",
@@ -47,4 +46,3 @@ export default function RootLayout({
     </html>
   )
 }
-

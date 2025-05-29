@@ -8,6 +8,29 @@
   color: #333;
 }
 
+.map-type-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.map-type-buttons button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-color: #20496a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.map-type-buttons button:hover {
+  background-color: #163a5a;
+}
+
 .geo-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -119,6 +142,16 @@
 
   .geo-description {
     font-size: 0.95rem;
+  }
+
+  .map-type-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map-type-buttons button {
+    width: 100%;
+    margin-bottom: 5px;
   }
 }
 

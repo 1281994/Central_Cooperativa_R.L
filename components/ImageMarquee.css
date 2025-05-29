@@ -4,7 +4,7 @@
 .image-marquee-section {
   width: 100%;
   overflow: hidden;
-  font-family: "Montserrat", sans-serif; /* Changed to Montserrat */
+  font-family: "Montserrat", sans-serif;
   background-color: #eff6eb;
   padding: 60px 0;
 }
@@ -17,7 +17,7 @@
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px; /* Reducido para pantallas pequeñas */
 }
 
 .inner--xl {
@@ -38,19 +38,19 @@
   display: inline-block;
   background-color: #046815;
   color: white;
-  font-size: 0.875rem; /* Adjusted to 14px (from 14px), already appropriate */
   font-weight: 600;
   padding: 6px 16px;
   border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem; /* Reducido para mejor ajuste */
 }
 
 .budget-tag--big {
-  font-size: 1rem; /* Adjusted to 16px (from 16px), already appropriate */
+  font-size: 1rem;
   padding: 8px 20px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 .c-heading__middle {
@@ -58,20 +58,20 @@
 }
 
 .heading-3 {
-  font-size: 2.5rem; /* Adjusted to 40px (from 42px) for best practices */
+  font-size: 2.5rem;
   font-weight: 700;
-  line-height: 1.3; /* Adjusted for readability */
+  line-height: 1.3;
   color: #333;
   margin: 0;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 .c-heading__large-desc {
-  font-size: 1.125rem; /* Adjusted to 18px (from 18px), already appropriate */
-  line-height: 1.6; /* Added for readability */
+  font-size: 1.125rem;
+  line-height: 1.6;
   color: #555;
   margin-bottom: 25px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Estilos del carrusel de imágenes */
@@ -162,11 +162,11 @@
 
 .ring-text__svg text {
   fill: #046815;
-  font-size: 2rem; /* Adjusted to 32px (from 40px) for better proportion */
+  font-size: 2rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 .ring-text__logo {
@@ -179,22 +179,22 @@
 }
 
 .hero-discover__heading {
-  font-size: 2rem; /* Adjusted to 32px (from 32px), already appropriate */
+  font-size: 2rem;
   font-weight: 300;
   line-height: 1.4;
   color: #333;
   max-width: 900px;
   margin: 0 auto 20px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 .hero-discover__desc {
-  font-size: 1rem; /* Adjusted to 16px (from 18px) for body text */
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 1.6; /* Added for readability */
+  line-height: 1.6;
   color: #666;
   margin-bottom: 20px;
-  font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Estilos de los usuarios */
@@ -218,58 +218,54 @@
   margin-left: 0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Design */
+
+/* Pantallas muy pequeñas (320px - 480px) */
+@media (max-width: 480px) {
+  .image-marquee-section {
+    padding: 30px 0; /* Reducido para móviles */
+  }
+
+  .inner {
+    padding: 0 10px;
+  }
+
+  .budget-tag {
+    font-size: 1.5rem; /* Reducido para móviles pequeños */
+    padding: 5px 12px;
+  }
+
+  .budget-tag--big {
+    font-size: 0.875rem; /* 14px */
+    padding: 6px 15px;
+  }
+
   .heading-3 {
-    font-size: 2rem; /* Adjusted to 32px (from 32px), already appropriate */
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.4;
   }
 
   .c-heading__large-desc {
-    font-size: 1rem; /* Adjusted to 16px (from 16px), already appropriate */
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .header-marquees {
+    margin: 20px 0;
   }
 
   .header-marquees__img {
-    width: 250px;
-    height: 170px;
+    width: 150px; /* Reducido para pantallas pequeñas */
+    height: 100px;
   }
 
-  .hero-discover__heading {
-    font-size: 1.75rem; /* Adjusted to 28px (from 24px) */
+  .header-marquees__track {
+    animation-duration: 100s; /* Reducida la velocidad para menos imágenes visibles */
   }
 
-  .hero-discover__desc {
-    font-size: 0.875rem; /* Adjusted to 14px */
-  }
-
-  .ring-text__svg text {
-    font-size: 1.75rem; /* Adjusted to 28px */
-  }
-}
-
-@media (max-width: 480px) {
-  .heading-3 {
-    font-size: 1.75rem; /* Adjusted to 28px (from 28px), already appropriate */
-  }
-
-  .promo-offer {
-    gap: 10px;
-  }
-
-  .promo-offer__prices {
-    font-size: 1.25rem; /* Adjusted to 20px (from 20px), already appropriate */
-  }
-
-  .header-marquees__img {
-    width: 200px;
-    height: 140px;
-  }
-
-  .hero-discover__heading {
-    font-size: 1.5rem; /* Adjusted to 24px (from 20px) */
-  }
-
-  .hero-discover__desc {
-    font-size: 0.875rem; /* Adjusted to 14px */
+  .hero-discover {
+    padding: 20px 0;
   }
 
   .ring-text {
@@ -278,6 +274,206 @@
   }
 
   .ring-text__svg text {
-    font-size: 1.5rem; /* Adjusted to 24px */
+    font-size: 1.5rem; /* 24px */
+  }
+
+  .ring-text__logo {
+    width: 60px;
+  }
+
+  .hero-discover__heading {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .hero-discover__desc {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .hero-discover__users img {
+    width: 30px;
+    height: 30px;
+    margin-left: -8px;
+  }
+}
+
+/* Celulares medianos (480px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .image-marquee-section {
+    padding: 40px 0;
+  }
+
+  .inner {
+    padding: 0 15px;
+  }
+
+  .budget-tag {
+    font-size: 1.75rem; /* 28px */
+    padding: 6px 15px;
+  }
+
+  .budget-tag--big {
+    font-size: 1rem; /* 16px */
+    padding: 7px 18px;
+  }
+
+  .heading-3 {
+    font-size: 1.75rem; /* 28px */
+    line-height: 1.4;
+  }
+
+  .c-heading__large-desc {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+  }
+
+  .header-marquees__img {
+    width: 200px;
+    height: 130px;
+  }
+
+  .header-marquees__track {
+    animation-duration: 150s;
+  }
+
+  .hero-discover {
+    padding: 25px 0;
+  }
+
+  .ring-text {
+    width: 140px;
+    height: 140px;
+  }
+
+  .ring-text__svg text {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  .ring-text__logo {
+    width: 70px;
+  }
+
+  .hero-discover__heading {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.4;
+  }
+
+  .hero-discover__desc {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .hero-discover__users img {
+    width: 35px;
+    height: 35px;
+    margin-left: -10px;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .image-marquee-section {
+    padding: 50px 0;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .budget-tag {
+    font-size: 2rem;
+    padding: 6px 16px;
+  }
+
+  .budget-tag--big {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+
+  .heading-3 {
+    font-size: 2rem; /* 32px */
+    line-height: 1.3;
+  }
+
+  .c-heading__large-desc {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .header-marquees__img {
+    width: 250px;
+    height: 160px;
+  }
+
+  .header-marquees__track {
+    animation-duration: 200s;
+  }
+
+  .hero-discover__heading {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  .hero-discover__desc {
+    font-size: 1rem; /* 16px */
+  }
+
+  .ring-text {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ring-text__svg text {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  .ring-text__logo {
+    width: 80px;
+  }
+}
+
+/* Desktops pequeños (1024px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .image-marquee-section {
+    padding: 60px 0;
+  }
+
+  .inner {
+    padding: 0 25px;
+  }
+
+  .budget-tag {
+    font-size: 2rem;
+  }
+
+  .heading-3 {
+    font-size: 2.25rem; /* 36px */
+  }
+
+  .header-marquees__img {
+    width: 280px;
+    height: 180px;
+  }
+}
+
+/* Desktops grandes (>1440px) */
+@media (min-width: 1441px) {
+  .image-marquee-section {
+    padding: 60px 0;
+  }
+
+  .inner {
+    padding: 0 30px;
+  }
+
+  .budget-tag {
+    font-size: 2rem;
+  }
+
+  .heading-3 {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .header-marquees__img {
+    width: 300px;
+    height: 200px;
   }
 }

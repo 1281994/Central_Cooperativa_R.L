@@ -1,0 +1,442 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;500;700;800;900;1000&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.proceso-fabricacion {
+  background-color: #f0f8f0;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 90px; /* Espacio entre secciones */
+}
+
+/* Títulos superiores */
+.top-titles {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2px;
+}
+
+.title-primary {
+  background-color: #0d450d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Botones de procesos */
+.process-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1px;
+}
+
+.process-btn {
+  background-color: #0a5b21;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.process-btn:hover {
+  background-color: #7b4df6;
+}
+
+.process-btn.active {
+  background-color: #7b4df6;
+}
+
+/* Contenido principal */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+/* Estilos de las tarjetas */
+.detail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 400px; /* Fijar altura para evitar crecimiento */
+}
+/*tamaños de las card*.............................................*/
+.parent {
+  height: 100%; /* Usar el 100% de la altura del contenedor */
+  width: 340px;
+  padding: 20px;
+  perspective: 1000px;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.parent.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.parent.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card {
+  padding-top: 100px;
+  transform-style: preserve-3d;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%; /* Fijar altura para evitar crecimiento */
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+  overflow: hidden; /* Evitar que el contenido se desborde */
+}
+
+.card:hover {
+  background-position: 80% 20%;
+  transform: rotate3d(0.5, 1, 0, 30deg);
+}
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px; /* Antes 100px, ahora menos */
+}
+
+.content-box {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.811);
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: rgba(0, 115, 255, 0.925) 0px 20px 50px -25px;
+  transition: all 0.5s ease-in-out;
+  padding: 50px 25px 25px 25px;
+  transform-style: preserve-3d;
+  overflow: hidden; /* Contener el contenido dentro de la altura */
+}
+
+.content-box .card-title {
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 20px);
+}
+
+.content-box .card-title:hover {
+  transform: translate3d(0px, 0px, 50px);
+}
+/*tamañ0 ala descricion dentro de la card*/
+.content-box .card-content {
+  width: 300px; /* Ajusta este valor al ancho que desees */
+  max-width: 100%;
+  padding-top: 15px;
+  font-size: 12px;
+  color: rgb(185, 185, 185);
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 20px);
+}
+
+.content-box .card-content:hover {
+  transform: translate3d(0px, 0px, 50px);
+}
+
+.content-box .see-more {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: 900;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgb(21, 138, 38);
+  padding-top: 15px;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 20px);
+}
+
+.content-box .see-more:hover {
+  transform: translate3d(0px, 0px, 50px);
+}
+
+.date-box {
+  position: absolute;
+  top: 75px;
+  left: 25px;
+  height: 60px;
+  width: 60px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: rgb(22, 106, 34) 0px 20px 60px 0px, rgb(30, 148, 32) 0px 18px 36px -18px;
+  transform: translate3d(0px, 0px, 50px);
+}
+
+.date-box span {
+  display: block;
+  text-align: center;
+}
+
+.date-box .month {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.date-box .date {
+  font-size: 20px;
+  font-weight: 900;
+  color: rgb(0, 136, 255);
+}
+
+/* Filtros para diferenciar las tarjetas */
+.card1 { filter: hue-rotate(0deg); }
+.card2 { filter: hue-rotate(150deg); }
+.card3 { filter: hue-rotate(300deg); }
+.card4 { filter: hue-rotate(90deg); }
+.card5 { filter: hue-rotate(45deg); }
+.card6 { filter: hue-rotate(210deg); }
+
+/* Cooperativas  estilos para el titulo sobre las cooperartiva que dan materia prima */
+.cooperatives-container {
+  flex: 1;
+  max-width: 520px;
+}
+
+.cooperatives-title {
+  background-color: transparent;
+  color: rgb(12, 96, 34);
+  border: 1px solid rgb(10, 65, 14);
+  padding: 10px 20px;
+  border-radius: 50px;
+  max-width: 1000px; /* Limitar el ancho */
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cooperatives-title.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cooperative-item {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cooperative-item-0 { transition-delay: 0.1s; }
+.cooperative-item-1 { transition-delay: 0.2s; }
+.cooperative-item-2 { transition-delay: 0.3s; }
+.cooperative-item-3 { transition-delay: 0.4s; }
+
+.cooperative-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Línea de tiempo */
+.timeline-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 5px; /* Asegurar espacio suficiente encima */
+  padding-bottom: 0;
+  position: relative;
+}
+
+.timeline-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.timeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.timeline-steps::-webkit-scrollbar {
+  width: 8px;
+}
+
+.timeline-steps::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.timeline-steps::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.timeline-steps::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+
+.timeline-step.active {
+  opacity: 1;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+
+/* color al numero*/
+.timeline-step.active .step-number {
+  border-color: #16cd25;
+  color: #16cd25;
+}
+/* color al circulo*/
+.step-content h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #16cd25;
+}
+/* color a las letras al activarlas*/
+.step-content p {
+  font-size: 14px;
+  color: #070707;
+  line-height: 1.4;
+}
+
+.timeline-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-container {
+    width: 100%;
+  }
+
+  .cooperatives-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cooperatives-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .timeline-section {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-image {
+    order: -1;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 24px;
+  }
+
+  .card-content {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-titles {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .process-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .step-content h3 {
+    font-size: 18px;
+  }
+
+  .step-content p {
+    font-size: 12px;
+  }
+}

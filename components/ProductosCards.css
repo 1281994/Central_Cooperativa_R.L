@@ -39,6 +39,11 @@
   text-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
   line-height: 1.3; /* Added for readability */
   font-family: "Montserrat", sans-serif; /* Applied Montserrat */
+  font-size: 2.5rem; /* Adjusted to 40px (from 28px) for h1-like headings */
+  font-weight: 600;
+
+
+
 }
 
 .section-description {

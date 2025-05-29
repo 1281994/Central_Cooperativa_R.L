@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Estelí" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.4, 13.2], [-86.2, 13.2], [-86.2, 13.0], [-86.4, 13.0], [-86.4, 13.2]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Jinotega" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.0, 13.3], [-85.8, 13.3], [-85.8, 13.1], [-86.0, 13.1], [-86.0, 13.3]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Matagalpa" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-85.9, 13.0], [-85.7, 13.0], [-85.7, 12.8], [-85.9, 12.8], [-85.9, 13.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Nueva Segovia" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.5, 13.5], [-86.3, 13.5], [-86.3, 13.3], [-86.5, 13.3], [-86.5, 13.5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Madriz" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.3, 13.4], [-86.1, 13.4], [-86.1, 13.2], [-86.3, 13.2], [-86.3, 13.4]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "Boaco" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-85.6, 12.5], [-85.4, 12.5], [-85.4, 12.3], [-85.6, 12.3], [-85.6, 12.5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME_1": "León" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.9, 12.5], [-86.7, 12.5], [-86.7, 12.3], [-86.9, 12.3], [-86.9, 12.5]
+          ]
+        ]
+      }
+    }
+  ]
+}

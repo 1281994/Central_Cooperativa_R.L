@@ -1,9 +1,7 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
-import { Clock } from "lucide-react"
 import "./ImageMarquee.css"
 
 export default function ImageMarquee() {
@@ -48,7 +46,7 @@ export default function ImageMarquee() {
     "/assets/imagenes/galeria/campo de frijoles.jpeg",
     "/assets/imagenes/galeria/campo de arroz.jpeg",
     "/assets/imagenes/galeria/arboles.jpeg",
-   "/assets/imagenes/galeria/campo de flores2.jpeg",
+    "/assets/imagenes/galeria/campo de flores2.jpeg",
     "/assets/imagenes/galeria/campo de frijol2.jpeg",
     "/assets/imagenes/galeria/campo de frijol.jpeg",
     "/assets/imagenes/galeria/campo de maiz.jpeg",
@@ -81,16 +79,15 @@ export default function ImageMarquee() {
             </div>
             <div className="c-heading__middle">
               <h1 className="heading-3">
-                Descubre nuestra comunidad trabadora
+                Descubre nuestra comunidad trabajadora
                 <br />
                 de mujeres rurales
               </h1>
             </div>
             <div className="c-heading__bottom">
               <div className="c-heading__large-desc">
-                <span>conoce y enamorate de nuestra tierra nicaraguense, llena de mujeres emprendedoras.</span>
+                <span>conoce y enamórate de nuestra tierra nicaragüense, llena de mujeres emprendedoras.</span>
               </div>
-             
             </div>
           </div>
         </div>
@@ -139,21 +136,20 @@ export default function ImageMarquee() {
         <div className="inner inner--xl">
           <div className="hero-discover">
             <div className="ring-text">
-              <svg className="ring-text__svg" width="100" height="1000" viewBox="0 0 500 500">
+              <svg className="ring-text__svg" width="100%" height="100%" viewBox="0 0 500 500">
                 <defs>
                   <path
                     d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
                     id="textcircle"
-                  ></path>
+                  />
                 </defs>
                 <text dy="30" textLength="1220">
-                  <textPath xlinkHref="#textcircle">CENTRAL DE COPERATIVA LAS DIOSAS R.L.</textPath>
+                  <textPath xlinkHref="#textcircle">CENTRAL DE COOPERATIVA LAS DIOSAS R.L.</textPath>
                 </text>
               </svg>
               <img
-                width="1000"
                 className="ring-text__logo"
-                src="/assets/imagenes/logos/logoLasDiosas-remove.png"
+                src="/assets/imagenes/logos/logo-sin-letras.png"
                 alt="Logo Cooperativa"
               />
             </div>
@@ -162,9 +158,9 @@ export default function ImageMarquee() {
             </h2>
             <p className="hero-discover__desc">Más de 400 mujeres campesinas trabajando juntas</p>
             <div className="hero-discover__users">
-              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 1" />
-              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 2" />
-              <img src="/assets/imagenes/logos/logoLasDiosas-Photoroom.png" width="40" height="40" alt="Miembro 3" />
+              <img src="/assets/imagenes/logos/logo-sin-letras.png" width="40" height="40" alt="Miembro 1" />
+              <img src="/assets/imagenes/logos/logo-sin-letras.png" width="40" height="40" alt="Miembro 2" />
+              <img src="/assets/imagenes/logos/logo-sin-letras.png" width="40" height="40" alt="Miembro 3" />
             </div>
           </div>
         </div>

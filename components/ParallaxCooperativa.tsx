@@ -7,6 +7,7 @@ import "./parallax-cooperativa.css"
 export default function ParallaxCooperativa() {
   const mountainLeftRef = useRef<HTMLImageElement>(null)
   const mountainRightRef = useRef<HTMLImageElement>(null)
+  const zoomRef = useRef<HTMLImageElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const manRef = useRef<HTMLImageElement>(null)
 
@@ -25,6 +26,13 @@ export default function ParallaxCooperativa() {
     const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     setIsMobile(isMobileDevice)
 
+    // Pausar la animación de zoom.png después de 6 segundos
+    const pauseAnimation = setTimeout(() => {
+      if (zoomRef.current) {
+        zoomRef.current.style.animationPlayState = "paused"
+      }
+    }, 7000) // 6000ms = 6 segundos, la nueva duración de bgZoomOut
+
     const handleScroll = () => {
       const value = window.scrollY
       const mobileFactor = isMobile ? 0.4 : 1.7
@@ -36,6 +44,13 @@ export default function ParallaxCooperativa() {
 
       if (mountainRightRef.current) {
         mountainRightRef.current.style.left = `${value / iosFactor}px`
+      }
+
+      if (zoomRef.current) {
+        // Calcular el progreso de la animación basado en el scroll
+        const baseScale = 4 // Escala donde termina bgZoomOut después de 6 segundos
+        const scaleIncrement = value / 1000 // Ajusta este valor para controlar la velocidad del zoom con el scroll
+        zoomRef.current.style.transform = `scale(${baseScale + scaleIncrement})`
       }
 
       if (textRef.current) {
@@ -75,6 +90,7 @@ export default function ParallaxCooperativa() {
       window.removeEventListener("scroll", scrollListener)
       window.removeEventListener("resize", handleResize)
       timersRef.current.forEach((timer) => clearTimeout(timer))
+      clearTimeout(pauseAnimation) // Limpiar el timeout al desmontar
     }
   }, [isIOS, isMobile])
 
@@ -114,7 +130,7 @@ export default function ParallaxCooperativa() {
       <section id="top">
         {/* 1. Background Image (portada-principal.jpg) */}
         <Image
-          src="/assets/imagenes/parallax/portada-principal.jpg"
+          src="/assets/imagenes/parallax/11.png"
           alt="Fondo"
           fill
           priority
@@ -125,7 +141,7 @@ export default function ParallaxCooperativa() {
         {/* 2. Bird Animations */}
         <div className={`flying-birds ${showBirds ? "animate-birds" : ""}`}>
           <Image
-            src="/assets/imagenes/parallax/pajaros1.gif"
+            src="/assets/imagenes/parallax/pajaros2.gif"
             alt="Pájaros volando"
             width={90}
             height={75}
@@ -135,7 +151,7 @@ export default function ParallaxCooperativa() {
 
         <div className={`flying-birds-diagonal ${showDiagonalBirds ? "animate-birds-diagonal" : ""}`}>
           <Image
-            src="/assets/imagenes/parallax/pajaros3.gif"
+            src="/assets/imagenes/parallax/pajaros1.gif"
             alt="Pájaros volando en diagonal"
             width={90}
             height={75}
@@ -151,7 +167,7 @@ export default function ParallaxCooperativa() {
 
         {/* 4. Cespe Image */}
         <Image
-          src="/assets/imagenes/parallax/cespe.png"
+          src="/assets/imagenes/parallax/piso.png"
           alt="Cespe"
           id="cespe"
           fill
@@ -179,23 +195,35 @@ export default function ParallaxCooperativa() {
           sizes="100vw"
           style={{ objectFit: "cover", zIndex: 5 }}
         />
+
+        {/* 6. Zoom Image with Animation */}
+        <Image
+          src="/assets/imagenes/parallax/after.png"
+          alt="Zoom"
+          id="zoom"
+          ref={zoomRef}
+          fill
+          sizes="100vw"
+          className="zoom-animation"
+          style={{ objectFit: "cover", zIndex: 5 }}
+        />
       </section>
 
-      <section id="sec">
-        <h2>Conoce acerca de nosotras</h2>
+
+      <div id="parallax-world-of-ugg">
+        <section>
+          <div className="title">
+            <h3>Conoce sobre</h3>
+            <h1>Las Diosas R.L</h1>
+          </div>
+           <section id="sec">
+        {/*  <h2>Conoce acerca de nosotras</h2>*/}
         <p>
           La Central de Cooperativas Las Diosas es una organización de segundo grado, integrada por mujeres campesinas,
           que agrupa a ocho cooperativas de base. Las cuales estan ubicadas en los diferentes departamentos del país
           siendo estos Estelí, Matagalpa, Nueva Segovia y Jinotega al norte de Nicaragua.
         </p>
       </section>
-
-      <div id="parallax-world-of-ugg">
-        <section>
-          <div className="title">
-            <h3>Central de Cooperativa</h3>
-            <h1>Las Diosas R.L</h1>
-          </div>
         </section>
 
         <section>
@@ -207,7 +235,7 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="highlight-paragraph">
-              <span className="first-character sc">B</span> rindamos servicios multisectoriales comprometidas con los
+              <span className="first-character sc"></span> Brindamos servicios multisectoriales comprometidas con los
               intereses de las mujeres rurales, sustentada en la economía social, solidaria, popular creativa
               agroecológica y en defensa de los derechos de las mujeres a través del fortalecimiento de tres
               agro-cadenas alimentarías, la producción agroecológica, la conciencia crítica de género y la erradicación
@@ -232,7 +260,7 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="colored-paragraph">
-              <span className="first-character ny">A</span> la fecha, la cooperativa se dedica a la producción de café,
+              <span className="first-character ny"></span>A la fecha, la cooperativa se dedica a la producción de café,
               miel y la agregación de valor a la flor de jamaica la cual es comercializada en mermelada, té y vino,
               productos que se van posicionando en el mercado nacional e internacional.
             </p>
@@ -250,7 +278,7 @@ export default function ParallaxCooperativa() {
         <section>
           <div className="block">
             <p className="colored-paragraph">
-              <span className="first-character atw">L</span>a Central de Cooperativas Las Diosas es una organización de
+              <span className="first-character atw"></span>La Central de Cooperativas Las Diosas es una organización de
               segundo grado integrando mujeres campesinas, que agrupa a ocho cooperativas de base. Las socias están
               ubicadas en diferentes comunidades y zonas productivas de los departamentos de Estelí, Matagalpa, Nueva
               Segovia y Jinotega, al norte de Nicaragua. La Central Las Diosas, organización certificada con el comercio

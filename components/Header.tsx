@@ -1,10 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import "./Header.css" // Importar el CSS separado
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -33,7 +33,6 @@ export default function Header() {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          // Si la sección está visible en el viewport
           if (rect.top <= 100 && rect.bottom >= 100) {
             currentSection = section
             break
@@ -45,14 +44,11 @@ export default function Header() {
     }
 
     window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [pathname])
 
-  // Función para manejar el scroll suave a las secciones en la página principal
+  // Función para manejar el scroll suave
   const scrollToSection = (sectionId: string, e: React.MouseEvent) => {
-    // Si estamos en la página principal, hacemos scroll suave
     if (pathname === "/") {
       e.preventDefault()
       const section = document.getElementById(sectionId)
@@ -65,18 +61,16 @@ export default function Header() {
 
   // Determinar si un enlace debe ser activo
   const isActive = (section: string) => {
-    if (pathname === "/" && activeSection === section) return true
-    if (pathname === `/${section}`) return true
-    return false
+    return pathname === "/" && activeSection === section || pathname === `/${section}`
   }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
-        {/* Logo */}
+        {/* Logo y Título sin animaciones */}
         <Link href="/" className="navbar-brand nav-item-custom">
           <img
-            src="/assets/imagenes/logos/logo-las-diosas.png"
+            src="/assets/imagenes/logos/logo-las-diosas1.png"
             alt="Logo Las Diosas"
             className="navbar-logo"
           />
@@ -94,12 +88,12 @@ export default function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Elementos de la barra */}
+        {/* Enlaces de navegación centrados */}
         <div className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav mx-auto">
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("top") ? "active" : ""}`}
+                className={`nav-link ${isActive("top") ? "active" : ""}`}
                 href={pathname === "/" ? "#slider" : "/"}
                 onClick={(e) => scrollToSection("top", e)}
               >
@@ -108,37 +102,43 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("sec") ? "active" : ""}`}
+                className={`nav-link ${isActive("sec") ? "active" : ""}`}
                 href={pathname === "/" ? "#sec" : "/"}
                 onClick={(e) => scrollToSection("sec", e)}
               >
                 Conocenos
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("cooperativa") ? "active" : ""}`}
-                href={pathname === "/" ? "#cooperativa" : "/cooperativa"}
-                onClick={(e) => scrollToSection("cooperativa", e)}
+                className={`nav-link ${isActive("slider") ? "active" : ""}`}
+                href={pathname === "/" ? "#slider" : "/slider"}
+                onClick={(e) => scrollToSection("slider", e)}
               >
                 Cooperativa
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("products") ? "active" : ""}`}
-                href={pathname === "/" ? "#products" : "/productos"}
-                onClick={(e) => scrollToSection("products", e)}
+                className={`nav-link ${isActive("productos") ? "active" : ""}`}
+                href={pathname === "/" ? "#productos" : "/productos"}
+                onClick={(e) => scrollToSection("productos", e)}
               >
                 Productos
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
-                className={`nav-link nav-item-custom ${isActive("footer") ? "active" : ""}`}
+                className={`nav-link ${isActive("interactive-geo-location") ? "active" : ""}`}
+                href={pathname === "/" ? "#interactive-geo-location" : "/interactive-geo-location"}
+                onClick={(e) => scrollToSection("interactive-geo-location", e)}
+              >
+                Geolocalización
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${isActive("footer") ? "active" : ""}`}
                 href={pathname === "/" ? "#footer" : "/contacto"}
                 onClick={(e) => scrollToSection("footer", e)}
               >
@@ -146,6 +146,22 @@ export default function Header() {
               </Link>
             </li>
           </ul>
+
+          {/* Iconos de redes sociales a la derecha */}
+          <div className="social-icons ms-auto">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <i className="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <i className="fab fa-youtube"></i>
+            </a>
+          </div>
         </div>
       </div>
     </nav>

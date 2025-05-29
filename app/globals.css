@@ -6,7 +6,6 @@
 
 body {
   font-family: Poppins, sans-serif;
-  padding-top: 56px; /* Ajustar al tamaño exacto del navbar */
   margin: 0;
   overflow-x: hidden;
   width: 100%;
@@ -34,71 +33,11 @@ h2 {
   color: #f4f0f0;
 }
 
-/* Estilos de la barra de navegación */
-.navbar {
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  background-color: #1a1a1a !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-.navbar-logo {
-  height: 100%; /* Ajusta la altura del logo al 100% del header */
-  max-height: 50px; /* Limita la altura máxima del logo */
-  width: auto; /* Mantén las proporciones del logo */
-  margin-right: 10px; /* Espacio entre el logo y el texto (opcional) */
-}
-.navbar.scrolled {
-  background-color: rgba(26, 26, 26, 0.95) !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand.nav-item-custom {
-  font-weight: bold;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.nav-item-custom {
-  position: relative;
-  padding: 10px 15px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Animación al pasar el mouse  */
-.nav-item-custom:hover {
-  transform: translateY(-3px);
-  color: #049d16 !important;
-}
-
-/* Animación al hacer clic */
-.nav-item-custom:active {
-  transform: scale(0.95);
-  color: #0ab61e !important;
-}
-
-/* Línea inferior animada */
-.nav-item-custom::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background: linear-gradient(-45deg, #03dbef, #3cd3e7, #23d58e, #0dc8f3);
-  background-size: 1000% 1000%;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.nav-item-custom:hover::after {
-  width: 100%;
-  left: 0;
-}
-
 /* Footer Styles */
 .footer {
   position: relative;
   width: 100%;
-   background-color: rgba(26, 26, 26, 0.95) !important;
+  background-color: rgba(26, 26, 26, 0.95) !important;
   color: #fff;
   overflow: hidden;
   margin-top: 80px;
@@ -108,7 +47,7 @@ h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #dae5db; /* Cambia este valor al color que desees */
+  color: #dae5db;
   font-weight: 700;
   text-transform: uppercase;
 }
