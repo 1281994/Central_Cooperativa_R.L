@@ -148,18 +148,34 @@ export default function Header() {
           </ul>
 
           {/* Iconos de redes sociales a la derecha */}
+          {/* Iconos de redes sociales a la derecha */}
           <div className="social-icons ms-auto">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a
+              href="https://www.facebook.com/share/19B83YdUk3/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              aria-label="Facebook"
+            >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <i className="fab fa-whatsapp"></i>
+            <a
+              href="https://www.tiktok.com/@lasdiosascooperat?_t=ZM-8wuesP8evAL&_r=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              aria-label="TikTok"
+            >
+              <i className="fab fa-tiktok"></i>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a
+              href="https://www.instagram.com/lasdiosascooperativacentral/profilecard/?igsh=amk3NmN3ZmtsMHh5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              aria-label="Instagram"
+            >
               <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <i className="fab fa-youtube"></i>
             </a>
           </div>
         </div>

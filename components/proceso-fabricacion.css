@@ -47,8 +47,10 @@
 .process-buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 10px;
   margin-bottom: 1px;
+  width: 100%;
 }
 
 .process-btn {
@@ -61,7 +63,11 @@
   font-weight: 600;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
 }
+
 
 .process-btn:hover {
   background-color: #7b4df6;
