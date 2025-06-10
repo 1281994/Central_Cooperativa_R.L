@@ -31,7 +31,7 @@ const slidesData = [
     src: "/assets/imagenes/cooperativas/mujeres-trabajadoras-de-dipilto-r.l-cmtinue-r.l.jpeg",
     title: "COMUTRADI R.L",
     description: "Cooperativa Multisectorial Mujeres Trabajadoras de Dipilto R.L.",
-    url: "https://example.com/comutradi",
+    url: "https://v0-single-file-styling.vercel.app/",
   },
   {
     type: "image",
