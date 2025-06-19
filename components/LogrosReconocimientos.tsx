@@ -1,7 +1,7 @@
 "use client"
 
 import { LightbulbIcon, CheckCircle } from "lucide-react"
-import "./NuestraMision.css"
+import "./LogrosReconocimientos.css"
 
 export default function NuestraMision() {
   return (

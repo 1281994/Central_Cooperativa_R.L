@@ -146,7 +146,7 @@
   border-radius: 0px 0px 10px 10px;
   box-shadow: rgba(0, 115, 255, 0.925) 0px 20px 50px -25px;
   transition: all 0.5s ease-in-out;
-  padding: 50px 50px 25px 25px;
+  padding: 50px 25px 25px 25px;
   transform-style: preserve-3d;
   overflow: hidden; /* Contener el contenido dentro de la altura */
 }

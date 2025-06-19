@@ -142,7 +142,7 @@ export default function InteractiveGeoLocation() {
       case 'hybrid':
         return '© <a href="https://www.esri.com">Esri</a> & <a href="https://www.openstreetmap.org">OpenStreetMap</a>';
       default:
-        return '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        return '© <a href="https://www.openstreetmap.org/copyright"><br />OpenStreetMap</a> contributors';
     }
   };
 
